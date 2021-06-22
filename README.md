@@ -5,6 +5,7 @@ COP4331 Large project, In the mood food, is a phone app for finding food you are
   - A list of nearby restaurants based on your answers
 - Really Want It:
   - Favorite restaurants and most frequently visited.
+  - A loading screen (Results would likely be computed immediately but sometimes users like to feel like their program is actually doing something so it could say "Finding the perfect restaurant for you" as an example)
   - A map view for the restaurants (as an alternative to the list).
   - A button to open google maps with the address for the restaurant pre-loaded. 
 - Could Do Without:
