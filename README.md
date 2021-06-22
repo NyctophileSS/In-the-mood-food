@@ -11,6 +11,7 @@ COP4331 Large project, In the mood food, is a phone app for finding food you are
   - Filler questions (have no effect on search results)
   - All answers could be in the form of emojis
   - A question which sets the app color scheme 
+  - Support for larger devices
   - Call function (can be done by makes a redirect to a website with the phone number. A phone handles this by opening the default phone calling app with the redirected number)
   - Ratings quick look or ratings deep dive feature
   - User may skip questions and have them not effect the results
