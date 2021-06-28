@@ -1,7 +1,7 @@
 import app from "./server.js";
 import mongodb from "mongodb";
 import dotenv from "dotenv";
-
+import RestaurantsDAO from "./dao/restaurantsDAO.js"
 dotenv.config();
 
 // const express = require('express');
@@ -21,6 +21,7 @@ MongoClient.connect(
   console.error(err.stack)
   process.exit(1)
 }).then(async client => {
+    await RestaurantsDAO.injectDB(client)
     app.listen(PORT, () => {
       console.log(`listening on port: ${ PORT }`)
     })
@@ -33,7 +34,7 @@ MongoClient.connect(
 //   .use(express.json())
 //   .use("/api/v1/login", login)
 //   .set('views', path.join(__dirname, 'views'))
-//   .set('view engine', 'ejs')
+//   .set('view engine', 'ejs')s
 //   .get('/', (req, res) => res.render('pages/index'))
 //   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
   
