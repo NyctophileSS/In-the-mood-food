@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "description": "A sample Node.js app using Express 4",
   "engines": {
-    "node": "14.x"
+    "node": "15.x"
   },
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,11 @@
     "test": "node test.js"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.5",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "mongodb": "^3.6.9",
+    "react": "^17.0.2"
   },
   "devDependencies": {
     "got": "^11.3.0",
@@ -26,6 +29,10 @@
     "node",
     "heroku",
     "express"
+  ],
+  "contributors": [
+    "Jordan Stebbins <jstebbin14@gmail.com> (https://www.linkedin.com/in/jordan-stebbins/)",
+    "fname lname <example@email.com> (https://www.google.com)"
   ],
   "license": "MIT"
 }
