@@ -15,7 +15,8 @@
     "ejs": "^3.1.5",
     "express": "^4.15.2",
     "mongodb": "^3.6.9",
-    "react": "^17.0.2"
+    "react": "^17.0.2",
+    "react-native": "^0.64.2"
   },
   "devDependencies": {
     "got": "^11.3.0",
