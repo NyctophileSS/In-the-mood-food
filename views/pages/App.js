@@ -2,6 +2,25 @@ import React, { Component, useState } from 'react';
 import {Text, View, Button, Link} from 'react-native';
 // import '.css';
 
+const MongoClient = require('mongodb').MongoClient;
+const test = require('assert');
+
+// Connection url (will most likely change)
+const url = 'mongodb://localhost:27017';
+
+// Database Name
+const dbName = 'COP4331';
+
+// Connect using MongoClient
+MongoClient.connect(url, function(err, client) {
+
+    // Use the admin database for the operation
+    const adminDb = client.db(dbName).admin();
+
+    client.close();
+    
+});
+
 function loginAPI(){
 }
 function blockSwitch(){
