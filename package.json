@@ -1,42 +1,19 @@
 {
-  "name": "in-the-mood-food",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
-  "engines": {
-    "node": "15.x"
-  },
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
-  },
-  "dependencies": {
-    "dotenv": "^10.0.0",
-    "ejs": "^3.1.5",
-    "express": "^4.15.2",
-    "mongodb": "^3.6.9",
-    "react": "^17.0.2",
-    "react-native": "^0.64.2"
-  },
-  "devDependencies": {
-    "got": "^11.3.0",
-    "tape": "^4.7.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NyctophileSS/In-the-mood-food.git"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "contributors": [
-    "Jordan Stebbins <jstebbin14@gmail.com> (https://www.linkedin.com/in/jordan-stebbins/)",
-    "fname lname <example@email.com> (https://www.google.com)",
-    "Derrick Keough <derrickkeough@yahoo.com> (https://www.linkedin.com/in/derrick-keough/)",
-    "James Murphy <jmurphyinbox@gmail.com> ()",
-    "Elier Bermudez <bermudezelier@gmail.com> (https://www.linkedin.com/in/elierbermudez/)"
-  ],
-  "license": "MIT"
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "heroku-postbuild": " NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+        },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "mongodb": "^3.6.10"
+    }
 }
