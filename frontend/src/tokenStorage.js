@@ -1,3 +1,4 @@
+// TODO: implement JWT refresh
 exports.storeToken = function ( tok )
 {
     try
