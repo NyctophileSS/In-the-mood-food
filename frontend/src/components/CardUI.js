@@ -14,6 +14,11 @@ function CardUI()
     const [searchResults,setResults] = useState('');
     const [cardList,setCardList] = useState('');
     const app_name = 'COP4331-fourteen';
+
+    var bp = require('./Path.js');
+    var storage = require('../tokenStorage.js');
+    const jwt = require("jsonwebtoken");
+
     function buildPath(route)
     {
         if (process.env.NODE_ENV === 'production') 
@@ -30,12 +35,13 @@ function CardUI()
     {
 	    event.preventDefault();
 
-        var obj = {userId:userId,card:card.value};
+        var tok = storage.retrieveToken();
+        var obj = {userId:userId,card:card.value,jwtToken:tok};
         var js = JSON.stringify(obj);
 
         try
         {
-            const response = await fetch(buildPath('api/addcard'),
+            const response = await fetch(bp.buildPath('api/addcard'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
             var txt = await response.text();
@@ -61,12 +67,13 @@ function CardUI()
     {
         event.preventDefault();
         		
-        var obj = {userId:userId,search:search.value};
+        var tok = storage.retrieveToken();
+        var obj = {userId:userId,search:search.value,jwtToken:tok};
         var js = JSON.stringify(obj);
 
         try
         {
-            const response = await fetch(buildPath('api/searchcards'),
+            const response = await fetch(bp.buildPath('api/searchcards'),
             {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
             var txt = await response.text();
