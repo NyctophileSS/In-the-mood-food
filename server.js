@@ -2,6 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const path = require('path');           
+const PORT = process.env.PORT || 5000;  
+
+const app = express();
+app.set('port', (process.env.PORT || 5000));
+app.use(cors());
+app.use(bodyParser.json());
+
 require('dotenv').config();
 const url = process.env.MONGODB_URI;
 const MongoClient = require('mongodb').MongoClient;
@@ -10,16 +18,6 @@ client.connect();
 
 var api = require('./api.js');
 api.setApp( app, client );
-
-const path = require('path');           
-const PORT = process.env.PORT || 5000;  
-
-const app = express();
-app.use(cors());
-app.use(bodyParser.json());
-app.set('port', (process.env.PORT || 5000));
-
-// var api = require('./api.js');
 
 app.use((req, res, next) => 
 {
