@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 
 function Login()
 {
@@ -10,18 +11,7 @@ function Login()
     // New
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
-    function buildPath(route)
-    {
-        if (process.env.NODE_ENV === 'production') 
-        {
-            return 'https://' + app_name +  '.herokuapp.com/' + route;
-        }
-        else
-        {        
-            return 'http://localhost:5000/' + route;
-        }
-    }
-
+    
     const doLogin = async event => 
     {
         event.preventDefault();
@@ -29,38 +19,45 @@ function Login()
         var obj = {login:loginName.value,password:loginPassword.value};
         var js = JSON.stringify(obj);
 
-        try
-        {    
-            const response = await fetch(bp.buildPath('api/login'),
-                {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+        var config = 
+        {
+            method: 'post',
+            url: bp.buildPath('api/login'),	
+            headers: 
+            {
+                'Content-Type': 'application/json'
+            },
+            data: js
+        };
 
-            var storage = require('../tokenStorage.js');
-            var res = JSON.parse(await response.text());              
+        axios(config)
+            .then(function (response) 
+        {
+            var res = response.data;
             if (res.error) 
             {
-                setMessage(res.error);//'User/Password combination incorrect');
+                setMessage('User/Password combination incorrect');
             }
             else 
-            {
+            {	
                 storage.storeToken(res);
                 var jwt = require('jsonwebtoken');
-
+    
                 var ud = jwt.decode(storage.retrieveToken(),{complete:true});
                 var userId = ud.payload.userId;
                 var firstName = ud.payload.firstName;
                 var lastName = ud.payload.lastName;
-              
+                  
                 var user = {firstName:firstName,lastName:lastName,id:userId}
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/cards';
             }
-        }
-        catch(e)
+        })
+        .catch(function (error) 
         {
-            alert(e.toString());
-            return;
-        }      
-    };
+            console.log(error);
+        });      
+    }
 
     return(
       <div id="loginDiv">
