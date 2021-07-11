@@ -7,7 +7,6 @@ function Login()
     var loginPassword;
 
     const [message,setMessage] = useState('');
-    const app_name = 'COP4331-fourteen';
     // New
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');

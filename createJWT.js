@@ -52,6 +52,7 @@ exports.isExpired = function( token )
 
 }
 
+// TODO: implement refresh when interacting with an endpoint
 exports.refresh = function( token )
 {
   var ud = jwt.decode(token,{complete:true});

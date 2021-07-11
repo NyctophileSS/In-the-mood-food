@@ -1,4 +1,8 @@
 var token = require('./createJWT.js');
+//load user model
+const User = require("./models/user.js");
+//load card model
+const Card = require("./models/card.js");
 
 exports.setApp = function ( app, client )
 {
@@ -24,15 +28,16 @@ exports.setApp = function ( app, client )
         console.log(e.message);
       }
     
-      const newCard = {Card:card,UserId:userId};
+      //const newCard = { Card: card, UserId: userId };
+      const newCard = new Card({ Card: card, UserId: userId });
       var error = '';
-    
-      try
+      try 
       {
-        const db = client.db();
-        const result = db.collection('Cards').insertOne(newCard);
+        // const db = client.db();
+        // const result = db.collection('Cards').insertOne(newCard);
+        newCard.save();
       }
-      catch(e)
+      catch (e) 
       {
         error = e.toString();
       }
@@ -64,11 +69,11 @@ exports.setApp = function ( app, client )
     
      var error = '';
     
-      const { login, password } = req.body;
-    
-      const db = client.db();
-      const results = await db.collection('Users').find({Login:login,Password:password}).toArray();
-    
+     const { login, password } = req.body;
+     // const db = client.db();
+     // const results = await db.collection('Users').find({Login:login,Password:password}).toArray();
+     const results = await User.find({ Login: login, Password: password });
+   
       var id = -1;
       var fn = '';
       var ln = '';
@@ -124,10 +129,10 @@ exports.setApp = function ( app, client )
       }
 
       var _search = search.trim();
-      
-      const db = client.db();
-      const results = await db.collection('Cards').find({"Card":{$regex:_search+'.*', $options:'r'}}).toArray();
-      
+      //   const db = client.db();
+      //   const results = await db.collection('Cards').find({ "Card": { $regex: _search + '.*', $options: 'r' } }).toArray();
+      const results = await Card.find({ "Card": { $regex: _search + '.*', $options: 'r' } });
+
       var _ret = [];
       for( var i=0; i<results.length; i++ )
       {
