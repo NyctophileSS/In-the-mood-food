@@ -1,21 +1,21 @@
 import React, {useState} from 'react';
-import Text from 'react-native';
+//import Text from 'react-native';
 import '../styles.css';
 // Will update with methods and API later -JMM
 function Register(){
     return (
         <div className="RegisterBlock">
-            <Text>First Name</Text>
+            <p>First Name</p>
             <input type="text" id="first"></input>
-            <Text>Last Name</Text>
+            <p>Last Name</p>
             <input type="text" id="last"></input>
-            <Text>Phone Number</Text>
+            <p>Phone Number</p>
             <input type="text" id="phone"></input>
-            <Text>Email</Text>
+            <p>Email</p>
             <input type="text" id="email"></input>
-            <Text>New Password</Text>
+            <p>New Password</p>
             <input type="password" id="pw"></input>
-            <Text>Verify Password</Text>
+            <p>Verify Password</p>
             <input type="password" id="verifypw"></input>
             {/* <Button onClick={ }>Register</Button>  */}
             {/* <span>{ }</span>  Error block ((Will update when API links)) */}
