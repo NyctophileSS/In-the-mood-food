@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import '../styles.css';
 // Will update with methods and API later -JMM
 function Register(){
     return (
