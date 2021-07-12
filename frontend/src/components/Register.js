@@ -8,7 +8,7 @@ function Register()
     var loginName;
     var loginPassword;
     var loginPhoneNumber;
-    
+
     const [message,setMessage] = useState('');
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
@@ -20,7 +20,7 @@ function Register()
         var obj = {firstName:fn.value, lastName:ln.value, 
                     login:loginName.value,password:loginPassword.value, 
                     phoneNumber:loginPhoneNumber.value};
-        // TODO: Continue here after api.js is updated
+                    
         try
         {    
             const response = await fetch(bp.buildPath('api/register'),
