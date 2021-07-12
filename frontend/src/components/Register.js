@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-//import Text from 'react-native';
 import '../styles.css';
 // Will update with methods and API later -JMM
 function Register(){
@@ -17,8 +16,8 @@ function Register(){
             <input type="password" id="pw"></input>
             <p>Verify Password</p>
             <input type="password" id="verifypw"></input>
-            {/* <Button onClick={ }>Register</Button>  */}
-            {/* <span>{ }</span>  Error block ((Will update when API links)) */}
         </div>
     );
 };
+
+export default Register;
