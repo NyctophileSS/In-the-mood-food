@@ -2,6 +2,8 @@ import React from 'react';
 
 import PageTitle from '../components/PageTitle';
 import Login from '../components/Login';
+import Register from '../components/Register';
+import '../styles.css';
 
 const LoginPage = () =>
 {
@@ -10,6 +12,7 @@ const LoginPage = () =>
       <div>
         <PageTitle />
         <Login />
+        <Register />
       </div>
     );
 };
