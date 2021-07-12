@@ -13,24 +13,11 @@ function CardUI()
     const [message,setMessage] = useState('');
     const [searchResults,setResults] = useState('');
     const [cardList,setCardList] = useState('');
-    const app_name = 'COP4331-fourteen';
 
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
     const jwt = require("jsonwebtoken");
 
-    function buildPath(route)
-    {
-        if (process.env.NODE_ENV === 'production') 
-        {
-            return 'https://' + app_name +  '.herokuapp.com/' + route;
-        }
-        else
-        {        
-            return 'http://localhost:5000/' + route;
-        }
-    }
-    
     const addCard = async event => 
     {
 	    event.preventDefault();

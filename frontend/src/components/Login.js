@@ -6,21 +6,8 @@ function Login()
     var loginPassword;
 
     const [message,setMessage] = useState('');
-    const app_name = 'COP4331-fourteen';
-    // New
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
-    function buildPath(route)
-    {
-        if (process.env.NODE_ENV === 'production') 
-        {
-            return 'https://' + app_name +  '.herokuapp.com/' + route;
-        }
-        else
-        {        
-            return 'http://localhost:5000/' + route;
-        }
-    }
 
     const doLogin = async event => 
     {
@@ -30,12 +17,12 @@ function Login()
         var js = JSON.stringify(obj);
 
         try
-        {    
+        {
             const response = await fetch(bp.buildPath('api/login'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
             var storage = require('../tokenStorage.js');
-            var res = JSON.parse(await response.text());              
+            var res = JSON.parse(await response.text());
             if (res.error) 
             {
                 setMessage(res.error);//'User/Password combination incorrect');

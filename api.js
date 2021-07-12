@@ -100,6 +100,48 @@ exports.setApp = function ( app, client )
       res.status(200).json(ret);
     });
 
+    app.post('/api/register', async (req, res, next) => 
+    {
+      // incoming: firstName, lastName, login, password, phoneNumber
+      // outgoing: id, error
+    
+      var error = '';
+
+      const { firstName, lastName, login, password, phoneNumber } = req.body;
+      
+      const db = client.db();
+      const results = await db.collection('Users').insertOne({FirstName:firstName, LastName:lastName, 
+                                              Login:login, Password:password, PhoneNumber:phoneNumber});
+    
+      var id = -1;
+
+      var ret;
+      var fn = firstName;
+      var ln = lastName;
+      // results should recieve the objectId of the User being created; check for this otherwise return an error
+      if( results )
+      {
+        id = results[0];
+
+        // JWT Code
+        try
+        {
+          const token = require("./createJWT.js");
+          ret = token.createToken( fn, ln, id );
+        }
+        catch(e)
+        {
+          ret = {error:e.message};
+        }
+      }
+      else
+      {
+          ret = {error:"Error creating user account"};
+      }
+    
+      res.status(200).json(ret);
+    });
+
     app.post('/api/searchcards', async (req, res, next) => 
     {
       // incoming: userId, search
