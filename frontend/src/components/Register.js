@@ -16,7 +16,7 @@ function Register(){
             <input type="password" id="pw"></input>
             <Text>Verify Password</Text>
             <input type="password" id="verifypw"></input>
-            <Button onClick={ }>Register</Button>
+            // <Button onClick={ }>Register</Button>
             <span>{ }</span> // Error block ((Will update when API links))
         </div>
     );
