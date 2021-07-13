@@ -1,8 +1,8 @@
 var token = require('./createJWT.js');
 //load user model
-const User = require("./models/user.js");
+// const User = require("./models/user.js");
 //load card model
-const Card = require("./models/card.js");
+// const Card = require("./models/card.js");
 
 exports.setApp = function ( app, client )
 {
@@ -28,14 +28,14 @@ exports.setApp = function ( app, client )
         console.log(e.message);
       }
     
-      //const newCard = { Card: card, UserId: userId };
-      const newCard = new Card({ Card: card, UserId: userId });
+       const newCard = { Card: card, UserId: userId };
+      // const newCard = new Card({ Card: card, UserId: userId });
       var error = '';
       try 
       {
-        // const db = client.db();
-        // const result = db.collection('Cards').insertOne(newCard);
-        newCard.save();
+        const db = client.db();
+        const result = db.collection('Cards').insertOne(newCard);
+        // newCard.save();
       }
       catch (e) 
       {
@@ -70,9 +70,10 @@ exports.setApp = function ( app, client )
      var error = '';
     
      const { login, password } = req.body;
-     // const db = client.db();
-     // const results = await db.collection('Users').find({Login:login,Password:password}).toArray();
-     const results = await User.find({ Login: login, Password: password });
+
+     const db = client.db();
+     const results = await db.collection('Users').find({Login:login,Password:password}).toArray();
+     // const results = await User.find({ Login: login, Password: password });
    
       var id = -1;
       var fn = '';
@@ -171,9 +172,9 @@ exports.setApp = function ( app, client )
       }
 
       var _search = search.trim();
-      //   const db = client.db();
-      //   const results = await db.collection('Cards').find({ "Card": { $regex: _search + '.*', $options: 'r' } }).toArray();
-      const results = await Card.find({ "Card": { $regex: _search + '.*', $options: 'r' } });
+      const db = client.db();
+      const results = await db.collection('Cards').find({ "Card": { $regex: _search + '.*', $options: 'r' } }).toArray();
+      // const results = await Card.find({ "Card": { $regex: _search + '.*', $options: 'r' } });
 
       var _ret = [];
       for( var i=0; i<results.length; i++ )
