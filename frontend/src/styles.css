@@ -4,8 +4,7 @@ body {
 }
 
 #title {    
-    margin-top: 5%;
-
+    padding: 2em;
     background-color: #f24f4e;
 
     font-size: 2em;
