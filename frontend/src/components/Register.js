@@ -23,7 +23,7 @@ function Register()
                     phoneNumber:loginPhoneNumber.value};
         var js = JSON.stringify(obj);
 
-        if(loginPassword1 === loginPassword2){
+        if((loginPassword1 === loginPassword2) == false){
             setMessage("These passwords don't match. Please Try again.");
             return;
         }
@@ -62,7 +62,7 @@ function Register()
     };
 
     return (
-        <div class="registerDiv">
+        <div id="registerDiv">
             <p>First Name</p>
             <input type="text" id="first" ref={(c) => fn = c}></input>
             <p>Last Name</p>
