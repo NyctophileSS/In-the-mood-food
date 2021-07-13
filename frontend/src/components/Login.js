@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import '../styles.css';
+import Register from './Register';
 
 function Login()
 {
@@ -11,6 +12,10 @@ function Login()
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
 
+    const switchToRegister = async event =>
+    {
+        return;
+    }
     const doLogin = async event => 
     {
         event.preventDefault();
@@ -56,7 +61,8 @@ function Login()
         <p id="inner-title">Login Below</p>
         <input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}/>
         <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}/>
-        <button type="button" onClick={doLogin}>Login</button>
+        <a onClick={doLogin}>Login</a>
+        <a onClick={switchToRegister}>Need an Account?</a>
         <span id="loginResult">{message}</span>
      </div>
     );

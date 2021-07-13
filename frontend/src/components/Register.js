@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import '../styles.css';
+import Login from './Login';
+
 
 function Register()
 {
@@ -13,6 +15,10 @@ function Register()
     const [message,setMessage] = useState('');
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
+
+    const switchToLogin = async event => {
+        return;
+    }
 
     const doRegister = async event =>
     {
@@ -75,7 +81,8 @@ function Register()
             <input type="password" id="pw" ref={(c) => loginPassword1 = c}></input>
             <p>Verify Password</p>
             <input type="password" id="verifypw" ref={(c) => loginPassword2 = c}></input><br></br>
-            <button type="button" onClick={doRegister}>Register</button>
+            <a onClick={doRegister}>Register</a>
+            <a onClick={switchToLogin}>Already Have an account?</a>
             <span id="registerResult">{message}</span>
         </div>
     );
