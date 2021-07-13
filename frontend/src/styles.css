@@ -30,6 +30,7 @@ input[type="text"],input[type="password"]{
     padding: 2em;
     border-radius: 2em;
     margin: auto;
+    display: inline;
 
     background-color: #379783;
     text-align: center;
