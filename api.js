@@ -87,7 +87,6 @@ exports.setApp = function ( app, client )
         fn = results[0].FirstName;
         ln = results[0].LastName;
 
-        // JWT Code
         try
         {
           const token = require("./createJWT.js");
@@ -118,18 +117,14 @@ exports.setApp = function ( app, client )
       const db = client.db();
       const results = await db.collection('Users').insertOne({FirstName:firstName, LastName:lastName, 
                                               Login:login, Password:password, PhoneNumber:phoneNumber});
-    
-      var id = -1;
 
       var ret;
       var fn = firstName;
       var ln = lastName;
+      var id = results.insertedId;
       // results should recieve the objectId of the User being created; check for this otherwise return an error
-      if( results )
+      if( id != null )
       {
-        id = results[0];
-
-        // JWT Code
         try
         {
           const token = require("./createJWT.js");
