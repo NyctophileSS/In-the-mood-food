@@ -80,7 +80,7 @@ function Register()
             <p>New Password</p>
             <input type="password" id="pw" ref={(c) => loginPassword1 = c}></input>
             <p>Verify Password</p>
-            <input type="password" id="verifypw" ref={(c) => loginPassword2 = c}></input><br></br>
+            <input type="password" id="verifypw" ref={(c) => loginPassword2 = c}></input>
             <a onClick={doRegister}>Register</a>
             <a onClick={switchToLogin}>Already Have an account?</a>
             <span id="registerResult">{message}</span>
