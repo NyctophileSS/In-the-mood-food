@@ -75,6 +75,7 @@ function Register()
             <input type="password" id="pw" ref={(c) => loginPassword1 = c}></input>
             <p>Verify Password</p>
             <input type="password" id="verifypw" ref={(c) => loginPassword2 = c}></input>
+            <button type="button" onClick={doRegister}>Register</button>
             <span id="registerResult">{message}</span>
         </div>
     );
