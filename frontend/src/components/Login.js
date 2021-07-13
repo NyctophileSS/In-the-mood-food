@@ -57,12 +57,17 @@ function Login()
     };
 
     return(
-      <div id="loginDiv">
+      <div id="loginDiv" className="loginBlock">
         <p id="inner-title">Login Below</p>
+        <br></br>
         <input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}/>
-        <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}/><br></br>
-        <a onClick={doLogin}>Login</a><br></br>
-        <a onClick={switchToRegister}>Need an Account?</a><br></br>
+        <br></br>
+        <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}/>
+        <br></br><br></br>
+        <a onClick={doLogin}>Login</a>
+        <br></br>
+        <a onClick={switchToRegister}>Need an Account?</a>
+        <br></br>
         <span id="loginResult">{message}</span>
      </div>
     );

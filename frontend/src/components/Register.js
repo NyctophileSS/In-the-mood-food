@@ -68,7 +68,7 @@ function Register()
     };
 
     return (
-        <div id="registerDiv">
+        <div id="registerDiv" className="registerBlock">
             <p>First Name</p>
             <input type="text" id="first" ref={(c) => fn = c}></input>
             <p>Last Name</p>
