@@ -60,9 +60,9 @@ function Login()
       <div id="loginDiv">
         <p id="inner-title">Login Below</p>
         <input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}/>
-        <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}/>
-        <a onClick={doLogin}>Login</a>
-        <a onClick={switchToRegister}>Need an Account?</a>
+        <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}/><br></br>
+        <a onClick={doLogin}>Login</a><br></br>
+        <a onClick={switchToRegister}>Need an Account?</a><br></br>
         <span id="loginResult">{message}</span>
      </div>
     );
