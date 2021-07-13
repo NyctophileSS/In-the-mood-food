@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import '../styles.css';
+import Login from './Login';
+
 
 function Register()
 {
@@ -14,6 +16,10 @@ function Register()
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
 
+    const switchToLogin = async event => {
+        return;
+    }
+
     const doRegister = async event =>
     {
         event.preventDefault();
@@ -21,8 +27,9 @@ function Register()
         var obj = {firstName:fn.value, lastName:ln.value, 
                     login:loginName.value,password:loginPassword1.value, 
                     phoneNumber:loginPhoneNumber.value};
+        var js = JSON.stringify(obj);
 
-        if(loginPassword1.localeCompare(loginPassword2) != 0){
+        if((loginPassword1 === loginPassword2) == false){
             setMessage("These passwords don't match. Please Try again.");
             return;
         }
@@ -61,7 +68,7 @@ function Register()
     };
 
     return (
-        <div className="registerDiv">
+        <div id="registerDiv" className="registerBlock">
             <p>First Name</p>
             <input type="text" id="first" ref={(c) => fn = c}></input>
             <p>Last Name</p>
@@ -74,6 +81,8 @@ function Register()
             <input type="password" id="pw" ref={(c) => loginPassword1 = c}></input>
             <p>Verify Password</p>
             <input type="password" id="verifypw" ref={(c) => loginPassword2 = c}></input>
+            <a onClick={doRegister}>Register</a>
+            <a onClick={switchToLogin}>Already Have an account?</a>
             <span id="registerResult">{message}</span>
         </div>
     );

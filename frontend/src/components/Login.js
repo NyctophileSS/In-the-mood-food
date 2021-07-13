@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 import '../styles.css';
+import Register from './Register';
 
 function Login()
 {
@@ -10,6 +12,10 @@ function Login()
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
 
+    const switchToRegister = async event =>
+    {
+        return;
+    }
     const doLogin = async event => 
     {
         event.preventDefault();
@@ -26,18 +32,18 @@ function Login()
             var res = JSON.parse(await response.text());
             if (res.error) 
             {
-                setMessage(res.error);//'User/Password combination incorrect');
+                setMessage('User/Password combination incorrect');
             }
             else 
-            {
+            {	
                 storage.storeToken(res);
                 var jwt = require('jsonwebtoken');
-
+    
                 var ud = jwt.decode(storage.retrieveToken(),{complete:true});
                 var userId = ud.payload.userId;
                 var firstName = ud.payload.firstName;
                 var lastName = ud.payload.lastName;
-              
+                  
                 var user = {firstName:firstName,lastName:lastName,id:userId}
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/cards';
@@ -47,15 +53,21 @@ function Login()
         {
             alert(e.toString());
             return;
-        }      
+        }       
     };
 
     return(
-      <div id="loginDiv">
-        <span id="inner-title">Please Login Below</span>
+      <div id="loginDiv" className="loginBlock">
+        <p id="inner-title">Login Below</p>
+        <br></br>
         <input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}/>
+        <br></br>
         <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}/>
-        <button type="button" onClick={doLogin}>Login</button>
+        <br></br><br></br>
+        <a onClick={doLogin}>Login</a>
+        <br></br>
+        <a onClick={switchToRegister}>Need an Account?</a>
+        <br></br>
         <span id="loginResult">{message}</span>
      </div>
     );

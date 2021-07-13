@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 
 function CardUI()
 {
@@ -6,7 +7,7 @@ function CardUI()
     var search = '';
     var _ud = localStorage.getItem('user_data');
     var ud = JSON.parse(_ud);
-    var userId = ud.id;
+    var userId = ud.payload.userId;
     var firstName = ud.firstName;
     var lastName = ud.lastName;
 
@@ -26,27 +27,37 @@ function CardUI()
         var obj = {userId:userId,card:card.value,jwtToken:tok};
         var js = JSON.stringify(obj);
 
-        try
-        {
-            const response = await fetch(bp.buildPath('api/addcard'),
-            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+        var config = 
+        {
+            method: 'post',
+            url: bp.buildPath('api/addcard'),	
+            headers: 
+            {
+                'Content-Type': 'application/json'
+            },
+            data: js
+        };
 
-            var txt = await response.text();
-            var res = JSON.parse(txt);
-
-            if( res.error.length > 0 )
-            {
-                setMessage( "API Error:" + res.error );
-            }
-            else
-            {
-                setMessage('Card has been added');
-            }
-        }
-        catch(e)
-        {
-            setMessage(e.toString());
-        }
+        axios(config)
+            .then(function (response) 
+        {
+            var res = response.data;
+            var retTok = res.jwtToken;
+    
+            if( res.error.length > 0 )
+            {
+                setMessage( "API Error:" + res.error );
+            }
+            else
+            {
+                setMessage('Card has been added');
+                storage.storeToken( {accessToken:retTok} );
+            }
+        })
+        .catch(function (error) 
+        {
+            console.log(error);
+        });
 
 	};
 
@@ -58,31 +69,49 @@ function CardUI()
         var obj = {userId:userId,search:search.value,jwtToken:tok};
         var js = JSON.stringify(obj);
 
-        try
-        {
-            const response = await fetch(bp.buildPath('api/searchcards'),
-            {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+        var config = 
+        {
+            method: 'post',
+            url: bp.buildPath('api/searchcards'),	
+            headers: 
+            {
+                'Content-Type': 'application/json'
+            },
+            data: js
+        };
 
-            var txt = await response.text();
-            var res = JSON.parse(txt);
-            var _results = res.results;
-            var resultText = '';
-            for( var i=0; i<_results.length; i++ )
-            {
-                resultText += _results[i];
-                if( i < _results.length - 1 )
-                {
-                    resultText += ', ';
-                }
-            }
-            setResults('Card(s) have been retrieved');
-            setCardList(resultText);
-        }
-        catch(e)
-        {
-            alert(e.toString());
-            setResults(e.toString());
-        }
+        axios(config)
+            .then(function (response) 
+        {
+            var res = response.data;
+            var retTok = res.jwtToken;
+
+            if( res.error.length > 0 )
+            {
+                setMessage( "API Error:" + res.error );
+            }
+            else
+            {
+                var _results = res.results;
+                var resultText = '';
+                for( var i=0; i<_results.length; i++ )
+                {
+                    resultText += _results[i];
+                    if( i < _results.length - 1 )
+                    {
+                        resultText += ', ';
+                    }
+                }
+                setResults('Card(s) have been retrieved');
+                setCardList(resultText);
+                storage.storeToken( {accessToken:retTok} );
+            }
+        })
+        .catch(function (error) 
+        {
+            console.log(error);
+        });
+
     };
     
     return(
