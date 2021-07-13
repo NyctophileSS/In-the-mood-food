@@ -1,0 +1,46 @@
+body {
+    background-color: #FFFFFF;
+}
+
+#title {    
+    margin-top: 5%;
+
+    color: #05386B;
+    font-size: 2em;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+input[type="text"],input[type="password"]{
+    width: 80%;
+    border-radius: 2em;
+    margin-bottom: 2%;
+    outline: none;
+    border: none;
+
+    color: #05386B;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#loginDiv{
+    width: 70%;
+    padding: 2em;
+    border-radius: 2em;
+    margin: auto;
+
+    background-color: #379783;
+    text-align: center;
+}
+
+#registerDiv{
+    width: 70%;
+    padding: 2em;
+    border-radius: 2em;
+    margin: auto;
+	
+	display: none;
+    background-color: #379783;
+    text-align: center;
+}

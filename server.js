@@ -14,13 +14,12 @@ app.use(bodyParser.json());
 
 require('dotenv').config();
 const url = process.env.MONGODB_URI;
-const mongoose = require("mongoose");
-mongoose.connect(url)
-  .then(() => console.log("Mongo DB connected"))
-  .catch(err => console.log(err));
+const MongoClient = require('mongodb').MongoClient;
+const client = new MongoClient(url);
+client.connect();
 
 var api = require('./api.js');
-api.setApp( app, mongoose );
+api.setApp( app, client );
 
 app.use((req, res, next) => 
 {

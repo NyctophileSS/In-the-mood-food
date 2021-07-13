@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import '../styles.css';
 
 function Login()
 {
@@ -7,10 +8,9 @@ function Login()
     var loginPassword;
 
     const [message,setMessage] = useState('');
-    // New
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
-    
+
     const doLogin = async event => 
     {
         event.preventDefault();
@@ -18,21 +18,13 @@ function Login()
         var obj = {login:loginName.value,password:loginPassword.value};
         var js = JSON.stringify(obj);
 
-        var config = 
+        try
         {
-            method: 'post',
-            url: bp.buildPath('api/login'),	
-            headers: 
-            {
-                'Content-Type': 'application/json'
-            },
-            data: js
-        };
+            const response = await fetch(bp.buildPath('api/login'),
+                {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
-        axios(config)
-            .then(function (response) 
-        {
-            var res = response.data;
+            var storage = require('../tokenStorage.js');
+            var res = JSON.parse(await response.text());
             if (res.error) 
             {
                 setMessage('User/Password combination incorrect');
@@ -51,22 +43,20 @@ function Login()
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/cards';
             }
-        })
-        .catch(function (error) 
+        }
+        catch(e)
         {
-            console.log(error);
-        });      
-    }
+            alert(e.toString());
+            return;
+        }       
+    };
 
     return(
       <div id="loginDiv">
-        <form onSubmit={doLogin}>
-        <span id="inner-title">PLEASE LOG IN</span><br />
-        <input type="text" id="loginName" placeholder="Username" ref={(c) => loginName = c} /><br/>
-        <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c} /><br/>
-        <input type="submit" id="loginButton" class="buttons" value = "Do It"
-          onClick={doLogin} />
-        </form><br/>
+        <span id="inner-title">Please Login Below</span>
+        <input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}/>
+        <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}/>
+        <button type="button" onClick={doLogin}>Login</button>
         <span id="loginResult">{message}</span>
      </div>
     );

@@ -14,7 +14,6 @@ function CardUI()
     const [message,setMessage] = useState('');
     const [searchResults,setResults] = useState('');
     const [cardList,setCardList] = useState('');
-    const app_name = 'COP4331-fourteen';
 
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
