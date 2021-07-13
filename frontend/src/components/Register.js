@@ -21,6 +21,7 @@ function Register()
         var obj = {firstName:fn.value, lastName:ln.value, 
                     login:loginName.value,password:loginPassword1.value, 
                     phoneNumber:loginPhoneNumber.value};
+        var js = JSON.stringify(obj);
 
         if(loginPassword1.localeCompare(loginPassword2) != 0){
             setMessage("These passwords don't match. Please Try again.");
