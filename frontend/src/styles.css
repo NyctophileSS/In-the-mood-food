@@ -1,10 +1,11 @@
-body {
+html, body {
     background-color: #ffffff;
-    margin:auto;
+    margin:0;
+    padding:0;
 }
 
 #title {    
-    padding: 4em;
+    padding: 3em;
     background-color: #f24f4e;
 
     font-size: 2em;
