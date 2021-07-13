@@ -1,6 +1,7 @@
-body {
+html, body {
     background-color: #f24f4e;
-    margin:auto;
+    height: 100%;
+    width: 100%;
 }
 
 #title {    
@@ -24,6 +25,7 @@ input[type="text"],input[type="password"]{
 }
 
 #loginDiv{
+    height: 100%;
     width: auto;
 
     margin: auto;
@@ -35,6 +37,7 @@ input[type="text"],input[type="password"]{
 }
 
 #registerDiv{
+    height: 100%;
     width: auto;
 
     margin: auto;
