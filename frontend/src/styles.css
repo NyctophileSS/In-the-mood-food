@@ -1,5 +1,5 @@
 body {
-    background-color: #c21e1e;
+    background-color: #f24f4e;
     margin:auto;
 }
 
@@ -24,21 +24,23 @@ input[type="text"],input[type="password"]{
 }
 
 #loginDiv{
-    width: 70%;
-    padding: 2em;
-    border-radius: 2em;
+    width: auto;
+
     margin: auto;
-    display: inline;
+    display: block;
+
+    background-color: #FFFFFF;
 
     text-align: center;
 }
 
 #registerDiv{
-    width: 70%;
-    padding: 2em;
-    border-radius: 2em;
+    width: auto;
+
     margin: auto;
-	
 	display: none;
+
+    background-color: #FFFFFF;
+
     text-align: center;
 }
