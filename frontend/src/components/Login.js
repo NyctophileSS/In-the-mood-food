@@ -53,10 +53,10 @@ function Login()
 
     return(
       <div id="loginDiv">
-        <span id="inner-title">Please Login Below</span>
-        <input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}/>
-        <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}/>
-        <button type="button" onClick={doLogin}>Login</button>
+        <span id="inner-title">Please Login Below</span><br></br>
+        <input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}/><br></br>
+        <input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}/><br></br>
+        <button type="button" onClick={doLogin}>Login</button><br></br>
         <span id="loginResult">{message}</span>
      </div>
     );
