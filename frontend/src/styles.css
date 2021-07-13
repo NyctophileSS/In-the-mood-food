@@ -5,7 +5,6 @@ body {
 #title {    
     margin-top: 5%;
 
-    color: #05386B;
     font-size: 2em;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
@@ -18,7 +17,6 @@ input[type="text"],input[type="password"]{
     outline: none;
     border: none;
 
-    color: #05386B;
     font-size: 1em;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
@@ -30,7 +28,6 @@ input[type="text"],input[type="password"]{
     border-radius: 2em;
     margin: auto;
 
-    background-color: #379783;
     text-align: center;
 }
 
@@ -41,6 +38,5 @@ input[type="text"],input[type="password"]{
     margin: auto;
 	
 	display: none;
-    background-color: #379783;
     text-align: center;
 }
