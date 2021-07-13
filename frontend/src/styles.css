@@ -1,11 +1,12 @@
-html, body {
-    background-color: #f24f4e;
-    height: 100%;
-    width: 100%;
+body {
+    background-color: #ffffff;
+    margin:auto;
 }
 
 #title {    
     margin-top: 5%;
+
+    background-color: #f24f4e;
 
     font-size: 2em;
     text-align: center;
@@ -31,8 +32,6 @@ input[type="text"],input[type="password"]{
     margin: auto;
     display: block;
 
-    background-color: #FFFFFF;
-
     text-align: center;
 }
 
@@ -42,8 +41,6 @@ input[type="text"],input[type="password"]{
 
     margin: auto;
 	display: none;
-
-    background-color: #FFFFFF;
 
     text-align: center;
 }
