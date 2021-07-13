@@ -7,7 +7,7 @@ function CardUI()
     var search = '';
     var _ud = localStorage.getItem('user_data');
     var ud = JSON.parse(_ud);
-    var userId = ud.payload.userId;
+    var userId = ud.id;
     var firstName = ud.firstName;
     var lastName = ud.lastName;
 
@@ -27,23 +27,15 @@ function CardUI()
         var obj = {userId:userId,card:card.value,jwtToken:tok};
         var js = JSON.stringify(obj);
 
-        var config = 
+        try
         {
-            method: 'post',
-            url: bp.buildPath('api/addcard'),	
-            headers: 
-            {
-                'Content-Type': 'application/json'
-            },
-            data: js
-        };
+            const response = await fetch(bp.buildPath('api/addcard'),
+                {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
-        axios(config)
-            .then(function (response) 
-        {
-            var res = response.data;
-            var retTok = res.jwtToken;
-    
+            var txt = await response.text();
+            var res = JSON.parse(txt);
+            var retTok = res.jwtTocken;
+
             if( res.error.length > 0 )
             {
                 setMessage( "API Error:" + res.error );
@@ -51,13 +43,13 @@ function CardUI()
             else
             {
                 setMessage('Card has been added');
-                storage.storeToken( {accessToken:retTok} );
+                storage.storeToken( retTok );
             }
-        })
-        .catch(function (error) 
+        }
+        catch(e)
         {
-            console.log(error);
-        });
+            setMessage(e.toString());
+        }
 
 	};
 
@@ -69,49 +61,33 @@ function CardUI()
         var obj = {userId:userId,search:search.value,jwtToken:tok};
         var js = JSON.stringify(obj);
 
-        var config = 
+        try
         {
-            method: 'post',
-            url: bp.buildPath('api/searchcards'),	
-            headers: 
-            {
-                'Content-Type': 'application/json'
-            },
-            data: js
-        };
+            const response = await fetch(bp.buildPath('api/searchcards'),
+                {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
-        axios(config)
-            .then(function (response) 
-        {
-            var res = response.data;
-            var retTok = res.jwtToken;
-
-            if( res.error.length > 0 )
+            var txt = await response.text();
+            var res = JSON.parse(txt);
+            var retTok = res.jwtTocken;
+            var _results = res.results;
+            var resultText = '';
+            for( var i=0; i<_results.length; i++ )
             {
-                setMessage( "API Error:" + res.error );
-            }
-            else
-            {
-                var _results = res.results;
-                var resultText = '';
-                for( var i=0; i<_results.length; i++ )
+                resultText += _results[i];
+                if( i < _results.length - 1 )
                 {
-                    resultText += _results[i];
-                    if( i < _results.length - 1 )
-                    {
-                        resultText += ', ';
-                    }
+                    resultText += ', ';
                 }
-                setResults('Card(s) have been retrieved');
-                setCardList(resultText);
-                storage.storeToken( {accessToken:retTok} );
             }
-        })
-        .catch(function (error) 
+            setResults('Card(s) have been retrieved');
+            setCardList(resultText);
+            storage.storeToken( retTok );
+        }
+        catch(e)
         {
-            console.log(error);
-        });
-
+            alert(e.toString());
+            setResults(e.toString());
+        }
     };
     
     return(
