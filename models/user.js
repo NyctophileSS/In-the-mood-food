@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 var Int32 = require('mongoose-int32');
 //Create Schema
 const UserSchema = new Schema({
-  UserId: {
-    type: Number
+  _id: {
+    type: ObjectId
   },
   FirstName: {
     type: String,
@@ -19,6 +19,10 @@ const UserSchema = new Schema({
     required: true
   },
   Password: {
+    type: String,
+    required: true
+  }, 
+  PhoneNumber: {
     type: String,
     required: true
   }
