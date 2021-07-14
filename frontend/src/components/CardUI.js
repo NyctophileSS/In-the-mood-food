@@ -34,7 +34,7 @@ function CardUI()
 
             var txt = await response.text();
             var res = JSON.parse(txt);
-            var retTok = res.jwtTocken;
+            var retTok = res.jwtToken;
 
             if( res.error.length > 0 )
             {
