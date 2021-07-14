@@ -7,61 +7,6 @@ var token = require('./createJWT.js');
 exports.setApp = function ( app, client )
 {
 
-    app.post('/api/addcard', async (req, res, next) =>
-    {
-      // incoming: userId, color
-      // outgoing: error
-        
-      const { userId, card, jwtToken } = req.body;
-
-      try
-      {
-        if( token.isExpired(jwtToken))
-        {
-          var r = {error:'The JWT is no longer valid', jwtToken: ''};
-          res.status(200).json(r);
-          return;
-        }
-      }
-      catch(e)
-      {
-        console.log(e.message);
-      }
-    
-       const newCard = { Card: card, UserId: userId };
-      // const newCard = new Card({ Card: card, UserId: userId });
-      var error = '';
-      try 
-      {
-        const db = client.db();
-        const result = db.collection('Cards').insertOne(newCard);
-        // newCard.save();
-      }
-      catch (e) 
-      {
-        error = e.toString();
-      }
-
-      var refreshedToken = null;
-      try
-      {
-        refreshedToken = token.refresh(jwtToken).accessToken;
-      }
-      catch(e)
-      {
-        console.log(e.message);
-      }
-    
-      var ret = { error: error, jwtToken: refreshedToken };
-      
-      res.status(200).json(ret);
-    
-      cardList.push( card );
-    
-      var ret = { error: error };
-      res.status(200).json(ret);
-    });
-    
     app.post('/api/login', async (req, res, next) => 
     {
       // incoming: login, password
@@ -140,6 +85,61 @@ exports.setApp = function ( app, client )
           ret = {error:"Error creating user account"};
       }
     
+      res.status(200).json(ret);
+    });
+    
+    app.post('/api/addcard', async (req, res, next) =>
+    {
+      // incoming: userId, color
+      // outgoing: error
+        
+      const { userId, card, jwtToken } = req.body;
+
+      try
+      {
+        if( token.isExpired(jwtToken))
+        {
+          var r = {error:'The JWT is no longer valid', jwtToken: ''};
+          res.status(200).json(r);
+          return;
+        }
+      }
+      catch(e)
+      {
+        console.log(e.message);
+      }
+    
+       const newCard = { Card: card, UserId: userId };
+      // const newCard = new Card({ Card: card, UserId: userId });
+      var error = '';
+      try 
+      {
+        const db = client.db();
+        const result = db.collection('Cards').insertOne(newCard);
+        // newCard.save();
+      }
+      catch (e) 
+      {
+        error = e.toString();
+      }
+
+      var refreshedToken = null;
+      try
+      {
+        refreshedToken = token.refresh(jwtToken).accessToken;
+      }
+      catch(e)
+      {
+        console.log(e.message);
+      }
+    
+      var ret = { error: error, jwtToken: refreshedToken };
+      
+      res.status(200).json(ret);
+    
+      cardList.push( card );
+    
+      var ret = { error: error };
       res.status(200).json(ret);
     });
 
