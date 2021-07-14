@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import '../styles.css';
-import Login from './Login';
 
 
 function Register()
@@ -15,10 +14,6 @@ function Register()
     const [message,setMessage] = useState('');
     var bp = require('./Path.js');
     var storage = require('../tokenStorage.js');
-
-    const switchToLogin = async event => {
-        return;
-    }
 
     const doRegister = async event =>
     {
@@ -69,20 +64,13 @@ function Register()
 
     return (
         <div id="registerDiv" className="registerBlock">
-            <p>First Name</p>
-            <input type="text" id="first" ref={(c) => fn = c}></input>
-            <p>Last Name</p>
-            <input type="text" id="last"  ref={(c) => ln = c}></input>
-            <p>Phone Number</p>
-            <input type="text" id="phone"  ref={(c) => loginPhoneNumber = c}></input>
-            <p>Email</p>
-            <input type="text" id="email" ref={(c) => loginName = c}></input>
-            <p>New Password</p>
-            <input type="password" id="pw" ref={(c) => loginPassword1 = c}></input>
-            <p>Verify Password</p>
-            <input type="password" id="verifypw" ref={(c) => loginPassword2 = c}></input>
+            <p><input type="text" id="first" placeholder="First Name" ref={(c) => fn = c}></input></p>
+            <p><input type="text" id="last"  placeholder="Last Name" ref={(c) => ln = c}></input></p>
+            <p><input type="text" id="phone" placeholder="Phone Number" ref={(c) => loginPhoneNumber = c}></input></p>
+            <p><input type="text" id="email" placeholder="Email" ref={(c) => loginName = c}></input></p>
+            <p><input type="password" id="pw" placeholder="Password" ref={(c) => loginPassword1 = c}></input></p>
+            <p><input type="password" id="verifypw" placeholder="Retype Password" ref={(c) => loginPassword2 = c}></input></p>
             <a onClick={doRegister}>Register</a>
-            <a onClick={switchToLogin}>Already Have an account?</a>
             <span id="registerResult">{message}</span>
         </div>
     );

@@ -1,47 +1,39 @@
-html, body {
-    background-color: #ffffff;
-    margin:0;
-    padding:0;
+/*Follow this color scheme
+Accents: DarkRed, #7B0A09
+Background: OffBlack, #181A1B
+Text: OffWhite, #E8E6E3
+PreviewText: Gray, #5C5A56
+LinkText: Blue, #3391FF*/
+
+body {
+    background-color: #181A1B;
+    color: #E8E6E3;
 }
 
 #title {    
-    margin: -1em;
     padding: 2em;
-    background-color: #f24f4e;
+    background-color: #7B0A09;
 
     font-size: 2em;
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif;
 }
 
 input[type="text"],input[type="password"]{
-    width: 80%;
     border-radius: 2em;
-    margin-bottom: 2%;
     outline: none;
-    border: none;
+
+    background-color: #181a1b;
+    border-color: #5C5A56;
+    color: #5C5A56;
 
     font-size: 1em;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
 }
 
-#loginDiv{
-    height: 100%;
-    width: auto;
-
+#loginRegisterSwapper{
+    width: 20%;
     margin: auto;
-    display: block;
 
-    text-align: center;
-}
-
-#registerDiv{
-    height: 100%;
-    width: auto;
-
-    margin: auto;
-	display: none;
-
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
 }
