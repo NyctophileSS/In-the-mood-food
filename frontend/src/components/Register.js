@@ -24,7 +24,7 @@ function Register()
                     phoneNumber:loginPhoneNumber.value};
         var js = JSON.stringify(obj);
 
-        if((loginPassword1 == loginPassword2) == false){
+        if((loginPassword1.value != loginPassword2.value){
             setMessage("These passwords don't match. Please Try again.");
             return;
         }
