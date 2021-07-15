@@ -28,6 +28,30 @@ function Register()
             setMessage("These passwords don't match. Please Try again.");
             return;
         }
+        else if(loginPassword1.value == ""){
+            setMessage("Please enter a Password");
+            return;
+        }
+        else if(loginPassword1.value == ""){
+            setMessage("Please verify your Password.");
+            return;
+        }
+        else if(fn.value == ""){
+            setMessage("Please enter a First Name.");
+            return;
+        }
+        else if(ln.value == ""){
+            setMessage("Please enter a Last Name.");
+            return;
+        }
+        else if(loginName.value == ""){
+            setMessage("Please enter an Email.");
+            return;
+        }
+        else if(loginPhoneNumber.value == ""){
+            setMessage("Please enter a Phone Number.");
+            return;
+        }
                     
         try
         {    
@@ -70,7 +94,7 @@ function Register()
             <p><input type="text" id="email" placeholder="Email" ref={(c) => loginName = c}></input></p>
             <p><input type="password" id="pw" placeholder="Password" ref={(c) => loginPassword1 = c}></input></p>
             <p><input type="password" id="verifypw" placeholder="Retype Password" ref={(c) => loginPassword2 = c}></input></p>
-            <a onClick={doRegister}>Register</a>
+            <p><a onClick={doRegister}>Register</a></p>
             <span id="registerResult">{message}</span>
         </div>
     );
