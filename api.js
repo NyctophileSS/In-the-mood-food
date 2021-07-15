@@ -66,8 +66,8 @@ exports.setApp = function ( app, client )
       var ret;
       var fn = firstName;
       var ln = lastName;
-      var id = results.insertedId;
-      // results should recieve the objectId of the User being created; check for this otherwise return an error
+      var id = results.insertedId.toString();
+      
       if( id != null )
       {
         try
