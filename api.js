@@ -87,6 +87,41 @@ exports.setApp = function ( app, client )
     
       res.status(200).json(ret);
     });
+
+    app.post('/api/forgot-password', async (req, res, next) => 
+    {
+      require('dotenv').config();
+
+      var error = '';
+
+      var id = -1;
+      var fn = '';
+      var ln = '';
+
+      var ret;
+
+      const { email } = req.body;
+
+      const db = client.db();
+      const results = await db.collection('Users').find({Login:email});
+
+      // check the user exists
+      if (results.length > 0) {
+        id = results[0].UserId;
+        fn = results[0].FirstName;
+        ln = results[0].LastName;
+
+        const token = require("./createJWT.js");
+        ret = token.createToken(fn, ln, id);
+        const link = ''
+
+      }
+      else {
+        ret =  {error:"User with this email does not exist"};
+      }
+
+      res.status(200).json(ret);
+    });
     
     app.post('/api/addcard', async (req, res, next) =>
     {
