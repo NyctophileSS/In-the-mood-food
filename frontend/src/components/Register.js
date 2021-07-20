@@ -70,6 +70,7 @@ function Register()
                     //     });
                     firebaseApp.auth().currentUser.sendEmailVerification()
                         .then(function() {
+                            
                         })
                         .catch(function(error) {
 
@@ -78,6 +79,7 @@ function Register()
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
+                    // window.alert(errorMessage);
                 });
 
             var storage = require('../tokenStorage.js');
@@ -98,7 +100,7 @@ function Register()
               
                 var user = {firstName:firstName,lastName:lastName,id:userId}
                 localStorage.setItem('user_data', JSON.stringify(user));
-                window.location.href = '/cards';    // TODO: formalize where to redirect after registering
+                window.location.href = '/quiz';    // TODO: formalize where to redirect after registering
             }
         }
         catch(e)
