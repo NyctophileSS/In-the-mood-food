@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../styles.css';
-
+import firebaseApp from '../fire';
 
 function Register()
 {
@@ -54,9 +54,31 @@ function Register()
         }
                     
         try
-        {    
+        {   
             const response = await fetch(bp.buildPath('api/register'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
+
+            firebaseApp.auth().createUserWithEmailAndPassword(loginName.value, loginPassword1.value)
+                .then((userCredential) => {
+                    var user = userCredential.user;
+                    // user.sendEmailVerification()
+                    //     .then(function() {
+                    //         // Verification email sent.
+                    //     })
+                    //     .catch(function(error) {
+                    //         // Error occurred. Inspect error.code.
+                    //     });
+                    firebaseApp.auth().currentUser.sendEmailVerification()
+                        .then(function() {
+                        })
+                        .catch(function(error) {
+
+                        });
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                });
 
             var storage = require('../tokenStorage.js');
             var res = JSON.parse(await response.text());              
@@ -76,7 +98,7 @@ function Register()
               
                 var user = {firstName:firstName,lastName:lastName,id:userId}
                 localStorage.setItem('user_data', JSON.stringify(user));
-                window.location.href = '/quiz';    // TODO: formalize where to redirect after registering
+                window.location.href = '/cards';    // TODO: formalize where to redirect after registering
             }
         }
         catch(e)

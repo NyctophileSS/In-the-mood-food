@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios'
 import '../styles.css';
+import firebaseApp from '../fire';
 
 function Login()
 {
@@ -23,6 +23,15 @@ function Login()
             const response = await fetch(bp.buildPath('api/login'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
+            firebaseApp.auth().signInWithEmailAndPassword(loginName.value, loginPassword.value)
+                .then((userCredential) => {
+                    var user = userCredential.user;
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                });
+
             var storage = require('../tokenStorage.js');
             var res = JSON.parse(await response.text());
             if (res.error) 
@@ -41,7 +50,7 @@ function Login()
                   
                 var user = {firstName:firstName,lastName:lastName,id:userId}
                 localStorage.setItem('user_data', JSON.stringify(user));
-                window.location.href = '/quiz';
+                window.location.href = '/cards';
             }
         }
         catch(e)
