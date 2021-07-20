@@ -60,13 +60,50 @@ exports.setApp = function ( app, client )
       // incoming: firstName, lastName, login, password, phoneNumber
       // outgoing: id, error
     
+      var crypto = require('crypto');
+      var nodemailer = require('nodemailer');
       var error = '';
 
       const { firstName, lastName, login, password, phoneNumber } = req.body;
       
+      // create reusable transporter object using the default SMTP transport
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'derrickkeough@gmail.com',
+            pass: 'vfxvvfbqirwebsrs'
+        }
+      });
+
+      // for testing
+      // const transporter = nodemailer.createTransport({
+      //   host: 'smtp.ethereal.email',
+      //   port: 587,
+      //   auth: {
+      //       user: 'edd.wolff6@ethereal.email',
+      //       pass: 'V5enXDtX4e3212Gup3'
+      //   }
+      // });
+
       const db = client.db();
+      // create the user
       const results = await db.collection('Users').insertOne({FirstName:firstName, LastName:lastName, 
                                               Login:login, Password:password, PhoneNumber:phoneNumber, isVerified:false});
+      // create the user's token for email verification
+      const tokenResults = await db.collection('Tokens').insertOne({_userId: results.insertedId, token: crypto.randomBytes(16).toString('hex')});
+
+      const emailBody = "<b>Hello, please use the included link to verify your email and gain access to your In the Mood Food account! https://cop4331-fourteen.herokuapp.com/api/verification/" + tokenResults.insertedId + " or if using staging: https://cop4331-fourteen-staging.herokuapp.com/api/verification/" + tokenResults.insertedId + ", or if testing locally: localhost:3000/api/verification/" + tokenResults.insertedId + "</b>";
+
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: '"In The Mood Food" <info@in-the-mood-food.com>', // sender address
+        to: login, // list of receivers
+        subject: "Hello ✔ Registration Verification", // Subject line
+        text: "", // plain text body
+        html: emailBody, // html body
+      });
 
       var ret;
       var fn = firstName;
@@ -91,6 +128,15 @@ exports.setApp = function ( app, client )
       }
     
       res.status(200).json(ret);
+    });
+
+    app.post('/api/verification', async (req, res, next) =>
+    {
+      // incoming: token _id
+      // action: find account associated with token _id and make isVerified true
+
+      // TODO: FLESH OUT THIS ENDPOINT
+
     });
 
     app.post('/api/forgot-password', async (req, res, next) => 
