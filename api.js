@@ -19,6 +19,7 @@ exports.setApp = function ( app, client )
       var id = -1;
       var fn = '';
       var ln = '';
+      var isVerified = false;
 
       var ret;
     
@@ -27,16 +28,24 @@ exports.setApp = function ( app, client )
         id = results[0].UserId;
         fn = results[0].FirstName;
         ln = results[0].LastName;
+        isVerified = results[0].isVerified;
 
-        try
-        {
-          const token = require("./createJWT.js");
-          ret = token.createToken( fn, ln, id );
+        if (isVerified) {
+          try
+          {
+            const token = require("./createJWT.js");
+            ret = token.createToken( fn, ln, id );
+          }
+          catch(e)
+          {
+            ret = {error:e.message};
+          }
         }
-        catch(e)
-        {
-          ret = {error:e.message};
+        else {
+          ret = {error:"account has not been verified"};
+          res.status(401).json(ret);
         }
+        
       }
       else
       {
@@ -57,7 +66,7 @@ exports.setApp = function ( app, client )
       
       const db = client.db();
       const results = await db.collection('Users').insertOne({FirstName:firstName, LastName:lastName, 
-                                              Login:login, Password:password, PhoneNumber:phoneNumber});
+                                              Login:login, Password:password, PhoneNumber:phoneNumber, isVerified:false});
 
       var ret;
       var fn = firstName;

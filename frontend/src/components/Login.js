@@ -9,7 +9,6 @@ function Login()
 
     const [message,setMessage] = useState('');
     var bp = require('./Path.js');
-    var storage = require('../tokenStorage.js');
 
     const doLogin = async event => 
     {
@@ -23,20 +22,24 @@ function Login()
             const response = await fetch(bp.buildPath('api/login'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
-            firebaseApp.auth().signInWithEmailAndPassword(loginName.value, loginPassword.value)
-                .then((userCredential) => {
-                    var user = userCredential.user;
-                })
-                .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                });
+            // firebaseApp.auth().signInWithEmailAndPassword(loginName.value, loginPassword.value)
+            //     .then((userCredential) => {
+            //         var user = userCredential.user;
+            //     })
+            //     .catch((error) => {
+            //         var errorCode = error.code;
+            //         var errorMessage = error.message;
+            //     });
 
             var storage = require('../tokenStorage.js');
             var res = JSON.parse(await response.text());
-            if (res.error) 
+            if (res.error == "Login/Password incorrect") 
             {
                 setMessage('User/Password combination incorrect');
+            }
+            else if (res.error == "account has not been verified")
+            {
+                setMessage('This account has not yet been verified');
             }
             else 
             {	
