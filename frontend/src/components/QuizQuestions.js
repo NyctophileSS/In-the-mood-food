@@ -1,7 +1,4 @@
 import React, {useState} from 'react';
-import axios from 'axios';
-
-
 
 function QuizQuestions(){
     
@@ -12,7 +9,7 @@ function QuizQuestions(){
     var rating; // Will be manually voided
 
     const [price,setPrice] = useState(priceRange.value);
-    const [distance,setDistance] = useState(distanceRadius.value);
+    const [distance,setDistance] = useState(distanceRadiusMeters.value);
 
     const doQuizQuery = async event =>{
         // Conversion of Miles into meters for Google API
