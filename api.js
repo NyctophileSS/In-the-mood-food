@@ -1,8 +1,4 @@
 var token = require('./createJWT.js');
-//load user model
-// const User = require("./models/user.js");
-//load card model
-// const Card = require("./models/card.js");
 
 exports.setApp = function ( app, client )
 {
