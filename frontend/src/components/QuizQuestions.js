@@ -5,16 +5,18 @@ import axios from 'axios';
 
 function QuizQuestions(){
     
-    var priceRange;
-    var distanceRadius;
-    var cuisineInput;
-    var rating;
+    var priceRange; // 0-4
+    var distanceRadiusMiles; // miles->meters
+    var distanceRadiusMeters;
+    var cuisineInput; // text input
+    var rating; // Will be manually voided
 
     const [price,setPrice] = useState(priceRange.value);
     const [distance,setDistance] = useState(distanceRadius.value);
 
     const doQuizQuery = async event =>{
-
+        // Conversion of Miles into meters for Google API
+        distanceRadiusMeters = distanceRadiusMiles.value / 0.00062137; 
     }
     
     return(
@@ -24,7 +26,7 @@ function QuizQuestions(){
                 <input id='price' type="range" min='0' max='4' ref={(c) => priceRange = c}></input>
                 <p id='priceValue'>{price}</p>
                 <label for='distance'>What distance are you willing to drive</label>
-                <input id='distance' type="range" min='1' max='25' ref={(c) => distanceRadius = c}></input>
+                <input id='distance' type="range" min='1' max='25' ref={(c) => distanceRadiusMiles = c}></input>
                 <p id='distanceValue'>{distance} miles</p>
                 <label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label>
                 <input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input>
