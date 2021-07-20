@@ -12,7 +12,7 @@ const LoginPage = () =>
     return(
         <div>
         <PageTitle />
-        <LoginRegisterSwapper />
+        {/* <LoginRegisterSwapper /> */}
         <Login />
         <Register />
         </div>
