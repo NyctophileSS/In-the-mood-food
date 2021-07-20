@@ -4,6 +4,7 @@ import './styles.css';
 
 import LoginPage from './pages/LoginPage';
 import CardPage from './pages/CardPage';
+import QuizPage from './pages/QuizPage';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         </Route>
         <Route path="/cards" exact>
           <CardPage />
+        </Route>
+        <Route path="/quiz" exact>
+          <QuizPage />
         </Route>
         <Redirect to="/" />
       </Switch>  
