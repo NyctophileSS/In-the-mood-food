@@ -1,39 +1,64 @@
 /*Follow this color scheme
-Accents: DarkRed, #7B0A09
-Background: OffBlack, #181A1B
-Text: OffWhite, #E8E6E3
-PreviewText: Gray, #5C5A56
-LinkText: Blue, #3391FF*/
+Background (Blue): #6a62d2
+Inner-Background (White): #f8f8ff
+*/
+
+/*Follow this code order
+Size
+Spacing
+Colors
+Text
+Display Properties
+*/
+
+/*
+All text-related sizes should be in rem units
+All other sizes should be in em units
+*/
+
+/*
+To-Do: 
+Make input boxes larger
+Turn "Start munchin'" and "Register" into actual buttons
+Make them match the size and style of the other forms but have the purple background color
+Find a good background picture like graham suggested
+(Background: Outlines of food. I could edit it to make it work if the colors are wrong)
+Add tiny images to username/password (look at the first example screenshot I sent)
+Add a small forgot password under Start munchin'
+Make the small forgot password match the slightly gray text of the forms
+An easy way to do is it to make it a button but change how it looks so it has no background
+Test on an actual phone, fix scaling and spacing as appropriate to make the login page fit on a screen
+ATTEMPT to make the register page fit on a screen without needing to scroll
+*/
 
 body {
-    background-color: #181A1B;
-    color: #E8E6E3;
+    background-color: #6a62d2;
 }
 
-#title {    
-    padding: 2em;
-    background-color: #7B0A09;
-
-    font-size: 2em;
+#title {
+    font-size: 2rem;
 }
 
 input[type="text"],input[type="password"]{
-    border-radius: 2em;
+    border-radius: 0.25em;
+    border: none;
     outline: none;
+    
+    background-color:#e5e8ed;
 
-    background-color: #181a1b;
-    border-color: #5C5A56;
-    color: #5C5A56;
-
-    font-size: 1em;
-    text-align: center;
+    font-size: 1rem;
+    text-align: left;
+    text-indent: 1rem;
     font-family: 'Ubuntu', sans-serif;
 }
 
-#loginRegisterSwapper{
-    width: 20%;
+#loginDiv,
+#registerDiv{
+    padding: 1em;
+    border-radius: 1em;
+    width: 80%;
+
     margin: auto;
 
-    display: flex;
-    justify-content: space-around;
+    background-color: #f8f8ff;
 }
