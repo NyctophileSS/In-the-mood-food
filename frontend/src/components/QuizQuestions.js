@@ -19,10 +19,10 @@ function QuizQuestions(){
         <div>
             <form>
                 <label>What price range are you interested in?</label>
-                <input id='price' type="range" min='0' max='4' value={price} step='1' onChange={(c) => price}></input>
-                <p id='priceValue'><output for=''>0</output></p>
+                <input id='price' type="range" min='0' max='4' value='0' step='1' onChange={(c) => price = c}></input>
+                <p id='priceValue'><output for='price'>0</output></p>
                 <label for='distance'>What distance are you willing to drive</label>
-                <input id='distance' type="range" min='5' max='30' value='5' step='5' ref={(c) => distanceRadiusMiles = c}></input>
+                <input id='distance' type="range" min='5' max='30' value='5' step='5' onChange={(c) => distanceRadiusMiles = c}></input>
                 <p><output for='distance'>5</output> miles</p>
                 <label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label>
                 <p><input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></p>
