@@ -14,15 +14,15 @@ function QuizQuestions(){
         
         distanceRadiusMeters = distanceRadiusMiles.value / 0.00062137; 
     }
-    
+
     return(
         <div>
             <form>
                 <label>What price range are you interested in?</label>
-                <input id='price' type="range" min='0' max='4' value={price} onChange={event => setPrice = (event.target.value)}></input>
+                <input id='price' type="range" min='0' max='4' value={price} step='1' onChange={event => setPrice = (event.target.value)}></input>
                 <p id='priceValue'>{price}</p>
                 <label for='distance'>What distance are you willing to drive</label>
-                <input id='distance' type="range" min='5' max='25' value={distance} onChange={event => setDistance = (event.target.value)}></input>
+                <input id='distance' type="range" min='5' max='30' value={distance} step='5' onChange={event => setDistance = (event.target.value)}></input>
                 <p id='distanceValue'>{distance} miles</p>
                 <label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label>
                 <input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input>
