@@ -16,19 +16,20 @@ All text-related sizes should be in rem units
 All other sizes should be in em units
 */
 
-/*
-To-Do: 
-Make input boxes larger
-Turn "Start munchin'" and "Register" into actual buttons
-Make them match the size and style of the other forms but have the purple background color
+/*CSS To-Do:
+Add tiny images to username/password (look at the first example screenshot I sent)
+
+Center all of the elements heightwise on the screen.
+
 Find a good background picture like graham suggested
 (Background: Outlines of food. I could edit it to make it work if the colors are wrong)
-Add tiny images to username/password (look at the first example screenshot I sent)
+
 Add a small forgot password under Start munchin'
 Make the small forgot password match the slightly gray text of the forms
 An easy way to do is it to make it a button but change how it looks so it has no background
+
 Test on an actual phone, fix scaling and spacing as appropriate to make the login page fit on a screen
-ATTEMPT to make the register page fit on a screen without needing to scroll
+Make the register page fit on a screen without needing to scroll
 */
 
 body {
@@ -39,11 +40,13 @@ body {
     font-size: 2rem;
 }
 
-input[type="text"],input[type="password"]{
+input[type="text"],input[type="password"], button{
+    width: 80%;
     border-radius: 0.25em;
     border: none;
     outline: none;
-    
+    height: 2.5rem;
+
     background-color:#e5e8ed;
 
     font-size: 1rem;
@@ -54,11 +57,20 @@ input[type="text"],input[type="password"]{
 
 #loginDiv,
 #registerDiv{
-    padding: 1em;
-    border-radius: 1em;
     width: 80%;
+    border-radius: 1em;
+    padding: 1em;
 
     margin: auto;
 
     background-color: #f8f8ff;
+}
+
+#loginButton,
+#registerButton{
+    background-color:#6a62d2; /*works*/
+    cursor: pointer;
+
+    text-align: center;
+    text-indent: 0rem;
 }

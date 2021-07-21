@@ -88,7 +88,8 @@ function Login()
     >
         <p><input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}></input></p>
         <p><input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}></input></p>
-        <p><a onClick={doLogin}>Start munchin'</a></p>
+        <p><button type="button" id="loginButton" onClick={doLogin}> Start munchin'</button></p>
+        <p><a id="forgotPassword">Forgot password?</a></p>
         <p href = "#" > Don't have an account? {" "}
             <a href = "#" onClick = {switchToSignup}> Signup</a>
         </p>

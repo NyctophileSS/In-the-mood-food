@@ -142,7 +142,7 @@ function Register()
             <p><input type="text" id="email" placeholder="Email" ref={(c) => loginName = c}></input></p>
             <p><input type="password" id="pw" placeholder="Password" ref={(c) => loginPassword1 = c}></input></p>
             <p><input type="password" id="verifypw" placeholder="Retype Password" ref={(c) => loginPassword2 = c}></input></p>
-            <p><a onClick={doRegister}>Register</a></p>
+            <p><button type="button" id="registerButton" onClick={doRegister}>Register</button></p>
             <p href = "#" > Don't have an account? {" "}
                 <a href = "#" onClick = {switchToSignin}> Login</a>
             </p>
