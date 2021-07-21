@@ -20,7 +20,7 @@ function QuizQuestions(){
             <form>
                 <label>What price range are you interested in?</label>
                 <input id='price' type="range" min='0' max='4' value={price} step='1' onChange={(c) => price}></input>
-                <p id='priceValue'><output for=''></output></p>
+                <p id='priceValue'><output for=''>0</output></p>
                 <label for='distance'>What distance are you willing to drive</label>
                 <input id='distance' type="range" min='5' max='30' value='5' step='5' ref={(c) => distanceRadiusMiles = c}></input>
                 <p><output for='distance'>5</output> miles</p>
