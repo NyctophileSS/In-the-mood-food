@@ -92,6 +92,7 @@ function Login()
         <p href = "#" > Don't have an account? {" "}
             <a href = "#" onClick = {switchToSignup}> Signup</a>
         </p>
+        <p id='forgotPwLink'>Forgot password?</p>
     <span id="loginResult">{message}</span>
      
     </motion.div>

@@ -25,9 +25,9 @@ function QuizQuestions(){
                 <input id='distance' type="range" min='5' max='30' value={distance} step='5' onChange={event => setDistance = (event.target.value)}></input>
                 <p id='distanceValue'>{distance} miles</p>
                 <label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label>
-                <input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input>
+                <p><input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></p>
                 <label for='rating'>Provide a preffered rating:</label>
-                <select id='rating' ref={(c) => rating = c}>
+                <p><select id='rating' ref={(c) => rating = c}>
                     <option value='2'>2.0 and up</option>
                     <option value='2.5'>2.5 and up</option>
                     <option value='3'>3.0 and up</option>
@@ -35,7 +35,7 @@ function QuizQuestions(){
                     <option value='4'>4 and up</option>
                     <option value='4.5'>4.5 and up</option>
                     <option value='5'>5.0 and up</option>
-                </select>
+                </select></p>
                 <a id='QuizSearch' onClick={doQuizQuery}>Search</a>
             </form>
         </div>
