@@ -24,10 +24,6 @@ Center all of the elements heightwise on the screen.
 Find a good background picture like graham suggested
 (Background: Outlines of food. I could edit it to make it work if the colors are wrong)
 
-Add a small forgot password under Start munchin'
-Make the small forgot password match the slightly gray text of the forms
-An easy way to do is it to make it a button but change how it looks so it has no background
-
 Test on an actual phone, fix scaling and spacing as appropriate to make the login page fit on a screen
 Make the register page fit on a screen without needing to scroll
 */
@@ -46,7 +42,7 @@ input[type="text"],input[type="password"], button{
     border: none;
     outline: none;
     height: 2.5rem;
-
+    
     background-color:#e5e8ed;
 
     font-size: 1rem;
@@ -73,4 +69,10 @@ input[type="text"],input[type="password"], button{
 
     text-align: center;
     text-indent: 0rem;
+}
+
+#forgotPassword{
+
+   color:#6a6b6f; 
+   font-size: 0.80rem;
 }
