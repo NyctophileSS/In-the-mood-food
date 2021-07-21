@@ -6,9 +6,8 @@ function QuizQuestions(){
     var distanceRadiusMeters;
     var cuisineInput; 
     var rating; 
-
-    const [price,setPrice] = useState(0);
-    const [distance,setDistance] = useState(5);
+    var price;
+    
 
     const doQuizQuery = async event =>{
         
@@ -20,11 +19,11 @@ function QuizQuestions(){
         <div>
             <form>
                 <label>What price range are you interested in?</label>
-                <input id='price' type="range" min='0' max='4' value={price} step='1' onChange={setPrice(e => e.target.value)}></input>
-                <p id='priceValue'>{price}</p>
+                <input id='price' type="range" min='0' max='4' value={price} step='1' onChange={(c) => price}></input>
+                <p id='priceValue'><output for=''></output></p>
                 <label for='distance'>What distance are you willing to drive</label>
-                <input id='distance' type="range" min='5' max='30' value={distance} step='5' onChange={setDistance(e => e.target.value)}></input>
-                <p id='distanceValue'>{distance} miles</p>
+                <input id='distance' type="range" min='5' max='30' value='5' step='5' ref={(c) => distanceRadiusMiles = c}></input>
+                <p><output for='distance'>5</output> miles</p>
                 <label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label>
                 <p><input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></p>
                 <label for='rating'>Provide a preffered rating:</label>
