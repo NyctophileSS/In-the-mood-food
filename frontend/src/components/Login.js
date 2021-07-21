@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
-import '../styles.css';
 import firebaseApp from '../fire';
+import React, { useState, useContext} from 'react';
+import axios from 'axios'
+import '../styles.css';
+import { motion } from "framer-motion";
+import {AccountContext} from "./accountContext";
+
+const containerVariants = {
+    hidden: {
+            opacity: 0.2
+    },
+    visible: {
+            opacity: 1,
+            transition: { duration: 1.5}
+    },
+ 
+}
 
 function Login()
 {
     var loginName;
     var loginPassword;
+     
+    const { switchToSignup } = useContext(AccountContext); 
 
     const [message,setMessage] = useState('');
     var bp = require('./Path.js');
@@ -62,14 +78,23 @@ function Login()
             return;
         }       
     };
-
+     
     return(
-    <div id="loginDiv" className="loginBlock">
+    <motion.div id="loginDiv" className="loginBlock"
+        variants = {containerVariants}
+        initial = "hidden"
+        animate = "visible"
+        exit = "exit"
+    >
         <p><input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}></input></p>
         <p><input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}></input></p>
         <p><a onClick={doLogin}>Start munchin'</a></p>
+        <p href = "#" > Don't have an account? {" "}
+            <a href = "#" onClick = {switchToSignup}> Signup</a>
+        </p>
     <span id="loginResult">{message}</span>
-    </div>
+     
+    </motion.div>
     );
 };
 

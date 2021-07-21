@@ -1,6 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import '../styles.css';
 import firebaseApp from '../fire';
+import {AccountContext} from "./accountContext";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+    hidden: {
+            opacity: 0.2
+    },
+    visible: {
+            opacity: 1,
+            transition: { duration: 1.5}
+    },
+    exit: {
+        x: '-100vw',
+        transition: { ease: 'easeInOut'}
+    }
+}
 
 function Register()
 {
@@ -10,6 +26,9 @@ function Register()
     var loginPassword1;
     var loginPassword2;
     var loginPhoneNumber;
+
+    
+    const { switchToSignin } = useContext(AccountContext);
 
     const [message,setMessage] = useState('');
     var bp = require('./Path.js');
@@ -111,7 +130,12 @@ function Register()
     };
 
     return (
-        <div id="registerDiv" className="registerBlock">
+        <motion.div id="registerDiv" className="registerBlock"
+            variants = {containerVariants}
+            initial = "hidden"
+            animate = "visible"
+            exit = "exit"
+        >
             <p><input type="text" id="first" placeholder="First Name" ref={(c) => fn = c}></input></p>
             <p><input type="text" id="last"  placeholder="Last Name" ref={(c) => ln = c}></input></p>
             <p><input type="text" id="phone" placeholder="Phone Number" ref={(c) => loginPhoneNumber = c}></input></p>
@@ -119,8 +143,11 @@ function Register()
             <p><input type="password" id="pw" placeholder="Password" ref={(c) => loginPassword1 = c}></input></p>
             <p><input type="password" id="verifypw" placeholder="Retype Password" ref={(c) => loginPassword2 = c}></input></p>
             <p><a onClick={doRegister}>Register</a></p>
+            <p href = "#" > Don't have an account? {" "}
+                <a href = "#" onClick = {switchToSignin}> Login</a>
+            </p>
             <span id="registerResult">{message}</span>
-        </div>
+        </motion.div>
     );
 };
 

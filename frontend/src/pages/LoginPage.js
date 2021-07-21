@@ -1,9 +1,7 @@
 import React from 'react';
 
 import PageTitle from '../components/PageTitle';
-import Login from '../components/Login';
-import Register from '../components/Register';
-import LoginRegisterSwapper from '../components/LoginRegisterSwapper';
+import { LoginRegisterSwapper } from '../components/context';
 import '../styles.css';
 
 const LoginPage = () =>
@@ -12,9 +10,7 @@ const LoginPage = () =>
     return(
         <div>
         <PageTitle />
-        {/* <LoginRegisterSwapper /> */}
-        <Login />
-        <Register />
+        <LoginRegisterSwapper/>
         </div>
     );
 };
