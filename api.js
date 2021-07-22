@@ -77,24 +77,14 @@ exports.setApp = function ( app, client )
         }
       });
 
-      // for testing
-      // const transporter = nodemailer.createTransport({
-      //   host: 'smtp.ethereal.email',
-      //   port: 587,
-      //   auth: {
-      //       user: 'edd.wolff6@ethereal.email',
-      //       pass: 'V5enXDtX4e3212Gup3'
-      //   }
-      // });
+      var userToken = crypto.randomBytes(16).toString('hex');
 
       const db = client.db();
-      // create the user
+      // create the user and assign a token for verification
       const results = await db.collection('Users').insertOne({FirstName:firstName, LastName:lastName, 
-                                              Login:login, Password:password, PhoneNumber:phoneNumber, isVerified:false});
-      // create the user's token for email verification
-      const tokenResults = await db.collection('Tokens').insertOne({_userId: results.insertedId, token: crypto.randomBytes(16).toString('hex')});
+                                              Login:login, Password:password, PhoneNumber:phoneNumber, isVerified:false, token: userToken});
 
-      const emailBody = "<b>Hello, please use the included link to verify your email and gain access to your In the Mood Food account! https://cop4331-fourteen.herokuapp.com/api/verification/" + tokenResults.insertedId + " or if using staging: https://cop4331-fourteen-staging.herokuapp.com/api/verification/" + tokenResults.insertedId + ", or if testing locally: localhost:3000/api/verification/" + tokenResults.insertedId + "</b>";
+      const emailBody = "<b>Hello " + firstName + ", please use the included link to verify your email and gain access to your In the Mood Food account! https://cop4331-fourteen.herokuapp.com/api/verification/ and enter the token: " + userToken + " or if using staging: https://cop4331-fourteen-staging.herokuapp.com/api/verification/ or if testing locally: localhost:3000/api/verification/ </b>";
 
       // send mail with defined transport object
       let info = await transporter.sendMail({
@@ -132,11 +122,30 @@ exports.setApp = function ( app, client )
 
     app.post('/api/verification', async (req, res, next) =>
     {
-      // incoming: token _id
-      // action: find account associated with token _id and make isVerified true
+      // incoming: email, token
+      // action: check for user with associated token, mark isVerified to true
 
-      // TODO: FLESH OUT THIS ENDPOINT
+      const { email, token } = req.body;
 
+      const db = client.db();
+      const results = await db.collection('Users').findOne({email:email, token:token});
+
+      var ret;
+      if (results)
+      {
+        results.isVerified = true;
+        var fn = results.firstName;
+        var ln = results.lastName;
+        var id = results.id;
+        const jwtToken = require("./createJWT.js");
+        ret = jwtToken.createToken( fn, ln, id);
+      }
+      else 
+      {
+        ret = {error:"could not verify account"};
+      }
+
+      res.status(200).json(ret);
     });
 
     app.post('/api/forgot-password', async (req, res, next) => 
