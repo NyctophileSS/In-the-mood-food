@@ -1,40 +1,29 @@
 import React, {useState} from 'react';
+import InputRange from 'react-input-range';
 
 
-
-export default class QuizQuestions extends React.Component {
+export default function QuizQuestions(){
     
-    distanceRadiusMeters
-    cuisineInput
-    rating
+    var distanceRadiusMeters;
+    var cuisineInput;
+    var rating;
     
-    
+    const [price,setPrice] = useState(0);
+    const [distance, setDistance] = useState(5);
 
-    doQuizQuery = async event =>{
-        
-        distanceRadiusMeters = distanceRadiusMiles.value / 0.00062137; 
+    const doQuizQuery = async event =>{    
+        distanceRadiusMeters = distance / 0.00062137; 
     }
 
-    price = {
-        value: 0
-    }
-    distanceRadiusMiles = {
-        value: 5
-    }
-
-    handleOnChangePrice = (e) => this.setPrice({value: e.target.value})
-    handleOnChangeDistance = (e) => this.setPrice({ value: e.target.value })
-
-    render() {
-        return(
+    return(
         <div>
             <form>
                 <label>What price range are you interested in?</label>
-                <input id='price' type="range" min={0} max={4} value={this.price.value} step={1} onChange={this.handleOnChangePrice}></input>
-                <p id='priceValue'>{this.price.value}</p>
+                <InputRange id="price" minValue={0} maxValue={4} value={price} onChange={(e) => setPrice(e.target.value)}></InputRange>
+                <p id='priceValue'>{price}</p>
                 <label for='distance'>What distance are you willing to drive</label>
-                <input id='distance' type="range" min={5} max={30} value={this.distanceRadiusMiles.value} step={5} onChange={this.handleOnChangeDistance}></input>
-                <p>{this.distanceRadiusMiles.value} miles</p>
+                <InputRange id="distance" minValue={5} maxValue={30} value={distance} onChange={(e) => setDistance(e.target.value)}></InputRange>
+                <p>{distance} miles</p>
                 <label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label>
                 <p><input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></p>
                 <label for='rating'>Provide a preffered rating:</label>
@@ -50,6 +39,5 @@ export default class QuizQuestions extends React.Component {
                 <a id='QuizSearch' onClick={doQuizQuery}>Search</a>
             </form>
         </div>
-        )
-    } 
+    );
 }
