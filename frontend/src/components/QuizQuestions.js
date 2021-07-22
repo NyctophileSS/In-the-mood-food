@@ -8,10 +8,8 @@ export default function QuizQuestions(){
     var distanceRadiusMiles;
     var cuisineInput;
     var rating;
+    var price;
     
-    const [price,setPrice] = useState(0);
-    const [distance, setDistance] = useState(5);
-
     const doQuizQuery = async event =>{    
         distanceRadiusMeters = distance / 0.00062137; 
     }
@@ -20,7 +18,7 @@ export default function QuizQuestions(){
         <div>
             <form>
                 <label for="price">What price range are you interested in?</label>
-                <p><select id='price' ref={(c) => rating = c}>
+                <p><select id='price' ref={(c) => price = c}>
                     <option value='0'>$</option>
                     <option value='1'>$$</option>
                     <option value='2'>$$$</option>
@@ -41,7 +39,7 @@ export default function QuizQuestions(){
                     <option value='4.5'>4.5 and up</option>
                     <option value='5'>5.0 and up</option>
                 </select></p>
-                <a id='QuizSearch' onClick={doQuizQuery}>Search</a>
+                <button id='QuizSearch' onClick={doQuizQuery}>Search</button>
             </form>
         </div>
     );
