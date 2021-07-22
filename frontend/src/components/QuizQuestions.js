@@ -11,13 +11,13 @@ export default function QuizQuestions(){
     var price;
     
     const doQuizQuery = async event =>{    
-        distanceRadiusMeters = distance / 0.00062137; 
+        distanceRadiusMeters = distanceRadiusMiles / 0.00062137; 
     }
 
     return(
         <div>
             <form>
-                <label for="price">What price range are you interested in?</label>
+                <label for='price'>What price range are you interested in?</label>
                 <p><select id='price' ref={(c) => price = c}>
                     <option value='0'>$</option>
                     <option value='1'>$$</option>
