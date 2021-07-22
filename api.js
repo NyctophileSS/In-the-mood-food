@@ -128,17 +128,26 @@ exports.setApp = function ( app, client )
       const { email, token } = req.body;
 
       const db = client.db();
-      const results = await db.collection('Users').findOne({email:email, token:token});
+      // const results = await db.collection('Users').findOne({Login:email, token:token});
+      const results = await db.collection('Users').findOneAndUpdate({Login:email, token:token}, {$set: {isVerified:true}});
 
       var ret;
       if (results)
       {
-        results.isVerified = true;
+        // results.isVerified = true;
         var fn = results.firstName;
         var ln = results.lastName;
         var id = results.id;
-        const jwtToken = require("./createJWT.js");
-        ret = jwtToken.createToken( fn, ln, id);
+        try
+        {
+          const jwtToken = require("./createJWT.js");
+          // ret = results;
+          ret = jwtToken.createToken( fn, ln, id);
+        }
+        catch(e)
+        {
+          ret = {error:e.message};
+        }
       }
       else 
       {

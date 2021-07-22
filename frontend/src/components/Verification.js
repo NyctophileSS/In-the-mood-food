@@ -1,22 +1,10 @@
 import React, {useState, useContext} from 'react';
 import '../styles.css';
-import { motion } from "framer-motion";
-
-const containerVariants = {
-    hidden: {
-            opacity: 0.2
-    },
-    visible: {
-            opacity: 1,
-            transition: { duration: 1.5}
-    },
- 
-}
 
 function Verification()
 {
-    var email;
-    var token;
+    var userEmail;
+    var userToken;
 
     const [message,setMessage] = useState('');
     var bp = require('./Path.js');
@@ -25,7 +13,7 @@ function Verification()
     {
         event.preventDefault();
 
-        var obj = {email:email, token:token};
+        var obj = {email:userEmail.value, token:userToken.value};
         var js = JSON.stringify(obj);
 
         try
@@ -51,7 +39,7 @@ function Verification()
               
                 var user = {firstName:firstName,lastName:lastName,id:userId}
                 localStorage.setItem('user_data', JSON.stringify(user));
-                // window.location.href = '/';    // TODO: formalize where to redirect after registering
+                window.location.href = '/';    // TODO: formalize where to redirect after registering
             }
 
         }
@@ -63,19 +51,12 @@ function Verification()
     };
 
     return(
-    <motion.div id="verificationDiv" className="verificationBlock"
-        variants = {containerVariants}
-        initial = "hidden"
-        animate = "visible"
-        exit = "exit"
-    >
-        <p><input type="text" id="email" placeholder="Email" ref={(c) => email = c}></input></p>
-        <p><input type="text" id="token" placeholder="token" ref={(c) => token = c}></input></p>
-        <p><button type="button" id="verificationButton" onClick={doVerification}> Verify account</button></p>
-        
+    <div>
+        <p><input type="text" id="email" placeholder="Email" ref={(c) => userEmail = c}></input></p>
+        <p><input type="text" id="token" placeholder="token" ref={(c) => userToken = c}></input></p>
+        <p><button type="button" id="verifyButton" onClick={doVerification}> Verify account</button></p>
     <span id="verificationResult">{message}</span>
-     
-    </motion.div>
+    </div>
     );
 };
 

@@ -94,7 +94,7 @@ function Register()
               
                 var user = {firstName:firstName,lastName:lastName,id:userId}
                 localStorage.setItem('user_data', JSON.stringify(user));
-                // window.location.href = '/';    // TODO: formalize where to redirect after registering
+                window.location.href = '/verification';
             }
         }
         catch(e)
