@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import InputRange from 'react-input-range';
+
 
 
 export default function QuizQuestions(){
     
     var distanceRadiusMeters;
+    var distanceRadiusMiles;
     var cuisineInput;
     var rating;
     
@@ -18,12 +19,16 @@ export default function QuizQuestions(){
     return(
         <div>
             <form>
-                <label>What price range are you interested in?</label>
-                <InputRange id="price" minValue={0} maxValue={4} value={price} onChange={(e) => setPrice(e.target.value)}></InputRange>
-                <p id='priceValue'>{price}</p>
+                <label for="price">What price range are you interested in?</label>
+                <p><select id='price' ref={(c) => rating = c}>
+                    <option value='0'>$</option>
+                    <option value='1'>$$</option>
+                    <option value='2'>$$$</option>
+                    <option value='3'>$$$$</option>
+                    <option value='4'>$$$$$</option>
+                </select></p>
                 <label for='distance'>What distance are you willing to drive</label>
-                <InputRange id="distance" minValue={5} maxValue={30} value={distance} onChange={(e) => setDistance(e.target.value)}></InputRange>
-                <p>{distance} miles</p>
+                <p><input id='distance' type='number' ref={(c) => distanceRadiusMiles = c}></input> miles</p>
                 <label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label>
                 <p><input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></p>
                 <label for='rating'>Provide a preffered rating:</label>
