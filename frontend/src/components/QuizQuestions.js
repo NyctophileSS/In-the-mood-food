@@ -1,29 +1,40 @@
 import React, {useState} from 'react';
 
-function QuizQuestions(){
+
+
+export default class QuizQuestions extends React.Component {
     
-    var distanceRadiusMiles;
-    var distanceRadiusMeters;
-    var cuisineInput; 
-    var rating; 
-    var price;
+    distanceRadiusMeters
+    cuisineInput
+    rating
+    
     
 
-    const doQuizQuery = async event =>{
+    doQuizQuery = async event =>{
         
         distanceRadiusMeters = distanceRadiusMiles.value / 0.00062137; 
     }
-    
 
-    return(
+    price = {
+        value: 0
+    }
+    distanceRadiusMiles = {
+        value: 5
+    }
+
+    handleOnChangePrice = (e) => this.setPrice({value: e.target.value})
+    handleOnChangeDistance = (e) => this.setPrice({ value: e.target.value })
+
+    render() {
+        return(
         <div>
             <form>
                 <label>What price range are you interested in?</label>
-                <input id='price' type="range" min='0' max='4' value='0' step='1' onChange={(c) => price = c}></input>
-                <p id='priceValue'><output for='price'>0</output></p>
+                <input id='price' type="range" min={0} max={4} value={this.price.value} step={1} onChange={this.handleOnChangePrice}></input>
+                <p id='priceValue'>{this.price.value}</p>
                 <label for='distance'>What distance are you willing to drive</label>
-                <input id='distance' type="range" min='5' max='30' value='5' step='5' onChange={(c) => distanceRadiusMiles = c}></input>
-                <p><output for='distance'>5</output> miles</p>
+                <input id='distance' type="range" min={5} max={30} value={this.distanceRadiusMiles.value} step={5} onChange={this.handleOnChangeDistance}></input>
+                <p>{this.distanceRadiusMiles.value} miles</p>
                 <label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label>
                 <p><input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></p>
                 <label for='rating'>Provide a preffered rating:</label>
@@ -39,7 +50,6 @@ function QuizQuestions(){
                 <a id='QuizSearch' onClick={doQuizQuery}>Search</a>
             </form>
         </div>
-    )
-};
-
-export default QuizQuestions;
+        )
+    } 
+}
