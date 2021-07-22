@@ -26,7 +26,7 @@ export default function QuizQuestions(){
                     <option value='4'>$$$$$</option>
                 </select></p>
                 <label for='distance'>What distance are you willing to drive</label>
-                <p><input id='distance' type='number' ref={(c) => distanceRadiusMiles = c}></input> miles</p>
+                <p><input id='distance' type='number' min={0} max={50} step={5} ref={(c) => distanceRadiusMiles = c}></input> miles</p>
                 <label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label>
                 <p><input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></p>
                 <label for='rating'>Provide a preffered rating:</label>
