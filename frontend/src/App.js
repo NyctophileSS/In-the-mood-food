@@ -6,6 +6,8 @@ import LoginPage from './pages/LoginPage';
 import CardPage from './pages/CardPage';
 import QuizPage from './pages/QuizPage';
 import VerificationPage from './pages/VerificationPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 function App() {
   return (
@@ -22,6 +24,12 @@ function App() {
         </Route>
         <Route path="/verification" exact>
           <VerificationPage />
+        </Route>
+        <Route path="/forgot-password" exact>
+          <ForgotPasswordPage />
+        </Route>
+        <Route path="/reset-password" exact>
+          <ResetPasswordPage />
         </Route>
         <Redirect to="/" />
       </Switch>  

@@ -1,19 +1,18 @@
 import React, {useState} from 'react';
 import '../styles.css';
 
-function Verification()
+function ForgotPassword()
 {
     var userEmail;
-    var userToken;
 
     const [message,setMessage] = useState('');
     var bp = require('./Path.js');
 
-    const doVerification = async event => 
+    const doForgotPassword = async event => 
     {
         event.preventDefault();
 
-        var obj = {email:userEmail.value, token:userToken.value};
+        var obj = {email:userEmail};
         var js = JSON.stringify(obj);
 
         if (userEmail.value == "")
@@ -21,15 +20,10 @@ function Verification()
             setMessage("Please enter an email");
             return;
         }
-        else if (userToken.value == "")
-        {
-            setMessage("Please enter a token");
-            return;
-        }
 
         try
         {   
-            const response = await fetch(bp.buildPath('api/verification'),
+            const response = await fetch(bp.buildPath('api/forgot-password'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
             var storage = require('../tokenStorage.js');
@@ -40,6 +34,7 @@ function Verification()
             }
             else 
             {
+                setMessage("an email has been sent to the specified address with instructions on how to reset your password");
                 storage.storeToken(res);
                 var jwt = require('jsonwebtoken');
 
@@ -52,7 +47,6 @@ function Verification()
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/';
             }
-
         }
         catch(e)
         {
@@ -63,12 +57,11 @@ function Verification()
 
     return(
     <div>
-        <p><input type="text" id="email" placeholder="Email" ref={(c) => userEmail = c}></input></p>
-        <p><input type="text" id="token" placeholder="Token" ref={(c) => userToken = c}></input></p>
-        <p><button type="button" id="verifyButton" onClick={doVerification}> Verify account</button></p>
+        <p><input type="text" id="email" placeholder="Enter email to send reset link" ref={(c) => userEmail = c}></input></p>
+        <p><button type="button" id="forgotPasswordButton" onClick={doForgotPassword}> Send a reset password email</button></p>
     <span id="verificationResult">{message}</span>
     </div>
     );
 };
 
-export default Verification;
+export default ForgotPassword;

@@ -63,6 +63,7 @@ exports.setApp = function ( app, client )
       var crypto = require('crypto');
       var nodemailer = require('nodemailer');
       var error = '';
+      var bp = require('./Path');
 
       const { firstName, lastName, login, password, phoneNumber } = req.body;
       
@@ -84,7 +85,8 @@ exports.setApp = function ( app, client )
       const results = await db.collection('Users').insertOne({FirstName:firstName, LastName:lastName, 
                                               Login:login, Password:password, PhoneNumber:phoneNumber, isVerified:false, token: userToken});
 
-      const emailBody = "<b>Hello " + firstName + ", please use the included link to verify your email and gain access to your In the Mood Food account! https://cop4331-fourteen.herokuapp.com/api/verification/ and enter the token: " + userToken + " or if using staging: https://cop4331-fourteen-staging.herokuapp.com/api/verification/ or if testing locally: localhost:3000/api/verification/ </b>";
+      const emailBody = "<b>Hello " + firstName + ", please use the included link to verify your email and gain access to your In the Mood Food account! " + bp.buildPath('verification') + " and enter the token: " + userToken + " </b>";
+
 
       // send mail with defined transport object
       let info = await transporter.sendMail({
@@ -159,8 +161,6 @@ exports.setApp = function ( app, client )
 
     app.post('/api/forgot-password', async (req, res, next) => 
     {
-      require('dotenv').config();
-
       var error = '';
 
       var id = -1;
@@ -168,21 +168,64 @@ exports.setApp = function ( app, client )
       var ln = '';
 
       var ret;
+      var bp = require('./Path');
 
       const { email } = req.body;
+
+      // create reusable transporter object using the default SMTP transport
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'derrickkeough@gmail.com',
+            pass: 'vfxvvfbqirwebsrs'
+        }
+      });
 
       const db = client.db();
       const results = await db.collection('Users').find({Login:email});
 
+      const emailBody = "<b>Hello " + results.firstName + ", please use the included link to reset your password and regain access to your In the Mood Food account!" + bp.buildPath('reset-password') + " and enter the token: " + results.token + ". If you feel you have received this email in error, feel free to ignore it.</b>";
+
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: '"In The Mood Food" <info@in-the-mood-food.com>', // sender address
+        to: email, // list of receivers
+        subject: "Hello ✔ Password Reset", // Subject line
+        text: "", // plain text body
+        html: emailBody, // html body
+      });
+
+      res.status(200).json(ret);
+    });
+
+    app.post('/api/reset-password', async (req, res, next) => 
+    {
+      var error = '';
+
+      var id = -1;
+      var fn = '';
+      var ln = '';
+
+      var ret;
+      var bp = require('./Path');
+
+      const { email, newPassword, passwordToken } = req.body;
+
+      const db = client.db();
+      // const results = await db.collection('Users').find({Login:email});
+      const results = await db.collection('Users').findOneAndUpdate({Login:email, token:passwordToken}, {$set: {Password:newPassword}});
+
       // check the user exists
-      if (results.length > 0) {
+      if (results) 
+      {
         id = results[0].UserId;
         fn = results[0].FirstName;
         ln = results[0].LastName;
 
         const token = require("./createJWT.js");
         ret = token.createToken(fn, ln, id);
-        const link = ''
 
       }
       else {

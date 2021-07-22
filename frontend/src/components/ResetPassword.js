@@ -1,24 +1,36 @@
 import React, {useState} from 'react';
 import '../styles.css';
 
-function Verification()
+function ResetPassword()
 {
     var userEmail;
+    var userNewPassword1;
+    var userNewPassword2;
     var userToken;
 
     const [message,setMessage] = useState('');
     var bp = require('./Path.js');
 
-    const doVerification = async event => 
+    const doResetPassword = async event => 
     {
         event.preventDefault();
 
-        var obj = {email:userEmail.value, token:userToken.value};
+        var obj = {email:userEmail, newPassword:userNewPassword1, passwordToken:userToken};
         var js = JSON.stringify(obj);
 
         if (userEmail.value == "")
         {
             setMessage("Please enter an email");
+            return;
+        }
+        if (userNewPassword1.value == "")
+        {
+            setMessage("Please enter a new password");
+            return;
+        }
+        else if (userNewPassword1.value != userNewPassword2.value)
+        {
+            setMessage("Please ensure the passwords match");
             return;
         }
         else if (userToken.value == "")
@@ -29,7 +41,7 @@ function Verification()
 
         try
         {   
-            const response = await fetch(bp.buildPath('api/verification'),
+            const response = await fetch(bp.buildPath('api/reset-password'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
             var storage = require('../tokenStorage.js');
@@ -52,7 +64,6 @@ function Verification()
                 localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/';
             }
-
         }
         catch(e)
         {
@@ -63,12 +74,14 @@ function Verification()
 
     return(
     <div>
-        <p><input type="text" id="email" placeholder="Email" ref={(c) => userEmail = c}></input></p>
-        <p><input type="text" id="token" placeholder="Token" ref={(c) => userToken = c}></input></p>
-        <p><button type="button" id="verifyButton" onClick={doVerification}> Verify account</button></p>
+        <p><input type="email" id="email" placeholder="Enter your email" ref={(c) => userEmail = c}></input></p>
+        <p><input type="password" id="userNewPassword1" placeholder="Enter new password" ref={(c) => userNewPassword1 = c}></input></p>
+        <p><input type="password" id="userNewPassword2" placeholder="Re-enter new password" ref={(c) => userNewPassword2 = c}></input></p>
+        <p><input type="text" id="userToken" placeholder="Enter token" ref={(c) => userToken = c}></input></p>
+        <p><button type="button" id="forgotPasswordButton" onClick={doResetPassword}> Reset your password</button></p>
     <span id="verificationResult">{message}</span>
     </div>
     );
 };
 
-export default Verification;
+export default ResetPassword;
