@@ -67,6 +67,10 @@ function Login()
             return;
         }       
     };
+
+    const forgotPw = async event =>{
+        window.location.href = '/forgot-password';
+    }
      
     return(
     <motion.div id="loginDiv" className="loginBlock"
@@ -78,9 +82,9 @@ function Login()
         <p><input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}></input></p>
         <p><input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}></input></p>
         <p><button type="button" id="loginButton" onClick={doLogin}> Start munchin'</button></p>
-        <p><a id="forgotPassword">Forgot password?</a></p>
+        <p><a id="forgotPassword" onClick={forgotPw} cursor="pointer">Forgot password?</a></p>
         <p href = "#" > Don't have an account? {" "}
-            <a href = "#" onClick = {switchToSignup}> Signup</a>
+            <a href = "#" onClick = {switchToSignup} > Signup</a>
         </p>
         
     <span id="loginResult">{message}</span>
