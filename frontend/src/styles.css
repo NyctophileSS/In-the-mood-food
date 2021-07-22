@@ -17,15 +17,10 @@ All other sizes should be in em units
 */
 
 /*CSS To-Do:
-Add tiny images to username/password (look at the first example screenshot I sent)
-
-Center all of the elements heightwise on the screen.
-
 Find a good background picture like graham suggested
 (Background: Outlines of food. I could edit it to make it work if the colors are wrong)
 
 Test on an actual phone, fix scaling and spacing as appropriate to make the login page fit on a screen
-Make the register page fit on a screen without needing to scroll
 */
 
 body {
@@ -42,13 +37,25 @@ input[type="text"],input[type="password"], button{
     border: none;
     outline: none;
     height: 2.5rem;
-    
+
     background-color:#e5e8ed;
+    background-repeat: no-repeat;
+    background-size: 2em;
+    background-position-x: 1%;
+    background-position-y: 50%;
 
     font-size: 1rem;
     text-align: left;
-    text-indent: 1rem;
+    text-indent: 3rem;
     font-family: 'Ubuntu', sans-serif;
+}
+
+input[type="text"]{
+    background-image: url(https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png);
+}
+
+input[type="password"]{
+    background-image: url(https://img.icons8.com/ios/452/lock--v1.png);
 }
 
 #loginDiv,
@@ -58,8 +65,13 @@ input[type="text"],input[type="password"], button{
     padding: 1em;
 
     margin: auto;
+    margin-bottom: 1em;
 
     background-color: #f8f8ff;
+
+    display: flex;
+    flex-flow: column;
+    height: 100%;
 }
 
 #loginButton,
