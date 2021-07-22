@@ -1,6 +1,4 @@
-import firebaseApp from '../fire';
 import React, { useState, useContext} from 'react';
-import axios from 'axios'
 import '../styles.css';
 import { motion } from "framer-motion";
 import {AccountContext} from "./accountContext";
@@ -37,15 +35,6 @@ function Login()
         {
             const response = await fetch(bp.buildPath('api/login'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
-
-            // firebaseApp.auth().signInWithEmailAndPassword(loginName.value, loginPassword.value)
-            //     .then((userCredential) => {
-            //         var user = userCredential.user;
-            //     })
-            //     .catch((error) => {
-            //         var errorCode = error.code;
-            //         var errorMessage = error.message;
-            //     });
 
             var storage = require('../tokenStorage.js');
             var res = JSON.parse(await response.text());

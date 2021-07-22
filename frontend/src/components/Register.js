@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react';
 import '../styles.css';
-import firebaseApp from '../fire';
 import {AccountContext} from "./accountContext";
 import { motion } from "framer-motion";
 
@@ -77,30 +76,6 @@ function Register()
             const response = await fetch(bp.buildPath('api/register'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
-            firebaseApp.auth().createUserWithEmailAndPassword(loginName.value, loginPassword1.value)
-                .then((userCredential) => {
-                    var user = userCredential.user;
-                    // user.sendEmailVerification()
-                    //     .then(function() {
-                    //         // Verification email sent.
-                    //     })
-                    //     .catch(function(error) {
-                    //         // Error occurred. Inspect error.code.
-                    //     });
-                    firebaseApp.auth().currentUser.sendEmailVerification()
-                        .then(function() {
-                            
-                        })
-                        .catch(function(error) {
-
-                        });
-                })
-                .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    // window.alert(errorMessage);
-                });
-
             var storage = require('../tokenStorage.js');
             var res = JSON.parse(await response.text());              
             if (res.error) 
@@ -119,7 +94,7 @@ function Register()
               
                 var user = {firstName:firstName,lastName:lastName,id:userId}
                 localStorage.setItem('user_data', JSON.stringify(user));
-                // window.location.href = '/quiz';    // TODO: formalize where to redirect after registering
+                // window.location.href = '/';    // TODO: formalize where to redirect after registering
             }
         }
         catch(e)
