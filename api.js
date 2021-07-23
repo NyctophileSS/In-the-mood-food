@@ -172,6 +172,8 @@ exports.setApp = function ( app, client )
 
       const { email } = req.body;
 
+      var nodemailer = require('nodemailer');
+
       // create reusable transporter object using the default SMTP transport
       const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -186,7 +188,7 @@ exports.setApp = function ( app, client )
       const db = client.db();
       const results = await db.collection('Users').find({Login:email});
 
-      const emailBody = "<b>Hello " + results.firstName + ", please use the included link to reset your password and regain access to your In the Mood Food account!" + bp.buildPath('reset-password') + " and enter the token: " + results.token + ". If you feel you have received this email in error, feel free to ignore it.</b>";
+      const emailBody = "<b>Hello " + results.FirstName + ", please use the included link to reset your password and regain access to your In the Mood Food account!" + bp.buildPath('reset-password') + " and enter the token: " + results.token + ". If you feel you have received this email in error, feel free to ignore it.</b>";
 
       // send mail with defined transport object
       let info = await transporter.sendMail({
