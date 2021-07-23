@@ -90,11 +90,11 @@ exports.setApp = function ( app, client )
 
       // send mail with defined transport object
       let info = await transporter.sendMail({
-        from: '"In The Mood Food" <info@in-the-mood-food.com>', // sender address
-        to: login, // list of receivers
-        subject: "Hello ✔ Registration Verification", // Subject line
-        text: "", // plain text body
-        html: emailBody, // html body
+        from: '"In The Mood Food" <info@in-the-mood-food.com>',
+        to: login,
+        subject: "Hello ✔ Registration Verification",
+        text: "",
+        html: emailBody,
       });
 
       var ret;
@@ -136,7 +136,6 @@ exports.setApp = function ( app, client )
       var ret;
       if (results)
       {
-        // results.isVerified = true;
         var fn = results.firstName;
         var ln = results.lastName;
         var id = results.id;
