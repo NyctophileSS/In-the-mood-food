@@ -15,7 +15,8 @@ function ResetPassword()
     {
         event.preventDefault();
 
-        var obj = {email:userEmail, newPassword:userNewPassword1, passwordToken:userToken};
+        var obj = {email:userEmail.value, newPassword:userNewPassword1.value, 
+                    passwordToken:userToken.value};
         var js = JSON.stringify(obj);
 
         if (userEmail.value == "")

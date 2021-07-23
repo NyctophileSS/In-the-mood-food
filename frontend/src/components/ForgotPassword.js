@@ -12,7 +12,7 @@ function ForgotPassword()
     {
         event.preventDefault();
 
-        var obj = {email:userEmail};
+        var obj = {email:userEmail.value};
         var js = JSON.stringify(obj);
 
         if (userEmail.value == "")

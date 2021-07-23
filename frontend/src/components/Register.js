@@ -38,7 +38,7 @@ function Register()
         event.preventDefault();
 
         var obj = {firstName:fn.value, lastName:ln.value, 
-                    login:loginName.value,password:loginPassword1.value, 
+                    login:loginName.value, password:loginPassword1.value, 
                     phoneNumber:loginPhoneNumber.value};
         var js = JSON.stringify(obj);
 
