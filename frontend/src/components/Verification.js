@@ -32,8 +32,7 @@ function Verification()
             const response = await fetch(bp.buildPath('api/verification'),
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
-            var storage = require('../tokenStorage.js');
-            var temp = JSON.stringify(await response.text())
+            var temp = JSON.stringify(await response.text());
             var res = JSON.parse(temp);              
             if (res.error) 
             {
@@ -41,16 +40,6 @@ function Verification()
             }
             else 
             {
-                storage.storeToken(res);
-                // var jwt = require('jsonwebtoken');
-
-                // var ud = jwt.decode(storage.retrieveToken(),{complete:true});
-                // var userId = ud.payload.userId;
-                // var firstName = ud.payload.firstName;
-                // var lastName = ud.payload.lastName;
-              
-                // var user = {firstName:firstName,lastName:lastName,id:userId}
-                // localStorage.setItem('user_data', JSON.stringify(user));
                 window.location.href = '/';
             }
 
