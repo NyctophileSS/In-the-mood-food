@@ -46,7 +46,8 @@ function ResetPassword()
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
             var storage = require('../tokenStorage.js');
-            var res = JSON.parse(await response.text());              
+            var temp = JSON.stringify(await response.text())
+            var res = JSON.parse(temp);              
             if (res.error) 
             {
                 setMessage(res.error);//'could not verify user');
