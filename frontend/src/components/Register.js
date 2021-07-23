@@ -77,8 +77,7 @@ function Register()
                 {method:'POST',body:js,headers:{'Content-Type': 'application/json'}});
 
             var storage = require('../tokenStorage.js');
-            var temp = JSON.stringify(await response.text);
-            var res = JSON.parse(await temp);
+            var res = JSON.parse(await response.text());
             if (res.error) 
             {
                 setMessage(res.error);//'Error creating user account');
