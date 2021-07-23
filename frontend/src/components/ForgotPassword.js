@@ -45,7 +45,7 @@ function ForgotPassword()
               
                 var user = {firstName:firstName,lastName:lastName,id:userId}
                 localStorage.setItem('user_data', JSON.stringify(user));
-                window.location.href = '/';
+                window.location.href = '/reset-password';
             }
         }
         catch(e)
