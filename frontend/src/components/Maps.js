@@ -16,7 +16,7 @@ function initMap() {
 
   var foodLocation = new google.maps.LatLng(28.60227, -81.20011);
 
-  map = new google.maps.Map(document.getElementById('Map'), {center: foodLocation, zoom: 12});
+  map = new google.maps.Map({center: foodLocation, zoom: 12});
 
   foodLocation = new google.maps.LatLng(lat, lng);
 
