@@ -4,8 +4,8 @@ var infowindow;
 
 // Need to get this info from quiz page
 var distance = 30000;
-var foodType = 'Steak';
-var userRating = 3;
+var foodType = 'Mexican';
+var userRating = 2;
 var maxPrice = 1;
 
 var lat, lng;
@@ -70,7 +70,7 @@ function getLocation() {
           lng: position.coords.longitude,
         };
         infoWindow.setPosition(pos);
-        infoWindow.setContent("Your Location: <br>Lat: " + pos.lat + " Lng: " + pos.lng);
+        infoWindow.setContent("Your Location");
         infoWindow.open(map);
         map.setCenter(pos);
         setUserLocation(pos.lat, pos.lng);
