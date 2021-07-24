@@ -21,7 +21,6 @@ export default function QuizQuestions(){
                     <option value='1'>$$</option>
                     <option value='2'>$$$</option>
                     <option value='3'>$$$$</option>
-                    <option value='4'>$$$$$</option>
                 </select></p>
                 <label for='distance'>What distance are you willing to drive</label>
                 <p><input id='distance' type='number' min={0} max={50} step={5} ref={(c) => distanceRadiusMiles = c}></input> miles</p>
