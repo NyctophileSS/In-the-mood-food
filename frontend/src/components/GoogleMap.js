@@ -14,7 +14,7 @@ export default class MapDiv extends React.Component() {
 
         const placesRequest = {
             location: new mapsApi.LatLng(280.60227, -81.2001),
-            query: '',
+            query: 'Mexican',
             radius: 30000,
             maxPriceLevel: 1,
             type: ['restaurant'],
