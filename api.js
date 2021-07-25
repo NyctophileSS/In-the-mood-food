@@ -85,7 +85,7 @@ exports.setApp = function ( app, client )
       const results = await db.collection('Users').insertOne({FirstName:firstName, LastName:lastName, 
                                               Login:login, Password:password, PhoneNumber:phoneNumber, isVerified:false, token: userToken});
 
-      const emailBody = "<b>Hello " + firstName + ", please use the included link to verify your email and gain access to your In the Mood Food account! " + bp.buildPath('verification') + " and enter the token: " + userToken + " </b>";
+      const emailBody = "<b>Hello " + firstName + ", please use the included link to verify your email and gain access to your In the Mood Food account! " + bp.buildPath('verification') + " and enter the token: " + userToken + "</b>";
 
 
       // send mail with defined transport object
