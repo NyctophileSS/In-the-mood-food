@@ -31,8 +31,8 @@ export default function QuizQuestions() {
                 </div>
 
                 <div id="q3">
-                    <div><label for='cuisine'>What you are in the mood for?</label></div>
-                    <div><input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></div>
+                    <div><label for='cuisine'>What food do you want?</label></div>
+                    <div><input id='cuisine' type="text" placeholder='"Burgers", etc.' ref={(c) => cuisineInput = c}></input></div>
                 </div>
 
                 <div id="q4">

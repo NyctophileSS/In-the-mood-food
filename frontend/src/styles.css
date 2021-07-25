@@ -79,7 +79,8 @@ input[type="text"],input[type="password"], button{
 
 #loginDiv,
 #registerDiv,
-#questionsDiv{
+#questionsDiv,
+#loggedInDiv{
     width: 80%;
     border-radius: 1em;
     padding: 1em;
@@ -94,6 +95,12 @@ input[type="text"],input[type="password"], button{
     height: 100%;
 }
 
+#loggedInDiv{
+    background-color: none;
+
+    flex-flow: row nowrap;
+}
+
 #q1,
 #q2,
 #q3,
@@ -102,6 +109,7 @@ input[type="text"],input[type="password"], button{
     flex-flow:row nowrap;
     justify-content: space-between;
     padding: 0.25em;
+    padding-bottom: 1em;
 }
 
 #loginButton,
