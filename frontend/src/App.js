@@ -8,7 +8,6 @@ import QuizPage from './pages/QuizPage';
 import VerificationPage from './pages/VerificationPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
-import ResultsPage from './pages/ResultsPage';
 
 function App() {
   return (
