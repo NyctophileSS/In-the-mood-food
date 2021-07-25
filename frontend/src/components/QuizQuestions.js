@@ -16,7 +16,7 @@ export default function QuizQuestions() {
         <div id="questionsDiv">
             <form>
                 <div id="q1">
-                    <div><label for='price'>What price range are you interested in?</label></div>
+                    <div><label for='price'>What's your budget?</label></div>
                     <div><select id='price' ref={(c) => price = c}>
                         <option value='1'>$</option>
                         <option value='2'>$$</option>
@@ -26,17 +26,17 @@ export default function QuizQuestions() {
                 </div>
 
                 <div id="q2">
-                    <div><label for='distance'>What distance are you willing to drive</label></div>
+                    <div><label for='distance'>What's your max distance?</label></div>
                     <div><input id='distance' type='number' min={0} max={50} step={5} ref={(c) => distanceRadiusMiles = c}></input> miles</div>
                 </div>
 
                 <div id="q3">
-                    <div><label for='cuisine'>Please provide what food you are "In-The-Mood" for:</label></div>
+                    <div><label for='cuisine'>What you are in the mood for?</label></div>
                     <div><input id='cuisine' type="text" placeholder='Ex. "American", "Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></div>
                 </div>
 
                 <div id="q4">
-                <div><label for='rating'>Provide a preferred rating:</label></div>
+                <div><label for='rating'>What's your preferred rating?</label></div>
                     <div><select id='rating' ref={(c) => rating = c}>
                         <option value='2'>2.0 and up</option>
                         <option value='2.5'>2.5 and up</option>
