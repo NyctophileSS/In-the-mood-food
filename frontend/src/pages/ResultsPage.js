@@ -8,6 +8,7 @@ const ResultsPage = () =>{
             <PageTitle/>
             <GoogleMap/>
         </div>
+
     );
 };
 
