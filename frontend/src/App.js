@@ -32,9 +32,6 @@ function App() {
         <Route path="/reset-password" exact>
           <ResetPasswordPage />
         </Route>
-        <Route path='/map' exact>
-          <ResultsPage />
-        </Route>
         <Redirect to="/" />
       </Switch>  
     </Router>
