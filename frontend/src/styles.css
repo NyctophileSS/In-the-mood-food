@@ -6,10 +6,14 @@ Inner-Background (White): #f8f8ff
 */
 
 body {
+    background-image: url("background.png");
+    background-size: 15em;
     background-color: #6a62d2;
 }
 
 #title {
+    color: #f8f8ff;
+    text-shadow: 2px 2px #000000;
     font-size: 2rem;
 }
 
@@ -40,6 +44,8 @@ input:focus, input:active{
 #registerDiv,
 #questionsDiv,
 #loggedInDiv{
+    box-shadow: 0.5em 0.5em 0.5em #000000;
+
     width: 80%;
     border-radius: 1em;
     padding: 1em;
@@ -54,10 +60,17 @@ input:focus, input:active{
     height: 100%;
 }
 
+#loggedInDiv{
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
 #loginButton,
 #registerButton,
 #logoutButton,
-#quizSearch{
+#QuizSearch,
+#forgotPasswordButton,
+#verifyButton{
     background-color:#6a62d2; /*works*/
     cursor: pointer;
     justify-content: center;
