@@ -27,12 +27,13 @@ export default function QuizQuestions() {
 
                 <div id="q2">
                     <div><label for='distance'>What's your max distance?</label></div>
-                    <div><input id='distance' type='number' min={0} max={50} step={5} ref={(c) => distanceRadiusMiles = c}></input> miles</div>
+                    <div><input id='distance' type='number' min={0} max={50} step={5} 
+                    ref={(c) => distanceRadiusMiles = c}></input> miles</div>
                 </div>
 
                 <div id="q3">
                     <div><label for='cuisine'>What food d'ya want?</label></div>
-                    <div><input id='cuisine' type="text" placeholder='"Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></div>
+                    <div><input id='cuisine' type="text" placeholder='"Burgers", etc.' ref={(c) => cuisineInput = c}></input></div>
                 </div>
 
                 <div id="q4">

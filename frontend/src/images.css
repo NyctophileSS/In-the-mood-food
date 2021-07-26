@@ -1,0 +1,19 @@
+#loginName,
+#first,
+#last{
+    background-image: url(https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png);
+}
+
+#loginPassword,
+#pw,
+#verifypw{
+    background-image: url(https://img.icons8.com/ios/452/lock--v1.png);
+}
+
+#phone{
+    background-image: url(https://cdn2.iconfinder.com/data/icons/font-awesome/1792/phone-512.png);
+}
+
+#email{
+    background-image: url(https://cdn.iconscout.com/icon/free/png-256/email-1818372-1541480.png);
+}

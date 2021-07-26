@@ -1,27 +1,8 @@
+@import url("images.css");
+@import url("quiz.css");
 /*Follow this color scheme
 Background (Blue): #6a62d2
 Inner-Background (White): #f8f8ff
-*/
-
-/*Follow this code order
-Size
-Spacing
-Colors
-Text
-Display Properties
-*/
-
-/*
-All text-related sizes should be in rem units
-All other sizes should be in em units
-*/
-
-/*CSS To-Do:
-Find a good background picture like graham suggested
-(Background: Outlines of food. I could edit it to make it work if the colors are wrong)
-Test on an actual phone, fix scaling and spacing as appropriate to make the login page fit on a screen
-Add animations for form clicks and button hovers
-Add loading screens
 */
 
 body {
@@ -80,28 +61,6 @@ input[type="text"],input[type="password"], button{
     text-indent: 0rem;
 }
 
-#loggedInDiv{
-    flex-flow: row nowrap;
-    justify-content: space-between;
-}
-
-#q1,
-#q2,
-#q3,
-#q4{
-    display: flex;
-    flex-flow:row nowrap;
-    justify-content: space-between;
-    padding: 0.25em;
-    padding-bottom: 1em;
-}
-
-#cuisine{
-    width: 60%;
-    text-indent: 1rem;
-    height: 1.5rem;
-}
-
 #forgotPassword{
 
    color:#6a6b6f; 
@@ -110,24 +69,4 @@ input[type="text"],input[type="password"], button{
 
 #map {
     height: 100%;
-}
-
-#loginName,
-#first,
-#last{
-    background-image: url(https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png);
-}
-
-#loginPassword,
-#pw,
-#verifypw{
-    background-image: url(https://img.icons8.com/ios/452/lock--v1.png);
-}
-
-#phone{
-    background-image: url(https://cdn2.iconfinder.com/data/icons/font-awesome/1792/phone-512.png);
-}
-
-#email{
-    background-image: url(https://cdn.iconscout.com/icon/free/png-256/email-1818372-1541480.png);
 }
