@@ -31,12 +31,12 @@ export default function QuizQuestions() {
                 </div>
 
                 <div id="q3">
-                    <div><label for='cuisine'>What food do you want?</label></div>
-                    <div><input id='cuisine' type="text" placeholder='"Burgers", etc.' ref={(c) => cuisineInput = c}></input></div>
+                    <div><label for='cuisine'>What food d'ya want?</label></div>
+                    <div><input id='cuisine' type="text" placeholder='"Burgers", "Pasta", etc.' ref={(c) => cuisineInput = c}></input></div>
                 </div>
 
                 <div id="q4">
-                <div><label for='rating'>What's your preferred rating?</label></div>
+                    <div><label for='rating'>What's your preferred rating?</label></div>
                     <div><select id='rating' ref={(c) => rating = c}>
                         <option value='2'>2.0 and up</option>
                         <option value='2.5'>2.5 and up</option>
