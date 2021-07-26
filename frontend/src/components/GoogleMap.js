@@ -55,7 +55,7 @@ export default class MapDiv extends Component {
             <div height='70rem' width='70rem'>
                 <GoogleMapReact
                     bootstrapURLKeys={{
-                        key: 'AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I',
+                        key: 'AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p',
                         libraries: ['places']
                     }} defaultZoom={12}
                     defaultCenter={{ lat: 28.60227, lng: -81.20011 }}
