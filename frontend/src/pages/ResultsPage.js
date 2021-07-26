@@ -1,6 +1,6 @@
 import React from 'react';
 import PageTitle from '../components/PageTitle';
-import GoogleApiWrapper from '../components/GoogleApiWrapper';
+import GoogleApiWrapper from '../components/GoogleMap';
 
 const ResultsPage = () => {
     return (
