@@ -7,7 +7,17 @@ const mapStyles = {
     height: '100%'
 };
 
+
 export default class MapDiv extends Component {
+    
+    apiHasLoaded = ((map, mapsApi) => {
+        this.setState({
+            mapsApi,
+            placesService: new mapsApi.places.PlacesService(map),
+        })
+        this.handleSearch()
+    });
+
     handleSearch = (() => {
         const { mapsApi, placesService } = this.state;
         const newResults = [];
@@ -44,7 +54,7 @@ export default class MapDiv extends Component {
                     defaultZoom={12}
                     defaultCenter={{ lat: 280.60227, lng: -81.20011 }}
                     yesIWantToUseMapApiInternals={true}
-                    onGoogleApiLoaded={({ map, mapsApi }) => this.handleSearch(map, mapsApi)}
+                    onGoogleApiLoaded={({ map, mapsApi }) => this.apiHasLoaded(map, mapsApi)}
                 </GoogleMapReact>
             </div>
         );
