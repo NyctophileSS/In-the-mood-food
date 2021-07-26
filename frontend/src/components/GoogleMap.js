@@ -43,11 +43,10 @@ export default class MapDiv extends Component {
                         //key: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&callback=initMap&libraries=places&v=weekly",
                         key: 'AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I',
                         libraries: ['places']
-                    }}>
-                    defaultZoom={12}
+                    }} defaultZoom={12}
                     defaultCenter={{ lat: 280.60227, lng: -81.20011 }}
                     yesIWantToUseMapApiInternals={true}
-                    onGoogleApiLoaded={({ map, maps }) => console.log(map, maps)}
+                    onGoogleApiLoaded={({ map, maps }) => console.log(map, maps)} >
                 </GoogleMapReact>
             </div>
         );
