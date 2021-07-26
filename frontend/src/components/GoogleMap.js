@@ -9,29 +9,16 @@ const mapStyles = {
 
 const ourLatLng = {  lat: 280.60227, lng: -81.2001 };
 
+
 export default class MapDiv extends Component {
-    constructor(props){
-        super(props);
-        this.state={
-            map : { },
-            mapsApi : { },
-            placesService : mapsApi.places.PlacesService(map),
-            currentLatLng: {},
-            searchResults: []
-        };
-    }
-    apiHasBeenCalled = ((map,mapsApi) => {
-        this.setState= ({
-            map,
-            maps,
-        })
-        this.handleSearch()
-    })
+    
+    
 
-    handleSearch = (() => {
-        const { mapsApi, placesService } = this.state;
+    handleSearch = ((map, mapsApi) => {
+        
         const newResults = [];
-
+        const markers = [];
+        const placesService = new mapsApi.LatLng(ourLatLng.lat, ourLatLng.lng)
         const placesRequest = {
             location: new mapsApi.LatLng(280.60227, -81.2001),
             query: 'burger',
@@ -51,32 +38,29 @@ export default class MapDiv extends Component {
             }
         })
         );
-        this.setState({ searchResults: newResults })
+        for (let i = 0; i < newResults.length; i++){
+            markers.push = new maps.Marker({
+                position: newResults[i].geometry.location,
+                map,
+                title: newResults[i].name
+            }) 
+        }
+        return markers;
     });
 
+
     render() {
-        const Markers = this.state.searchResults.map( d => {
-            <Marker 
-                key = {d.id}
-                lat = {d.lat}
-                lng = {d.lng}
-                text = {d.name}
-                fontColor = {blue}
-            />
-            
-        })
+        
         return (
             <div height='70rem' width='70rem'>
                 <GoogleMapReact
                     bootstrapURLKeys={{
-                        //key: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&callback=initMap&libraries=places&v=weekly",
                         key: 'AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I',
                         libraries: ['places']
                     }} defaultZoom={12}
                     defaultCenter={{ lat: 280.60227, lng: -81.20011 }}
                     yesIWantToUseMapApiInternals={true}
-                    onGoogleApiLoaded={({ map, maps }) => this.apiHasBeenCalled(map, maps) } >
-                        {Markers}
+                    onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
                 </GoogleMapReact>
             </div>
         );
