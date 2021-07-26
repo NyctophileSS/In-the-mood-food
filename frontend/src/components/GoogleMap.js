@@ -7,7 +7,7 @@ const mapStyles = {
     height: '100%'
 };
 
-export default class MapDiv extends React.Component() {
+class MapDiv extends React.Component() {
     handleSearch = (() => {
         const { mapsApi, placesService } = this.state;
         const newResults = [];
