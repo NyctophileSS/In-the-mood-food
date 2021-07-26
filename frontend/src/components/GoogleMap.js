@@ -12,7 +12,7 @@ const ourLatLng = {  lat: 28.5986, lng: -81.1986 };
 
 const MapContainer = {
     height: '80vh',
-    width: '80%',
+    width: '100%',
 }
 const markColor = {
     background : 'red'
@@ -43,6 +43,13 @@ export default class MapDiv extends Component {
                     newResults.push(results[i]);
                 }
             }
+            for (let i = 0; i < newResults.length; i++){
+                console.log(newResults[i].name);
+                console.log(newResults[i].price_level);
+                console.log(newResults[i].geometry.location.lat);
+                console.log(newResults[i].geometry.location.lng);
+                console.log(newResults[i].rating);
+            }
         })
         );
     });
@@ -50,7 +57,7 @@ export default class MapDiv extends Component {
 
     render() {
         //This is as far I have gotten successfully atm. If I am asleep, continue from here.
-        const TestMarker = ({ text }) => <div>{text}</div>;
+        const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
