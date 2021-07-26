@@ -37,18 +37,13 @@ export default class MapDiv extends Component {
 
         placesService.textSearch(placesRequest, ((results) => {
             for (let i = 0; i < results.length; i++) {
-                console.log(results[i]);
                 const rating = results[i].rating;
                 if (results[i].rating >= placesRequest.rating) {
                     newResults.push(results[i]);
                 }
             }
             for (let i = 0; i < newResults.length; i++){
-                console.log(newResults[i].name);
-                console.log(newResults[i].price_level);
-                console.log(newResults[i].geometry.location.lat);
-                console.log(newResults[i].geometry.location.lng);
-                console.log(newResults[i].rating);
+                console.log(newResults[i]);
             }
         })
         );
