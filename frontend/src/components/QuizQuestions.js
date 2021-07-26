@@ -10,6 +10,7 @@ export default function QuizQuestions() {
 
     const doQuizQuery = async event => {
         distanceRadiusMeters = distanceRadiusMiles / 0.00062137;
+        window.location.href = '/map';
     }
 
     return (
