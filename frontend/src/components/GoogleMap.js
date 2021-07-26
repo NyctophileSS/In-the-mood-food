@@ -39,7 +39,7 @@ export default class MapDiv extends Component {
         })
         );
         for (let i = 0; i < newResults.length; i++){
-            markers.push = new maps.Marker({
+            markers.push = new mapsApi.Marker({
                 position: newResults[i].geometry.location,
                 map,
                 title: newResults[i].name
