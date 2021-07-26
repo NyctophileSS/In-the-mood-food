@@ -38,7 +38,6 @@ export default class MapDiv extends Component {
 
         placesService.textSearch(placesRequest, ((results) => {
             for (let i = 0; i < results.length; i++) {
-                const rating = results[i].rating;
                 if (results[i].rating >= rating) {
                     newResults.push(results[i]);
                 }
