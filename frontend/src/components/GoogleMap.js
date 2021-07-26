@@ -19,6 +19,7 @@ const markColor = {
 }
 
 const newResults = [];
+const rating = 3;
 
 export default class MapDiv extends Component {
     
@@ -38,7 +39,7 @@ export default class MapDiv extends Component {
         placesService.textSearch(placesRequest, ((results) => {
             for (let i = 0; i < results.length; i++) {
                 const rating = results[i].rating;
-                if (results[i].rating >= placesRequest.rating) {
+                if (results[i].rating >= rating) {
                     newResults.push(results[i]);
                 }
             }
