@@ -8,11 +8,14 @@ const mapStyles = {
     height: '100%'
 };
 
-const ourLatLng = {  lat: 280.60227, lng: -81.2001 };
+const ourLatLng = {  lat: 28.5986, lng: -81.1986 };
 
 const MapContainer = {
-    height: '90vh',
-    width: '100%'
+    height: '80vh',
+    width: '80%',
+}
+const markColor = {
+    background : 'red'
 }
 
 
@@ -27,7 +30,7 @@ export default class MapDiv extends Component {
         const markers = [];
         const placesService = new mapsApi.places.PlacesService(map)
         const placesRequest = {
-            location: new mapsApi.LatLng(28.60227, -81.2001),
+            location: new mapsApi.LatLng(28.5986, -81.1986),
             query: 'burger',
             radius: 30000,
             maxPriceLevel: 4,
@@ -66,10 +69,10 @@ export default class MapDiv extends Component {
                         libraries: ['places']
                     }} 
                     defaultZoom={12}
-                    defaultCenter={{ lat: 28.60227, lng: -81.20011 }}
+                    defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                        <div lat={ourLatLng.lat} lng={ourLatLng.lng}></div>
+                        <div style={markColor} lat={ourLatLng.lat} lng={ourLatLng.lng}></div>
                 </GoogleMapReact>
             </div>
         );
