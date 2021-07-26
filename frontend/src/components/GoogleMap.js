@@ -12,13 +12,14 @@ const ourLatLng = {  lat: 28.5986, lng: -81.1986 };
 
 const MapContainer = {
     height: '80vh',
-    width: '80%',
+    width: '100%',
 }
 const markColor = {
     background : 'red'
 }
 
 const newResults = [];
+const rating = 4;
 
 export default class MapDiv extends Component {
     
@@ -37,11 +38,13 @@ export default class MapDiv extends Component {
 
         placesService.textSearch(placesRequest, ((results) => {
             for (let i = 0; i < results.length; i++) {
-                console.log(results[i]);
                 const rating = results[i].rating;
-                if (results[i].rating >= placesRequest.rating) {
+                if (results[i].rating >= rating) {
                     newResults.push(results[i]);
                 }
+            }
+            for (let i = 0; i < newResults.length; i++){
+                console.log(newResults[i]);
             }
         })
         );
@@ -50,7 +53,7 @@ export default class MapDiv extends Component {
 
     render() {
         //This is as far I have gotten successfully atm. If I am asleep, continue from here.
-        const TestMarker = ({ text }) => <div>{text}</div>;
+        const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
