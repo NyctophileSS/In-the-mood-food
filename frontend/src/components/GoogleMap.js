@@ -13,7 +13,7 @@ export default class MapDiv extends Component {
         const newResults = [];
 
         const placesRequest = {
-            location: new mapsApi.LatLng(280.60227, -81.2001),
+            location: new mapsApi.latLng(280.60227, -81.2001),
             query: 'burger',
             radius: 30000,
             maxPriceLevel: 1,
