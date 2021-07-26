@@ -40,7 +40,8 @@ export default class MapDiv extends Component {
             <div height='35rem' width='100%'>
                 <GoogleMapReact
                     bootstrapURLKeys={{
-                        key: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&callback=initMap&libraries=places&v=weekly",
+                        //key: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&callback=initMap&libraries=places&v=weekly",
+                        key: 'AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I',
                         libraries: ['places']
                     }}>
                     defaultZoom={12}
