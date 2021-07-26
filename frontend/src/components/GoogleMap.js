@@ -13,7 +13,7 @@ export default class MapDiv extends Component {
         const newResults = [];
 
         const placesRequest = {
-            location: new mapsApi.latLng(280.60227, -81.2001),
+            location: new mapsApi.LatLng(280.60227, -81.2001),
             query: 'burger',
             radius: 30000,
             maxPriceLevel: 1,
@@ -30,7 +30,7 @@ export default class MapDiv extends Component {
             }
         })
         );
-        this.setState({ searchResults: { latLng : newResults.latLng, rating: newResults.rating, name: newResults.name, formatted_address: newResults.formatted_address, photo: newResults.photo } })
+        this.setState({ searchResults: newResults })
     });
 
     render() {
@@ -44,7 +44,7 @@ export default class MapDiv extends Component {
                     defaultZoom={12}
                     defaultCenter={{ lat: 280.60227, lng: -81.20011 }}
                     yesIWantToUseMapApiInternals={true}
-                    onGoogleApiLoaded={({ map, maps }) => this.apiHasLoaded(map, maps)}
+                    onGoogleApiLoaded={({ map, mapsApi }) => this.handleSearch(map, mapsApi)}
                 </GoogleMapReact>
             </div>
         );
