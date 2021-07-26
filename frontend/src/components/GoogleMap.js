@@ -48,14 +48,6 @@ export default class MapDiv extends Component {
             }
         })
         );
-        for (let i = 0; i < newResults.length; i++){
-            markers.push = new mapsApi.Marker({
-                position: newResults[i].geometry.location,
-                map,
-                title: newResults[i].name
-            }) 
-        }
-        return markers;
     });
 
 
@@ -72,7 +64,7 @@ export default class MapDiv extends Component {
                     defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                        <div style={markColor} lat={ourLatLng.lat} lng={ourLatLng.lng}></div>
+                       <Component lat={28.5986} lng={-81.1986} text='THIS IS A TEST MARKER' ></Component> 
                 </GoogleMapReact>
             </div>
         );
