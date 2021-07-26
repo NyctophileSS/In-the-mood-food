@@ -31,6 +31,10 @@ input[type="text"],input[type="password"], button{
     text-indent: 3rem;
     font-family: 'Ubuntu', sans-serif;
 }
+input:focus, input:active{
+    border: orangered;
+    border-width: 0.25em;
+}
 
 #loginDiv,
 #registerDiv,
@@ -56,7 +60,7 @@ input[type="text"],input[type="password"], button{
 #quizSearch{
     background-color:#6a62d2; /*works*/
     cursor: pointer;
-
+    justify-content: center;
     text-align: center;
     text-indent: 0rem;
 }
@@ -65,8 +69,4 @@ input[type="text"],input[type="password"], button{
 
    color:#6a6b6f; 
    font-size: 0.80rem;
-}
-
-#map {
-    height: 100%;
 }
