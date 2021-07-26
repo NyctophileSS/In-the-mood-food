@@ -1,253 +1,85 @@
-/*Follow this guide for formatting: https://css-tricks.com/poll-results-how-do-you-order-your-css-properties/*/
-/*Only use the following colors
-Dark Green  #379783
-Mid Green   #1CB64B (Only for button hover)
-Light Green #5CDB95
-Navy Blue   #05386B
-Off White   #EDF5E1
+@import url("images.css");
+@import url("quiz.css");
+/*Follow this color scheme
+Background (Blue): #6a62d2
+Inner-Background (White): #f8f8ff
 */
 
 body {
-    background-color: #5CDB95;
+    background-image: url("background.png");
+    background-size: 15em;
+    background-color: #6a62d2;
 }
 
-#title {    
-    margin-top: 5%;
-
-    color: #05386B;
-    font-size: 40px;
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif;
+#title {
+    color: #f8f8ff;
+    text-shadow: 2px 2px #000000;
+    font-size: 2rem;
 }
 
-input[type="text"],input[type="password"]{
+input[type="text"],input[type="password"], button{
     width: 80%;
-    border-radius: 25px;
-    margin-bottom: 2%;
-    outline: none;
-    border: none;
-
-    color: #05386B;
-    font-size: 30px;
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-input[type="text2"]{
-    width: 80%;
-    /*border-radius: 25px;*/
-    margin-bottom: 2%;
-    outline: none;
-    border: none;
-
-    color: #05386B;
-    font-size: 25px;
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-.buttons{
-    width: 25%;
-    padding: 10px;
-    border-radius: 25px;
-    border: none;
-
-    color: #05386B;
-    background-color: #5CDB95;
-    font-size: 30px;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-
-.buttons:hover{
-    color: #5CDB95;
-    background-color: #1CB64B;
-}
-
-
-.invertedButtons{
-    margin-top: 5%;
-    width: 15%;
-    padding: 10px;
-    border-radius: 25px;
-    border: none;
-
-    color: #EDF5E1;
-    background-color: #379783;
-
-    font-size: 30px;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-.invertedButtons:hover{
-    color: #05386B;
-    background-color: #1CB64B;
-}
-
-.invertedMiniButtons{
-    display:inline-block;
-    width: 50%;
-    padding: 0px;
-    border-radius: 25px;
-    border: none;
-
-    color: #EDF5E1;
-    background-color: #379783;
-
-    font-size: 25px;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-.invertedMiniButtons:hover{
-    color: #05386B;
-}
-
-#loginDiv{
-    width: 70%;
-    padding: 25px;
-    border-radius: 25px;
-    margin: auto;
-
-    background-color: #379783;
-    font-size: 30px;
-    text-align: center;
-}
-#registerDiv{
-    width: 70%;
-    padding: 25px;
-    border-radius: 25px;
-    margin: auto;
-
-    background-color: #379783;
-    font-size: 30px;
-    text-align: center;
-}
-
-#inner-title{
-    display:inline-block;
-    width: 90%;
-    margin-bottom: 2%;
-
-    color: #EDF5E1;
-    font-size: 0.8em;
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-.innerText{
-    display:inline-block;
-    width: 20%;
-    margin-bottom: 2%;
-
-    color: #EDF5E1;
-    font-size: 0.8em;
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-}
-
-#message{
-    width: auto;
-}
-
-.inline{
-    display: inline-block;
-}
-
-#searchTop{
-    width: 100%;
-
-    text-align: center;
-}
-
-#searchCenter{
-    width: 100%;
-
-    text-align: right;
-}
-
-#searchText{
-    font-size: 10px;
-}
-
-#addButton{
-    margin-left: 15%;
-    float: left;
-}
-
-#logoutButton{
-    margin-right: 15%;
-    float: right;
-}
-
-#searchBottom{
-    height: 60px;
-    line-height: 60px;
-    display: inline-block;
-    width: 100%;
-}
-
-#searchBar{
-    height: 100%;
-    float: left;
-    width:40%;
+    border-radius: 0.25em;
     border: none;
     outline: none;
-}
+    height: 2.5rem;
 
-#userName{
-    display: inline-block;
-    width: 80%;
-    
-    text-align: center;
-}
+    background-color:#e5e8ed;
+    background-repeat: no-repeat;
+    background-size: 2em;
+    background-position-x: 1%;
+    background-position-y: 50%;
 
-#searchButton{
-    float:right;
-}
-
-#divider{
-    color:#05386B
-}
-
-#SearchResult{
-    display: none;
-}
-
-#searchResultsTable{
-    width: 100%
-}
-
-tr { 
-    border: none; 
-}
-
-th{
-    
-    width: 22%;
-
-    color: #EDF5E1;
-    font-size: 25px;
+    font-size: 1rem;
     text-align: left;
+    text-indent: 3rem;
     font-family: 'Ubuntu', sans-serif;
 }
-    /*display: inline-block;
-    /*border: solid 1px #DDD*/
-    /*border-collapse: collapse; padding: 2px 3px; text-align: center;*/
-
-td{
-    width: 22%;
-
-    color: #EDF5E1;
-    font-size: 20px;
-    font-family: 'Ubuntu', sans-serif;
+input:focus, input:active{
+    border: orangered;
+    border-width: 0.25em;
 }
-    /*display: inline-block;*/
-    /*border-collapse: collapse; padding: 2px 3px; text-align: center;*/
-    /*text-align: left;*/
 
-td:nth-child(n+4) {
-    width: 10%;  
+#loginDiv,
+#registerDiv,
+#questionsDiv,
+#loggedInDiv{
+    box-shadow: 0.5em 0.5em 0.5em #000000;
+
+    width: 80%;
+    border-radius: 1em;
+    padding: 1em;
+
+    margin: auto;
+    margin-bottom: 1em;
+
+    background-color: #f8f8ff;
+
+    display: flex;
+    flex-flow: column;
+    height: 100%;
 }
-#buttonCell{
-    text-align: right;
+
+#loggedInDiv{
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+#loginButton,
+#registerButton,
+#logoutButton,
+#QuizSearch,
+#forgotPasswordButton,
+#verifyButton{
+    background-color:#6a62d2; /*works*/
+    cursor: pointer;
+    justify-content: center;
+    text-align: center;
+    text-indent: 0rem;
+}
+
+#forgotPassword{
+
+   color:#6a6b6f; 
+   font-size: 0.80rem;
 }

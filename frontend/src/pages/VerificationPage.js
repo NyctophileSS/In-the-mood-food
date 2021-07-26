@@ -1,18 +1,17 @@
 import React from 'react';
-
 import PageTitle from '../components/PageTitle';
-import { LoginRegisterSwapper } from '../components/context';
+import Verification from '../components/Verification';
 import '../styles.css';
 
-const LoginPage = () =>
+const VerificationPage = () =>
 {
 
     return(
         <div>
         <PageTitle />
-        <LoginRegisterSwapper/>
+        <Verification/>
         </div>
     );
 };
 
-export default LoginPage;
+export default VerificationPage;

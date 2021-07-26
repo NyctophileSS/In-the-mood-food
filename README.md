@@ -1,8 +1,8 @@
 # In-the-mood-food
 COP4331 Large project, In the mood food, is a phone app for finding food you are in the mood for. The planned features are as such
 - Gotta Have It:
-  - A questionnaire that gives suggestions based on answers.    (In Progress)
-  - A list of nearby restaurants based on your answers          (In Progress)
+  - A questionnaire that gives suggestions based on answers.    (JSX and API done, Visual and Routing in progress)
+  - A list of nearby restaurants based on your answers          (Done as Map, Stylizing Map in progress)
   - Login/Register Page                                         (JSX Done, Visual In Progress, Register API In Progress)
   - Email confirmation                                          (In Progress)
   - Forgot my username (enter email)                            (In Progress)
@@ -16,7 +16,7 @@ COP4331 Large project, In the mood food, is a phone app for finding food you are
   - Keeping track of YOUR restaurant visits                     (Unrealistic, but possible: Put on Halt for now)
   - A mark that you've visited a restaurant                     (Still Possible, In Progress)
   - A loading screen, lazy load, or transition screen           (In Progress: Some will make it, some won't)
-  - ~~A map view for the restaurants (as an alternative to the list).~~        (Dead)
+  - A map view for the restaurants (as an alternative to the list).       (Done)
   - A button to open google maps with the address for the restaurant pre-loaded.              (Still Possible, In Progress)
 - Could Do Without:            (The creative solo projects: If you want it, do it. But get the Must-do's done first)
   - ~~Filler questions (have no effect on search results)~~                    (Dead)
@@ -26,7 +26,7 @@ COP4331 Large project, In the mood food, is a phone app for finding food you are
   - Call function (can be done by makes a redirect to a website with the phone number. A phone handles this by opening the default phone calling app with the redirected number)           (Still Possible, In Progress)
   - ~~Ratings quick look or ratings deep dive feature~~                              (Dead)
   - ~~User may skip questions and have them not effect the results~~                 (Dead - default values will be entered on creation of account)
-  - Sorting function for restaurants (relevance to quiz results default, distance, price, alphabetical, recently visited, etc.)               (Still Possible, In Progress)
+  - ~~Sorting function for restaurants (relevance to quiz results default, distance, price, alphabetical, recently visited, etc.)~~               (Now that it is a map, no longer need it)
 - Dream Features:
   - Ordering Uber Eats/Grubhub, at least opening Uber Eats. Could be done lazily by just placing the restaurant name on your clipboard
   - All answers could be in the form of emojis
@@ -34,6 +34,6 @@ COP4331 Large project, In the mood food, is a phone app for finding food you are
 # of Tabs
 Login/Register Page
 Quiz Page
-Results Page (List View)
-~~Results Page (Map View, could just be a button)~~
+~~Results Page (List View)~~
+Results Page (Map View, could just be a button)
 

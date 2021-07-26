@@ -1,18 +1,17 @@
 import React from 'react';
-
 import PageTitle from '../components/PageTitle';
-import { LoginRegisterSwapper } from '../components/context';
+import ForgotPassword from '../components/ForgotPassword';
 import '../styles.css';
 
-const LoginPage = () =>
+const ForgotPasswordPage = () =>
 {
 
     return(
         <div>
         <PageTitle />
-        <LoginRegisterSwapper/>
+        <ForgotPassword/>
         </div>
     );
 };
 
-export default LoginPage;
+export default ForgotPasswordPage;
