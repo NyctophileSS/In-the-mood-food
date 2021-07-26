@@ -18,7 +18,7 @@ export default class MapDiv extends Component {
         
         const newResults = [];
         const markers = [];
-        const placesService = new mapsApi.LatLng(ourLatLng.lat, ourLatLng.lng)
+        const placesService = new mapsApi.places.PlacesService(map)
         const placesRequest = {
             location: new mapsApi.LatLng(280.60227, -81.2001),
             query: 'burger',
