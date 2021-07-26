@@ -19,7 +19,7 @@ const markColor = {
 }
 
 const newResults = [];
-const rating = 3;
+const rating = 4;
 
 export default class MapDiv extends Component {
     
