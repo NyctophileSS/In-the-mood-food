@@ -63,8 +63,8 @@ export default class MapDiv extends Component {
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
                        <TestMarker
-                            lat={newResults[0].geometry.location.lat}
-                            lng={newResults[0].geometry.location.lng}
+                            lat={ourLatLng.lat}
+                            lng={ourLatLng.lng}
                             text="Test Marker"
                        ></TestMarker>
                 </GoogleMapReact>
