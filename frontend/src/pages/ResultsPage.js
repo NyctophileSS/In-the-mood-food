@@ -1,12 +1,12 @@
 import React from 'react';
 import PageTitle from '../components/PageTitle';
-import GoogleApiWrapper from '../components/GoogleMap';
+import MapDiv from '../components/GoogleMap';
 
 const ResultsPage = () => {
     return (
         <div>
             <PageTitle />
-            <GoogleApiWrapper />
+            <MapDiv />
         </div>
     );
 };
