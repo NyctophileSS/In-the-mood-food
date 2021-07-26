@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import '../styles.css';
+import styled from 'styled-components';
+
 
 const mapStyles = {
     width: '100%',
@@ -8,6 +9,12 @@ const mapStyles = {
 };
 
 const ourLatLng = {  lat: 280.60227, lng: -81.2001 };
+
+const MapContainer = {
+    height: '90vh',
+    width: '100%'
+}
+
 
 
 export default class MapDiv extends Component {
@@ -52,12 +59,13 @@ export default class MapDiv extends Component {
     render() {
         
         return (
-            <div height='70rem' width='70rem'>
+            <div style={MapContainer} >
                 <GoogleMapReact
                     bootstrapURLKeys={{
-                        key: 'AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p',
+                        key: 'AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I',
                         libraries: ['places']
-                    }} defaultZoom={12}
+                    }} 
+                    defaultZoom={12}
                     defaultCenter={{ lat: 28.60227, lng: -81.20011 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
