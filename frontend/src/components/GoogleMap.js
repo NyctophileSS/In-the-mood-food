@@ -18,7 +18,7 @@ const markColor = {
     background : 'red'
 }
 
-
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export default class MapDiv extends Component {
     
@@ -64,7 +64,11 @@ export default class MapDiv extends Component {
                     defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                       <Component lat={28.5986} lng={-81.1986} text='THIS IS A TEST MARKER' ></Component> 
+                       <AnyReactComponent
+                            lat={ourLatLng.lat}
+                            lng={ourLatLng.lng}
+                            text="THIS IS A TEST MARKER"
+                       ></AnyReactComponent>
                 </GoogleMapReact>
             </div>
         );
