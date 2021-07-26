@@ -60,10 +60,17 @@ input:focus, input:active{
     height: 100%;
 }
 
+#loggedInDiv{
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
 #loginButton,
 #registerButton,
 #logoutButton,
-#quizSearch{
+#QuizSearch,
+#forgotPasswordButton,
+#verifyButton{
     background-color:#6a62d2; /*works*/
     cursor: pointer;
     justify-content: center;
