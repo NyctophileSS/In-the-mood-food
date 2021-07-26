@@ -30,7 +30,7 @@ export default class MapDiv extends Component {
             }
         })
         );
-        this.setState({ searchResults: newResults })
+        this.setState({ searchResults: { latLng : newResults.latLng, rating: newResults.rating, name: newResults.name, formatted_address: newResults.formatted_address, photo: newResults.photo } })
     });
 
     render() {
