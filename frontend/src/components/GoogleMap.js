@@ -49,11 +49,8 @@ export default class MapDiv extends Component {
 
 
     render() {
-        const AnyReactComponent = ({markers}) => (
-            markers.map(item => (
-                <div lat={item.geometry.location.lat} lng ={item.geometry.location.lng}>{item.name}</div>
-            ))
-        );
+        //This is as far I have gotten successfully atm. If I am asleep, continue from here.
+        const TestMarker = ({ text }) => <div>{text}</div>;
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
@@ -66,7 +63,9 @@ export default class MapDiv extends Component {
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
                        <AnyReactComponent
-                            markers={newResults}
+                            lat={ourLatLng.lat}
+                            lng={ourLatLng.lng}
+                            text="Test Marker"
                        ></AnyReactComponent>
                 </GoogleMapReact>
             </div>
