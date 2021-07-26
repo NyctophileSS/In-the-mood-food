@@ -18,16 +18,13 @@ const markColor = {
     background : 'red'
 }
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const newResults = [];
 
 export default class MapDiv extends Component {
     
     
 
     handleSearch = ((map, mapsApi) => {
-        
-        const newResults = [];
-        const markers = [];
         const placesService = new mapsApi.places.PlacesService(map)
         const placesRequest = {
             location: new mapsApi.LatLng(28.5986, -81.1986),
@@ -52,7 +49,11 @@ export default class MapDiv extends Component {
 
 
     render() {
-        
+        const AnyReactComponent = ({markers}) => (
+            markers.map(item => (
+                <div lat={item.geometry.location.lat} lng ={item.geometry.location.lng}>{item.name}</div>
+            ))
+        );
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
@@ -65,9 +66,7 @@ export default class MapDiv extends Component {
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
                        <AnyReactComponent
-                            lat={ourLatLng.lat}
-                            lng={ourLatLng.lng}
-                            text="THIS IS A TEST MARKER"
+                            markers={newResults}
                        ></AnyReactComponent>
                 </GoogleMapReact>
             </div>
