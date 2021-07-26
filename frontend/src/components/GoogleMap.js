@@ -64,7 +64,7 @@ export default class MapDiv extends Component {
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
                        <TestMarker
                             lat={newResults[i].geometry.location.lat}
-                            lng={newResults[i].geometry.location.lat}
+                            lng={newResults[i].geometry.location.lng}
                             text="Test Marker"
                        ></TestMarker>
                 </GoogleMapReact>
