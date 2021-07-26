@@ -78,6 +78,10 @@ input:focus, input:active{
     text-indent: 0rem;
 }
 
+#forgotPasswordButton{
+    background-color: #f8f8ff;
+}
+
 #forgotPassword{
 
    color:#6a6b6f; 
