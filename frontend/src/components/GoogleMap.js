@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import '../styles.css';
 
@@ -7,14 +7,14 @@ const mapStyles = {
     height: '100%'
 };
 
-export default class MapDiv extends React.Component() {
+export default class MapDiv extends Component {
     handleSearch = (() => {
         const { mapsApi, placesService } = this.state;
         const newResults = [];
 
         const placesRequest = {
             location: new mapsApi.LatLng(280.60227, -81.2001),
-            query: '',
+            query: 'burger',
             radius: 30000,
             maxPriceLevel: 1,
             type: ['restaurant'],
@@ -24,7 +24,7 @@ export default class MapDiv extends React.Component() {
         placesService.textSearch(placesRequest, ((results) => {
             for (let i = 0; i < results.length; i++) {
                 const rating = results[i].rating;
-                if (results[i].rating >= placesRequest.maxPriceLevel) {
+                if (results[i].rating >= placesRequest.rating) {
                     newResults.push(results[i]);
                 }
             }
