@@ -20,10 +20,10 @@ export default class MapDiv extends Component {
         const markers = [];
         const placesService = new mapsApi.places.PlacesService(map)
         const placesRequest = {
-            location: new mapsApi.LatLng(280.60227, -81.2001),
+            location: new mapsApi.LatLng(28.60227, -81.2001),
             query: 'burger',
             radius: 30000,
-            maxPriceLevel: 1,
+            maxPriceLevel: 4,
             type: ['restaurant'],
             fields: ['photo', 'formatted_address', 'name', 'rating']
         };
@@ -58,7 +58,7 @@ export default class MapDiv extends Component {
                         key: 'AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I',
                         libraries: ['places']
                     }} defaultZoom={12}
-                    defaultCenter={{ lat: 280.60227, lng: -81.20011 }}
+                    defaultCenter={{ lat: 28.60227, lng: -81.20011 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
                         <div lat={ourLatLng.lat} lng={ourLatLng.lng}></div>
