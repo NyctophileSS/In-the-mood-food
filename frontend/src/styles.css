@@ -51,10 +51,64 @@ input[type="text"],input[type="password"], button{
     font-family: 'Ubuntu', sans-serif;
 }
 
+#loginDiv,
+#registerDiv,
+#questionsDiv,
+#loggedInDiv{
+    width: 80%;
+    border-radius: 1em;
+    padding: 1em;
+
+    margin: auto;
+    margin-bottom: 1em;
+
+    background-color: #f8f8ff;
+
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+#loginButton,
+#registerButton,
+#logoutButton,
+#quizSearch{
+    background-color:#6a62d2; /*works*/
+    cursor: pointer;
+
+    text-align: center;
+    text-indent: 0rem;
+}
+
+#loggedInDiv{
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+#q1,
+#q2,
+#q3,
+#q4{
+    display: flex;
+    flex-flow:row nowrap;
+    justify-content: space-between;
+    padding: 0.25em;
+    padding-bottom: 1em;
+}
+
 #cuisine{
     text-indent: 1rem;
-    width: 100%;
     height: 1.5rem;
+}
+
+#forgotPassword{
+
+   color:#6a6b6f; 
+   font-size: 0.80rem;
+}
+
+#map {
+    height: 100%;
 }
 
 #loginName,
@@ -75,58 +129,4 @@ input[type="text"],input[type="password"], button{
 
 #email{
     background-image: url(https://cdn.iconscout.com/icon/free/png-256/email-1818372-1541480.png);
-}
-
-#loginDiv,
-#registerDiv,
-#questionsDiv,
-#loggedInDiv{
-    width: 80%;
-    border-radius: 1em;
-    padding: 1em;
-
-    margin: auto;
-    margin-bottom: 1em;
-
-    background-color: #f8f8ff;
-
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-}
-
-#loggedInDiv{
-    background-color: none;
-
-    flex-flow: row nowrap;
-}
-
-#q1,
-#q2,
-#q3,
-#q4{
-    display: flex;
-    flex-flow:row nowrap;
-    justify-content: space-between;
-    padding: 0.25em;
-    padding-bottom: 1em;
-}
-
-#loginButton,
-#registerButton{
-    background-color:#6a62d2; /*works*/
-    cursor: pointer;
-
-    text-align: center;
-    text-indent: 0rem;
-}
-
-#forgotPassword{
-
-   color:#6a6b6f; 
-   font-size: 0.80rem;
-}
-
-#map {
-    height: 100%;
 }
