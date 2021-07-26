@@ -29,6 +29,14 @@
     width: 45%;
 }
 
+#userName{
+    width: 100%;
+}
+
+#logoutButton{
+    width: 100%;
+}
+
 #cuisine{
     text-indent: 0.25rem;
     width: 100%;
