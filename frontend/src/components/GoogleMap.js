@@ -68,12 +68,12 @@ export default class MapDiv extends Component {
                     if (results[i].rating >= userRating) {
 
                         newResults[i] = results[i];
-                        console.log(newResults[i]);
                     }
                 }
 
                 for (var i = 0; i < newResults.length; i++) {
     
+                    console.log(newResults[i]);
                     this.createMarker(newResults[i]);
                 }
 
