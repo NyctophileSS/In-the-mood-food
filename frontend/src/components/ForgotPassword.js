@@ -58,7 +58,7 @@ function ForgotPassword()
     };
 
     return(
-    <div>
+    <div id="forgotPwDiv">
         <p><input type="text" id="email" placeholder="Enter email to send reset link" ref={(c) => userEmail = c}></input></p>
         <p><motion.button 
             whileHover ={{

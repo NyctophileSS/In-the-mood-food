@@ -44,6 +44,7 @@ input:focus, input:active{
 #registerDiv,
 #questionsDiv,
 #loggedInDiv,
+#forgotPwDiv,
 #verificationDiv{
     box-shadow: 0.5em 0.5em 0.5em #000000;
 
@@ -79,9 +80,6 @@ input:focus, input:active{
     text-indent: 0rem;
 }
 
-#forgotPasswordButton{
-    background-color: #f8f8ff;
-}
 
 #forgotPassword{
 
