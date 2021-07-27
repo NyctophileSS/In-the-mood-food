@@ -24,6 +24,7 @@ export default class MapDiv extends Component {
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&callback=initMap&libraries=places&v=weekly';
+        script.id = 'gooogleMaps';
         script.async = true;
         script.defer = true;
         document.body.appendChild(script);
@@ -38,7 +39,7 @@ export default class MapDiv extends Component {
 
         var foodLocation = new google.maps.LatLng(28.60227, -81.20011);
 
-        map = new google.maps.Map(document.getElementById('Map'), {center: foodLocation, zoom: 12});
+        map = new window.google.maps.Map(document.getElementById('Map'), {center: foodLocation, zoom: 12});
 
         foodLocation = new google.maps.LatLng(lat, lng);
 
@@ -142,7 +143,7 @@ export default class MapDiv extends Component {
         } else if (place.price_level == 2) {
           price = '$$';
         } else if (place.price_level == 3) {
-          price == '$$$';
+          price = '$$$';
         }
       
         var contentString = 
