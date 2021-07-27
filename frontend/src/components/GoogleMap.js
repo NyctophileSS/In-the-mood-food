@@ -62,7 +62,7 @@ export default class MapDiv extends Component {
                     defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                        {foundMarkers.map((item, i) => <div key={i} lat={28.5986} lng={-81.1986 + (i)}>{i}</div>)}
+                        {foundMarkers.map((item, i) => item.map(thing => (<div key={thing.key} lat={thing.lat} lng={thing.lng}>{thing.name}</div> )))} 
                 </GoogleMapReact> 
             </div>
             
