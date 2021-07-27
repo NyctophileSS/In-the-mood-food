@@ -23,7 +23,7 @@ export default class MapDiv extends Component {
 
         const script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&callback=initMap&libraries=places&v=weekly';
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&callback=initMap&libraries=places,geometry&v=weekly';
         script.id = 'gooogleMaps';
         script.async = true;
         script.defer = true;
@@ -67,6 +67,7 @@ export default class MapDiv extends Component {
                     if (results[i].rating >= userRating) {
 
                         newResults[i] = results[i];
+                        console.log(newResults[i]);
                     }
                 }
 
