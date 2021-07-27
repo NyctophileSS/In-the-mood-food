@@ -1,7 +1,6 @@
 import React from 'react';
 import PageTitle from '../components/PageTitle';
 import Verification from '../components/Verification';
-import '../styles.css';
 
 const VerificationPage = () =>
 {

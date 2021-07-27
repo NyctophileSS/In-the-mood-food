@@ -1,18 +1,7 @@
 import React, { useState, useContext} from 'react';
-import '../styles.css';
 import { motion } from "framer-motion";
 import {AccountContext} from "./accountContext";
 
-const containerVariants = {
-    hidden: {
-            opacity: 0.2
-    },
-    visible: {
-            opacity: 1,
-            transition: { duration: 1.5}
-    },
- 
-}
 
 function Login()
 {
@@ -73,12 +62,7 @@ function Login()
     }
      
     return(
-    <motion.div id="loginDiv" className="loginBlock"
-        variants = {containerVariants}
-        initial = "hidden"
-        animate = "visible"
-        exit = "exit"
-    >
+    <motion.div id="loginDiv" className="loginBlock" >
         <p><input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}></input></p>
         <p><input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}></input></p>
         <p><button type="button" id="loginButton" onClick={doLogin}> Start munchin'</button></p>

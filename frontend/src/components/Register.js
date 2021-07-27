@@ -1,21 +1,8 @@
 import React, {useState, useContext} from 'react';
-import '../styles.css';
 import {AccountContext} from "./accountContext";
 import { motion } from "framer-motion";
 
-const containerVariants = {
-    hidden: {
-            opacity: 0.2
-    },
-    visible: {
-            opacity: 1,
-            transition: { duration: 1.5}
-    },
-    exit: {
-        x: '-100vw',
-        transition: { ease: 'easeInOut'}
-    }
-}
+
 
 function Register()
 {
@@ -96,12 +83,7 @@ function Register()
     };
 
     return (
-        <motion.div id="registerDiv" className="registerBlock"
-            variants = {containerVariants}
-            initial = "hidden"
-            animate = "visible"
-            exit = "exit"
-        >
+        <motion.div id="registerDiv" className="registerBlock">
             <p><input type="text" id="first" placeholder="First Name" ref={(c) => fn = c}></input></p>
             <p><input type="text" id="last"  placeholder="Last Name" ref={(c) => ln = c}></input></p>
             <p><input type="text" id="phone" placeholder="Phone Number" ref={(c) => loginPhoneNumber = c}></input></p>

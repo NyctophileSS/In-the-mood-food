@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import './styles.css';
 import GoogleMapReact from 'google-map-react';
 
 import LoginPage from './pages/LoginPage';
