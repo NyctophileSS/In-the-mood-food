@@ -93,6 +93,31 @@ input:focus, input:active{
    font-size: 0.80rem;
 }
 
+#QuizSearch{
+    width: 80%;
+    border-radius: 0.25em;
+    border: none;
+    outline: none;
+    height: 2.5rem;
+    padding: 0.75em;
+    padding-left: 5em;
+    padding-right: 5em;
+
+    color: black;
+    background-color:#6a62d2;
+    background-repeat: no-repeat;
+    background-size: 2em;
+    background-position-x: 1%;
+    background-position-y: 50%;
+
+    font-size: 1rem;
+    text-align: left;
+    text-indent: 3rem;
+    font-family: 'Ubuntu', sans-serif;
+
+    text-decoration: none;
+}
+
 #Map {
     height: 100%;
 }
