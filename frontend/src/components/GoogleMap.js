@@ -4,8 +4,8 @@ import GoogleMapReact from 'google-map-react';
 //This is as far I have gotten successfully atm. If I am asleep, continue from here.
 //const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
 
-const foundMarker = {  name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address : {}};
-const foundMarkers = {}
+
+const foundMarkers = [];
 
 const MapContainer = {
     height: '80vh',
@@ -19,12 +19,6 @@ const newResults = [];
 const rating = 4;
 
 export default class MapDiv extends Component {
-    constructor(props)  {
-        super(props);
-        this.state = {
-            foundMarkers : []
-        }
-    }
     
 
     handleSearch = ((map, mapsApi) => {
@@ -53,9 +47,9 @@ export default class MapDiv extends Component {
                 foundMarker.rating = newResults[i].rating;
                 foundMarker.price = newResults[i].price_level;
                 foundMarker.address = newResults[i].formatted_address;
-                this.setState(foundMarkers.push(foundMarker));
+                foundMarkers.push(foundMarker);
             }
-            console.log(this.state.foundMarkers);
+            console.log(foundMarkers);
         })
         );
     });
