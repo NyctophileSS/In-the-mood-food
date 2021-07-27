@@ -5,7 +5,7 @@ import GoogleMapReact from 'google-map-react';
 //const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
 
 
-const foundMarkers = [];
+const foundMarkers = [{ name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address: {} }];
 
 const MapContainer = {
     height: '80vh',
@@ -23,7 +23,6 @@ export default class MapDiv extends Component {
 
     handleSearch = ((map, mapsApi) => {
         const placesService = new mapsApi.places.PlacesService(map)
-        const foundMarker = { name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address: {} }
         const placesRequest = {
             location: new mapsApi.LatLng(28.5986, -81.1986),
             query: 'burger',
@@ -40,11 +39,10 @@ export default class MapDiv extends Component {
                 }
             }
             for(let i = 0; i < newResults.length; i++){
-                console.log(newResults[i]);
+                foundMarkers.push({name: newResults[i].name, lat : newResults[i].geometry.location.lat, lng : newResults[i].geometry.location.lng, photos: newResults[i].photos, rating : newResults[i].rating, price : newResults[i].price_level, address : newResults[i].formatted_address});
+                
             }
-            // for(let i = 0; i < foundMarkers.length; i++){
-            //     console.log(foundMarkers[i]);
-            // }
+            console.log(foundMarkers);
         })
         );
     });
