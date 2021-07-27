@@ -40,10 +40,15 @@ export default class MapDiv extends Component {
 
         var foodLocation = new window.google.maps.LatLng(28.60227, -81.20011);
 
-        map = new window.google.maps.Map(document.getElementById('Map'), {center: foodLocation, zoom: 12});
+        map = new window.google.maps.Map(document.getElementById('Map'), {
+            center: foodLocation, 
+            zoom: 12,
+            mapTypeControl: false,
+        });
 
         var foodLocation = new window.google.maps.LatLng(lat, lng);
 
+        /*
         radiusCircle = new window.google.maps.Circle({
             strokeColor: "#6a62d2",
             strokeOpacity: 0.8,
@@ -54,6 +59,7 @@ export default class MapDiv extends Component {
             center: foodLocation,
             radius: distance,
         });
+        */
 
         // Request information to be sent to Google Maps API with quiz information
         var request = {
