@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
-
+//This is as far I have gotten successfully atm. If I am asleep, continue from here.
+//const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
 
 const mapStyles = {
     width: '100%',
@@ -51,8 +52,6 @@ export default class MapDiv extends Component {
 
 
     render() {
-        //This is as far I have gotten successfully atm. If I am asleep, continue from here.
-        //const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
         const TestMarker = () => {
             newResults.map((newResult, index) => (
                newResult.map(item => (

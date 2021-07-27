@@ -52,7 +52,7 @@ function Verification()
     };
 
     return(
-    <div>
+    <div id="verificationDiv">
         <p><input type="text" id="email" placeholder="Email" ref={(c) => userEmail = c}></input></p>
         <p><input type="text" id="token" placeholder="Token" ref={(c) => userToken = c}></input></p>
         <p><button type="button" id="verifyButton" onClick={doVerification}> Verify account</button></p>

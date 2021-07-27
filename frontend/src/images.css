@@ -6,7 +6,9 @@
 
 #loginPassword,
 #pw,
-#verifypw{
+#verifypw,
+#token{
+    
     background-image: url(lock.png);
 }
 
