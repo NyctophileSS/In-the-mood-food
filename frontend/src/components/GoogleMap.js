@@ -52,13 +52,7 @@ export default class MapDiv extends Component {
 
 
     render() {
-        const TestMarker = () => (
-            newResults.map((newResult, index) => (
-                   <div lat={newResult.geometry.location.lat} lng={newResult.geometry.location.lng}>
-                       {index}
-                   </div>
-            ))
-        )
+        const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
@@ -70,7 +64,14 @@ export default class MapDiv extends Component {
                     defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                       <TestMarker></TestMarker>
+                       {newResults.map( (newResult) => {
+                           return (
+                               <TestMarker
+                                lat={newResult.geometry.location.lat}
+                                lng={newResult.geometry.location.lng}
+                                text={newResult.name}/>
+                           );
+                       })}
                 </GoogleMapReact>
             </div>
         );
