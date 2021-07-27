@@ -41,8 +41,8 @@ export default class MapDiv extends Component {
                 }
             }
             for(let i = 0; i < newResults.length; i++){
-                foundMarkers.push([newResults[i].name,  newResults[i].geometry.location.lat,  newResults[i].geometry.location.lng,
-                    newResults[i].photos, newResults[i].rating, newResults[i].price_level,  newResults[i].formatted_address, i]);
+                foundMarkers.push({name: newResults[i].name,  lat: newResults[i].geometry.location.lat, lng:  newResults[i].geometry.location.lng,
+                   photos: newResults[i].photos, rating: newResults[i].rating, price: newResults[i].price_level, address : newResults[i].formatted_address, key : i});
             }
             
         })
@@ -64,7 +64,7 @@ export default class MapDiv extends Component {
                     defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                        {foundMarkers.map((item, i) => {console.log(item); return(<div key={i}>{i}</div>) })} 
+                        {foundMarkers.map((item, i) =><div key={i} lat={item.lat} lng={item.lng}>{item.name}</div>) } 
                 </GoogleMapReact> 
             </div>
             
