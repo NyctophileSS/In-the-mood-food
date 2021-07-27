@@ -4,7 +4,7 @@ import MapDiv from '../components/GoogleMap';
 import ButtonToQuiz from '../components/buttonToQuiz';
 
 const ResultsPage = (props) => {
-    console.log(props.location.aboutProps);
+    console.log(props);
     return (
         <div>
             <PageTitle />
