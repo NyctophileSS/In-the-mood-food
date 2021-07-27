@@ -12,15 +12,17 @@ const buttonVariants = {
     }
 }
 
-export default function buttonToQuiz (){
+export default function ButtonToQuiz (){
     const goToQuiz = async event => {
         window.location.href = '/quiz'
     }
     return(
-            <motion.button
+            <div>
+                <motion.button
             variants={buttonVariants}
             whileHover="hover"
 
-            type="button" id="mapToQuizButton" onClick={goToQuiz}>Let's Search Again!</motion.button>
+            type="button" id="mapToQuizButton" onClick={goToQuiz}>Let's Search Again!</motion.button>       
+            </div>
     );
 };
