@@ -36,6 +36,7 @@ export default class MapDiv extends Component {
             for (let i = 0; i < results.length; i++) {
                 if (results[i].rating >= rating) {
                     newResults.push(results[i]);
+                    console.log(newResults[i]);
                 }
             }
         })
@@ -45,8 +46,6 @@ export default class MapDiv extends Component {
 
     render() {
         const TestMarker = ({ text, lat, lng}) => <div lat={lat} lng={lng}>{text}</div>;
-        console.log(newResults);
-        console.log(newResults.name);
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
@@ -61,7 +60,7 @@ export default class MapDiv extends Component {
                        <TestMarker
                         lat={testobject.lat}
                         lng={testobject.lng}
-                        text={newResults[0].name}
+                        text={testobject.name}
                        />
                 </GoogleMapReact>
             </div>
