@@ -7,8 +7,11 @@
 #loginPassword,
 #pw,
 #verifypw,
-#token{
-    
+#token,
+#userNewPassword1,
+#userNewPassword2,
+#userToken{
+
     background-image: url(lock.png);
 }
 
