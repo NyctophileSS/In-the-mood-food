@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
 const MapContainer = {
-    height: '90vh',
+    height: '70vh',
     width: '90%',
     margin: 'auto',
     borderRadius: '0.25em'
@@ -22,7 +22,7 @@ export default class MapDiv extends Component {
     
     
     componentDidMount() {
-        const { userDistance, userCuisine, userPrice, userRating } = this.props.location.state;
+        // const { userDistance, userCuisine, userPrice, userRating } = this.props.location.state;
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&libraries=places,geometry&v=weekly';
