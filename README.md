@@ -35,5 +35,5 @@ COP4331 Large project, In the mood food, is a phone app for finding food you are
 Login/Register Page (Done)
 Quiz Page (Done)
 ~~Results Page (List View)~~
-Results Page (Map View, could just be a button) (Done)
+Results Page (Map View) (Done)
 
