@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
 
+const buttonVariants = {
+    hover: {
+      scale: 1.1,
+
+      transition: {
+        duration: 0.3,
+        yoyo: 5
+      }
+    }
+  }
 export default function QuizQuestions() {
 
     var distanceRadiusMeters;
@@ -67,7 +77,10 @@ export default function QuizQuestions() {
                         <option value='5'>5.0 and up</option>
                     </select></div>
                 </motion.div>
-                <button type="button" id='QuizSearch' onClick={doQuizQuery}>Search</button>
+                <motion.button 
+                    variants = {buttonVariants}
+                    whileHover = "hover"
+                    type="button" id='QuizSearch' onClick={doQuizQuery}>Search</motion.button>
             </form>
         </div>
     );
