@@ -5,11 +5,12 @@ import GoogleMapReact from 'google-map-react';
 //const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
 
 
-const foundMarkers = [{ name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address: {} }];
+const foundMarkers = [{ name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address: {}, key : {} }];
 
 const MapContainer = {
-    height: '80vh',
-    width: '100%',
+    height: '50vh',
+    width: '60%',
+    margin: 'auto'
 }
 const markColor = {
     background : 'red'
@@ -40,8 +41,7 @@ export default class MapDiv extends Component {
             }
             for(let i = 0; i < newResults.length; i++){
                 foundMarkers.push({name: newResults[i].name, lat : newResults[i].geometry.location.lat, lng : newResults[i].geometry.location.lng,
-                     photos: newResults[i].photos, rating : newResults[i].rating, price : newResults[i].price_level, address : newResults[i].formatted_address});
-                
+                     photos: newResults[i].photos, rating : newResults[i].rating, price : newResults[i].price_level, address : newResults[i].formatted_address, key : i});
             }
             console.log(foundMarkers);
         })
@@ -51,6 +51,23 @@ export default class MapDiv extends Component {
 
     render() {
         const TestMarker = ({ text, lat, lng}) => <div lat={lat} lng={lng}>{text}</div>;
+        const NestedList = () => (
+                <ul>
+                    {foundMarkers.map((foundMarker, index) => (
+                        <ul key={index}>
+                            <h4>List {index + 1}</h4>
+                            {foundMarker.map(item => (
+                                <li key={item.key}>
+                                    <div>{item.name}</div>
+                                    <div>{item.address}</div>
+                                    <div>{item.price}</div>
+                                    <div>{item.rating}</div>
+                                </li>
+                            ))}
+                        </ul>
+                    ))}
+                </ul>
+                );
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
@@ -67,7 +84,9 @@ export default class MapDiv extends Component {
                         lng={-81.1986}
                         text={"End my suffering"}/>
                 </GoogleMapReact>
+                <NestedList/>
             </div>
+            
         );
     };
 };
