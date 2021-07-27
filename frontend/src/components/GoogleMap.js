@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react';
 //This is as far I have gotten successfully atm. If I am asleep, continue from here.
 //const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
 
-const testobject = {  name: "Test Marker", lat: 28.5986, lng: -81.1986 };
+const testobject = {  name: "Test Marker", position : {lat: 28.5986, lng: -81.1986 } };
 
 const MapContainer = {
     height: '80vh',
@@ -48,7 +48,7 @@ export default class MapDiv extends Component {
 
 
     render() {
-        const TestMarker = ({ text, lat, lng}) => <div lat={lat} lng={lng}>{text}</div>;
+        const TestMarker = ({ text, position}) => <div position={position}>{text}</div>;
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
@@ -61,8 +61,7 @@ export default class MapDiv extends Component {
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
                        <TestMarker
-                        lat={testobject.lat}
-                        lng={testobject.lng}
+                        position={testobject.position}
                         text={testobject.name}
                        />
                 </GoogleMapReact>
