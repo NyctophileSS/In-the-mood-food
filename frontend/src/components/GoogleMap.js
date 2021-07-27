@@ -53,10 +53,10 @@ export default class MapDiv extends Component {
         const TestMarker = ({ text, lat, lng}) => <div lat={lat} lng={lng}>{text}</div>;
         const NestedList = () => (
                 <ul>
-                    {foundMarkers.map((foundMarker, index) => (
+                    {foundMarkers.map((nestedList, index) => (
                         <ul key={index}>
                             <h4>List {index + 1}</h4>
-                            {foundMarker.map(item => (
+                            {nestedList.map(item => (
                                 <li key={item.key}>
                                     <div>{item.name}</div>
                                     <div>{item.address}</div>
