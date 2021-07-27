@@ -37,11 +37,11 @@ export default class MapDiv extends Component {
 
         this.getLocation();
 
-        var foodLocation = new google.maps.LatLng(28.60227, -81.20011);
+        var foodLocation = new window.google.maps.LatLng(28.60227, -81.20011);
 
         map = new window.google.maps.Map(document.getElementById('Map'), {center: foodLocation, zoom: 12});
 
-        foodLocation = new google.maps.LatLng(lat, lng);
+        foodLocation = new window.google.maps.LatLng(lat, lng);
 
         // Request information to be sent to Google Maps API with quiz information
         var request = {
@@ -53,12 +53,12 @@ export default class MapDiv extends Component {
             fields: ['photo', 'formatted_address', 'name', 'rating'],
         };
 
-        var service = new google.maps.places.PlacesService(map);
+        var service = new window.google.maps.places.PlacesService(map);
 
         // Sending the request to Google Maps API
         service.textSearch(request, function(results, status) {
     
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
+            if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       
                 const newResults = [];
 
@@ -83,7 +83,7 @@ export default class MapDiv extends Component {
        
     getLocation() {
 
-        var infoWindow = new google.maps.InfoWindow();
+        var infoWindow = new window.google.maps.InfoWindow();
       
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
@@ -152,11 +152,11 @@ export default class MapDiv extends Component {
         '<p>Rating: ' + place.rating + ', Price Level: ' + price + '</p>';
       
       
-        const infowindow = new google.maps.InfoWindow({
+        const infowindow = new window.google.maps.InfoWindow({
           content: contentString,
         });
         
-        const marker = new google.maps.Marker({
+        const marker = new window.google.maps.Marker({
             map,
             position: place.geometry.location,
           });
