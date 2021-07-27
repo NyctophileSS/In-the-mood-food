@@ -12,8 +12,8 @@ var map;
 
 // Need to get this info from quiz page
 var distance = 30000;
-var foodType = 'Steak';
-var userRating = 2;
+var foodType = 'Mexican';
+var userRating = 3;
 var maxPrice = 4;
 
 var lat, lng;
