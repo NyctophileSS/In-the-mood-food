@@ -4,7 +4,8 @@ import GoogleMapReact from 'google-map-react';
 //This is as far I have gotten successfully atm. If I am asleep, continue from here.
 //const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
 
-const testobject = {  name: "Test Marker", lat: 28.5986, lng: -81.1986 };
+const foundMarker = {  name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address : {}};
+const foundMarkers = {}
 
 const MapContainer = {
     height: '80vh',
@@ -18,11 +19,16 @@ const newResults = [];
 const rating = 4;
 
 export default class MapDiv extends Component {
-    
+    constructor(props)  {
+        this.state = {
+            foundMarkers = []
+        }
+    }
     
 
     handleSearch = ((map, mapsApi) => {
         const placesService = new mapsApi.places.PlacesService(map)
+        var foundMarker = { name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address: {} }
         const placesRequest = {
             location: new mapsApi.LatLng(28.5986, -81.1986),
             query: 'burger',
@@ -39,14 +45,16 @@ export default class MapDiv extends Component {
                 }
             }
             for(let i = 0; i < newResults.length; i++){
-                console.log(newResults[i].name);
-                console.log(newResults[i].geometry.location.lat);
-                console.log(newResults[i].geometry.location.lng);
-                console.log(newResults[i].photo);
-                console.log(newResults[i].rating);
-                console.log(newResults[i].price_level);
-                console.log(newResults[i].formatted_address);
+                foundMarker.name = newResults[i].name;
+                foundMarker.lat = newResults[i].geometry.location.lat;
+                foundMarker.lng = newResults[i].geometry.location.lng;
+                foundMarker.photos = newResults[i].photos;
+                foundMarker.rating = newResults[i].rating;
+                foundMarker.price = newResults[i].price_level;
+                foundMarker.address = newResults[i].formatted_address;
+                this.setState(foundMarkers.push(foundMarker));
             }
+            console.log(this.state.foundMarkers);
         })
         );
     });
@@ -66,10 +74,9 @@ export default class MapDiv extends Component {
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
                        <TestMarker
-                        lat={testobject.lat}
-                        lng={testobject.lng}
-                        text={testobject.name}
-                       />
+                        lat={28.5986}
+                        lng={-81.1986}
+                        text={"End my suffering"}/>
                 </GoogleMapReact>
             </div>
         );
