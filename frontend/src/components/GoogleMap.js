@@ -18,9 +18,6 @@ var maxPrice = 4;
 
 var lat, lng;
 
-const InputFromUser = (props) => {
-    console.log(props.location.aboutProps);
-}
 
 export default class MapDiv extends Component {
 
