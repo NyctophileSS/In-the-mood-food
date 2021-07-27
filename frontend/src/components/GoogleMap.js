@@ -7,7 +7,7 @@ const MapContainer = {
     borderRadius: '0.25em'
 }
 
-var map;
+var map, radiusCircle;
 
 // Need to get this info from quiz page
 var distance = 30000;
@@ -44,7 +44,7 @@ export default class MapDiv extends Component {
 
         var foodLocation = new window.google.maps.LatLng(lat, lng);
 
-        var radiusCircle = new window.google.maps.Circle({
+        radiusCircle = new window.google.maps.Circle({
             strokeColor: "#6a62d2",
             strokeOpacity: 0.8,
             strokeWeight: 2,
