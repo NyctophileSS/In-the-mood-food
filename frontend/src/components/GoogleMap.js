@@ -40,18 +40,11 @@ export default class MapDiv extends Component {
                 }
             }
             for(let i = 0; i < newResults.length; i++){
-                foundMarker.name = newResults[i].name;
-                foundMarker.lat = newResults[i].geometry.location.lat;
-                foundMarker.lng = newResults[i].geometry.location.lng;
-                foundMarker.photos = newResults[i].photos;
-                foundMarker.rating = newResults[i].rating;
-                foundMarker.price = newResults[i].price_level;
-                foundMarker.address = newResults[i].formatted_address;
-                foundMarkers.push(foundMarker);
+                console.log(newResults[i]);
             }
-            for(let i = 0; i < foundMarkers.length; i++){
-                console.log(foundMarkers[i]);
-            }
+            // for(let i = 0; i < foundMarkers.length; i++){
+            //     console.log(foundMarkers[i]);
+            // }
         })
         );
     });
