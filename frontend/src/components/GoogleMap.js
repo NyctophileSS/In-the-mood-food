@@ -14,6 +14,7 @@ var distance = 30000;
 var foodType = 'Mexican';
 var userRating = 2;
 var maxPrice = 4;
+var foodLocation;
 
 var lat, lng;
 
@@ -46,7 +47,7 @@ export default class MapDiv extends Component {
             mapTypeControl: false,
         });
 
-        var foodLocation = new window.google.maps.LatLng(lat, lng);
+        foodLocation = new window.google.maps.LatLng(lat, lng);
 
         // Request information to be sent to Google Maps API with quiz information
         var request = {
