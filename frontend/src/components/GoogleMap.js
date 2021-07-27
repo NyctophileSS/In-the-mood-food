@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const MapContainer = {
-    height: '90vh',
+    height: '82vh',
     width: '90%',
     margin: 'auto',
     borderRadius: '0.25em'
@@ -48,18 +48,16 @@ export default class MapDiv extends Component {
 
         var foodLocation = new window.google.maps.LatLng(lat, lng);
 
-        /*
         radiusCircle = new window.google.maps.Circle({
             strokeColor: "#6a62d2",
             strokeOpacity: 0.8,
             strokeWeight: 2,
             fillColor: "#6a62d2",
             fillOpacity: 0.35,
-            map,
+            map: map,
             center: foodLocation,
             radius: distance,
         });
-        */
 
         // Request information to be sent to Google Maps API with quiz information
         var request = {
