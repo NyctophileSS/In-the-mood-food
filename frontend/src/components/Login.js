@@ -97,7 +97,11 @@ function Login()
                 whileHover = "hover"
 
                 type="button"  id="loginButton" onClick={doLogin}> Start munchin'</motion.button></p>
-        <p><a id="forgotPassword" onClick={forgotPw} cursor="pointer">Forgot password?</a></p>
+        <motion.p
+         whileHover ={{
+            scale: 1.2
+        }}
+        ><a id="forgotPassword" onClick={forgotPw} cursor="pointer">Forgot password?</a></motion.p>
         <p href = "#" > Don't have an account? {" "}
             <a href = "#" onClick = {switchToSignup} > Signup</a>
         </p>

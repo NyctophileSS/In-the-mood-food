@@ -2,6 +2,16 @@ import React from 'react';
 import '../styles.css';
 import { motion } from 'framer-motion';
 
+const containerVariants = {
+  hidden: {
+          opacity: 0.2
+  },
+  visible: {
+          opacity: 1,
+          transition: { duration: 1.5}
+  },
+
+}
 
 const buttonVariants = {
   hover: {
@@ -33,7 +43,13 @@ function LoggedInName()
     };    
 
     return(
-     <div id="loggedInDiv">
+     <motion.div id="loggedInDiv"
+      variants = {containerVariants}
+      initial = "hidden"
+      animate = "visible"
+      exit = "exit"
+    
+    >
       <div id="userNameDiv"><span id="userName">Logged In As {firstName} {lastName}</span></div>
       <div><motion.button 
         variants = {buttonVariants}
@@ -41,7 +57,7 @@ function LoggedInName()
 
         type="button" id="logoutButton" class="buttons" 
         onClick={doLogout}> Log Out </motion.button></div>
-     </div>
+     </motion.div>
     );
 };
 

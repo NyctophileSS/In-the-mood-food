@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
 
+const containerVariants = {
+    hidden: {
+            opacity: 0.2
+    },
+    visible: {
+            opacity: 1,
+            transition: { duration: 1.5}
+    },
+ 
+}
+
 const buttonVariants = {
     hover: {
       scale: 1.1,
@@ -25,7 +36,12 @@ export default function QuizQuestions() {
     }
 
     return (
-        <div id="questionsDiv">
+        <motion.div id="questionsDiv"
+            variants = {containerVariants}
+            initial = "hidden"
+            animate = "visible"
+            exit = "exit"
+        >
             <form>
                 <motion.div id="q1"
                     initial = {{opacity: 0}}
@@ -82,6 +98,6 @@ export default function QuizQuestions() {
                     whileHover = "hover"
                     type="button" id='QuizSearch' onClick={doQuizQuery}>Search</motion.button>
             </form>
-        </div>
+        </motion.div>
     );
 }
