@@ -54,11 +54,9 @@ export default class MapDiv extends Component {
     render() {
         const TestMarker = () => (
             newResults.map((newResult, index) => (
-               newResult.map(item => (
-                   <div lat={item.geometry.location.lat} lng={item.geometry.location.lng}>
+                   <div lat={newResult.geometry.location.lat} lng={newResult.geometry.location.lng}>
                        {index}
                    </div>
-               ))
             ))
         )
         return (
