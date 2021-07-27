@@ -4,8 +4,9 @@ import GoogleMapReact from 'google-map-react';
 //This is as far I have gotten successfully atm. If I am asleep, continue from here.
 //const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
 
-
-const foundMarkers = [{ name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address: {}, key : {} }];
+//                        [0]       [1]      [2]       [3]         [4]         [5]         [6]          [7]
+//                        name      lat      lng      photos      rating       price      address       key
+const foundMarkers = [ ];
 
 const MapContainer = {
     height: '50vh',
@@ -40,8 +41,8 @@ export default class MapDiv extends Component {
                 }
             }
             for(let i = 0; i < newResults.length; i++){
-                foundMarkers.push({name: newResults[i].name, lat : newResults[i].geometry.location.lat, lng : newResults[i].geometry.location.lng,
-                     photos: newResults[i].photos, rating : newResults[i].rating, price : newResults[i].price_level, address : newResults[i].formatted_address, key : i});
+                foundMarkers.push([newResults[i].name,  newResults[i].geometry.location.lat,  newResults[i].geometry.location.lng,
+                    newResults[i].photos, newResults[i].rating, newResults[i].price_level,  newResults[i].formatted_address, i]);
             }
         })
         );
@@ -62,7 +63,7 @@ export default class MapDiv extends Component {
                     defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                        {foundMarkers.map((item, i) => Object.keys(item).map(thing => (<div key={thing.key} lat={thing.lat} lng={thing.lng}>{thing.name}</div> )))} 
+                        {foundMarkers.map((item, i) => item.map(thing => (<div key={thing[7]} lat={thing[2]} lng={thing[1]}>{thing[0]}</div> )))} 
                 </GoogleMapReact> 
             </div>
             
