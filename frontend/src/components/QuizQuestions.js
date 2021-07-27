@@ -36,7 +36,12 @@ export default function QuizQuestions() {
     }
 
     return (
-        <div id="questionsDiv">
+        <motion.div id="questionsDiv"
+            variants = {containerVariants}
+            initial = "hidden"
+            animate = "visible"
+            exit = "exit"
+        >
             <form>
                 <motion.div id="q1"
                     initial = {{opacity: 0}}
@@ -93,6 +98,6 @@ export default function QuizQuestions() {
                     whileHover = "hover"
                     type="button" id='QuizSearch' onClick={doQuizQuery}>Search</motion.button>
             </form>
-        </div>
+        </motion.div>
     );
 }

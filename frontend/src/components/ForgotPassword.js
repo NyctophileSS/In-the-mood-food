@@ -69,5 +69,4 @@ function ForgotPassword()
     </div>
     );
 };
-s
 export default ForgotPassword;
