@@ -92,12 +92,7 @@ export default function QuizQuestions() {
                 <Link>variants = {buttonVariants}
                     to={{
                         pathname : '/map',
-                        state: {
-                            userDistance : distanceRadiusMiles,
-                            userCuisince : cuisineInput,
-                            userPrice : price,
-                            userRating : rating
-                        }
+                        state: [distanceRadiusMiles, cuisineInput, price, rating]
                     }}
                     whileHover = "hover"
                     type="button" id='QuizSearch' Search</Link>
