@@ -20,6 +20,7 @@ const rating = 4;
 
 export default class MapDiv extends Component {
     constructor(props)  {
+        super(props);
         this.state = {
             foundMarkers : []
         }
