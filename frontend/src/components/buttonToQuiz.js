@@ -21,6 +21,6 @@ export default function buttonToQuiz (){
             variants={buttonVariants}
             whileHover="hover"
 
-            type="button" id="mapToQuizButton" onClick={gotToQuiz}> Let's Search Again!</motion.button></p>
+            type="button" id="mapToQuizButton" onClick={goToQuiz}>Let's Search Again!</motion.button></p>
     )
 };
