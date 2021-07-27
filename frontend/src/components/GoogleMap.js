@@ -43,7 +43,6 @@ export default class MapDiv extends Component {
                 foundMarkers.push({name: newResults[i].name, lat : newResults[i].geometry.location.lat, lng : newResults[i].geometry.location.lng,
                      photos: newResults[i].photos, rating : newResults[i].rating, price : newResults[i].price_level, address : newResults[i].formatted_address, key : i});
             }
-            console.log(foundMarkers);
         })
         );
     });
