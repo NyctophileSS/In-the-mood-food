@@ -5,9 +5,8 @@ COP4331 Large project, In the mood food, is a phone app for finding food you are
   - A list of nearby restaurants based on your answers          (Done as Map)
   - Login/Register Page                                         (Done)
   - Email confirmation                                          (Done)
-  - Forgot my username (enter email)                            (Done)
-  - ~~Forgot my email (enter username)~~                            (Dont Need it, but still possible to add later)
-  - ~~Forgot my password (enter email/username) (IF an account with that username exists, a password reset email has just been sent)~~             (In progress)
+  - ~~Forgot my email (enter username)                        (Dont Need it, but still possible to add later)~~
+  - Forgot my password (enter email/username)                   (Done)
   - 2-step verification                                         (Done)
   - Must save prototypes                                        (Done)
   - Must work on web, iOS, Android                              (Web Done, App In Progress)
@@ -35,5 +34,5 @@ COP4331 Large project, In the mood food, is a phone app for finding food you are
 Login/Register Page (Done)
 Quiz Page (Done)
 ~~Results Page (List View)~~
-Results Page (Map View, could just be a button) (Done)
+Results Page (Map View) (Done)
 
