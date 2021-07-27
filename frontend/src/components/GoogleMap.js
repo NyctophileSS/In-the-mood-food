@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
 const MapContainer = {
-    height: '70vh',
+    height: '82vh',
     width: '90%',
     margin: 'auto',
     borderRadius: '0.25em'
