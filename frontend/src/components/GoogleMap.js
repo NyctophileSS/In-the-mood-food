@@ -38,13 +38,13 @@ export default class MapDiv extends Component {
 
         this.getLocation();
 
-        var foodLocation = new window.google.maps.LatLng(28.60227, -81.20011);
+        //var foodLocation = new window.google.maps.LatLng(28.60227, -81.20011);
 
         map = new window.google.maps.Map(document.getElementById('Map'), {center: foodLocation, zoom: 12});
 
-        foodLocation = new window.google.maps.LatLng(lat, lng);
+        var foodLocation = new window.google.maps.LatLng(lat, lng);
 
-        const radiusCircle = new window.google.maps.Circle({
+        var radiusCircle = new window.google.maps.Circle({
             strokeColor: "#6a62d2",
             strokeOpacity: 0.8,
             strokeWeight: 2,
