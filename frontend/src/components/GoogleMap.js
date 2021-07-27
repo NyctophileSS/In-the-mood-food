@@ -52,7 +52,7 @@ export default class MapDiv extends Component {
 
 
     render() {
-        const TestMarker = () => {
+        const TestMarker = () => (
             newResults.map((newResult, index) => (
                newResult.map(item => (
                    <div lat={item.geometry.location.lat} lng={item.geometry.location.lng}>
@@ -60,7 +60,7 @@ export default class MapDiv extends Component {
                    </div>
                ))
             ))
-        }
+        )
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
