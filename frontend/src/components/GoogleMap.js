@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {useLocation} from 'react-router-dom';
 
 const MapContainer = {
     height: '82vh',
@@ -17,11 +18,14 @@ var maxPrice = 4;
 
 var lat, lng;
 
+const InputFromUser = (props) => {
+    console.log(props.location.aboutProps);
+}
+
 export default class MapDiv extends Component {
-    
 
     componentDidMount() {
-
+        
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&libraries=places,geometry&v=weekly';
