@@ -67,7 +67,7 @@ export default class MapDiv extends Component {
                         lng={-81.1986}
                         text={"End my suffering"}/>
                 </GoogleMapReact>
-                <ul>{foundMarkers.map((item, i) => <li key={i}>{i}</li>)}</ul>
+                {foundMarkers.map((item, i) => <div key={i} lat={28.5986} lng={-81.1986}>{i}</div>)}
                 
             </div>
             
