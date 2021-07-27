@@ -71,7 +71,7 @@ export default class MapDiv extends Component {
                     }
                 }
 
-                for (var i = 0; i < results.length; i++) {
+                for (var i = 0; i < newResults.length; i++) {
     
                     this.createMarker(newResults[i]);
                 }
