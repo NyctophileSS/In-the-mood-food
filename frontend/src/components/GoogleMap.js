@@ -36,8 +36,10 @@ export default class MapDiv extends Component {
             for (let i = 0; i < results.length; i++) {
                 if (results[i].rating >= rating) {
                     newResults.push(results[i]);
-                    console.log(newResults[i]);
                 }
+            }
+            for(let i = 0; i < newResults.length; i++){
+                console.log(newResults[i]);
             }
         })
         );
