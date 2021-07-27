@@ -61,7 +61,7 @@ export default class MapDiv extends Component {
                        <Testmarker
                         lat={testobject.lat}
                         lng={testobject.lng}
-                        text={newResults[i].name}
+                        text={newResults[0].name}
                        />
                 </GoogleMapReact>
             </div>
