@@ -88,3 +88,7 @@ input:focus, input:active{
    color:#6a6b6f; 
    font-size: 0.80rem;
 }
+
+#Map {
+    height: 100%;
+}

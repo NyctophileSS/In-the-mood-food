@@ -1,74 +1,166 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
 
-//This is as far I have gotten successfully atm. If I am asleep, continue from here.
-//const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
+var map;
+var infowindow;
 
-//                        [0]       [1]      [2]       [3]         [4]         [5]         [6]          [7]
-//                        name      lat      lng      photos      rating       price      address       key
-const foundMarkers = [ ];
+// Need to get this info from quiz page
+var distance = 30000;
+var foodType = 'Mexican';
+var userRating = 2;
+var maxPrice = 1;
 
-const MapContainer = {
-    height: '50vh',
-    width: '60%',
-    margin: 'auto'
-}
-const markColor = {
-    background : 'red'
-}
-
-const newResults = [];
-const rating = 4;
-const TestMarker = ({ text, lat, lng}) => <div lat={lat} lng={lng}>{text}</div>;
+var lat, lng;
 
 export default class MapDiv extends Component {
     
 
-    handleSearch = ((map, mapsApi) => {
-        const placesService = new mapsApi.places.PlacesService(map)
-        const placesRequest = {
-            location: new mapsApi.LatLng(28.5986, -81.1986),
-            query: 'burger',
-            radius: 30000,
-            maxPriceLevel: 4,
+    componentDidMount() {
+
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&callback=initMap&libraries=places&v=weekly';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+        script.addEventListener('load', e => { 
+            this.onScriptLoad()
+        })
+    
+    onScriptLoad() {
+
+        getLocation();
+
+        var foodLocation = new google.maps.LatLng(28.60227, -81.20011);
+
+        map = new google.maps.Map(document.getElementById('Map'), {center: foodLocation, zoom: 12});
+
+        foodLocation = new google.maps.LatLng(lat, lng);
+
+        // Request information to be sent to Google Maps API with quiz information
+        var request = {
+            query: foodType,
+            location: foodLocation,
+            radius: distance,
+            maxPriceLevel: maxPrice,
             type: ['restaurant'],
-            fields: ['photo', 'formatted_address', 'name', 'rating']
+            fields: ['photo', 'formatted_address', 'name', 'rating'],
         };
 
-        placesService.textSearch(placesRequest, ((results) => {
-            for (let i = 0; i < results.length; i++) {
-                if (results[i].rating >= rating) {
-                    newResults.push(results[i]);
+        var service = new google.maps.places.PlacesService(map);
+
+        // Sending the request to Google Maps API
+        service.textSearch(request, function(results, status) {
+    
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+      
+                const newResults = [];
+
+                for (var i = 0; i < results.length; i++) {
+
+                    if (results[i].rating >= userRating) {
+
+                        newResults[i] = results[i];
+                    }
                 }
-            }
-            for(let i = 0; i < newResults.length; i++){
-                foundMarkers.push({name: newResults[i].name,  lat: newResults[i].geometry.location.lat(), lng:  newResults[i].geometry.location.lng(),
-                   photos: newResults[i].photos, rating: newResults[i].rating, price: newResults[i].price_level, address : newResults[i].formatted_address, key : i});
-                   console.log(foundMarkers[i].lat);
-            }
-        })
-        );
-    });
 
+                for (var i = 0; i < results.length; i++) {
+    
+                    createMarker(newResults[i]);
+                }
 
-    render() {
-        
-       
-        return (
-            <div style={MapContainer} >
-                <GoogleMapReact
-                    bootstrapURLKeys={{
-                        key: 'AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I',
-                        libraries: ['places']
-                    }} 
-                    defaultZoom={12}
-                    defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
-                    yesIWantToUseMapApiInternals={true}
-                    onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) }>
-                        
-                </GoogleMapReact> 
-            </div>
+                map.setCenter(foodLocation);
             
+            }
+        });
+    }
+       
+    function getLocation() {
+
+        infoWindow = new google.maps.InfoWindow();
+      
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+              infoWindow.setPosition(pos);
+              infoWindow.setContent("Your Location");
+              infoWindow.open(map);
+              map.setCenter(pos);
+              setUserLocation(pos.lat, pos.lng);
+            },
+            () => {
+              handleLocationError(true, infoWindow, map.getCenter());
+            }
+          );
+        } else {
+      
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+      
+      // Error handling with location
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        
+        // Setting the position of the user's current location
+        infoWindow.setPosition(pos);
+        
+        infoWindow.setContent(
+          browserHasGeolocation
+            ? "Error: The Geolocation service failed."
+            : "Error: Your browser doesn't support geolocation."
         );
-    };
-};
+      
+        infoWindow.open(map);
+      }
+      
+      // Setting the global location variables
+    function setUserLocation(latitude, longitude) {
+      
+        lat = latitude;
+        lng = longitude;
+    }
+      
+    // Creating the markers on the Google Map itself with the information from results found
+    function createMarker(place) {
+         
+        if (!place.geometry || !place.geometry.location) return;
+      
+        var price = '$$$$';
+      
+        if (place.price_level == 1) {
+          price = '$';
+        } else if (place.price_level == 2) {
+          price = '$$';
+        } else if (place.price_level == 3) {
+          price == '$$$';
+        }
+      
+        var contentString = 
+        '<h1>' + place.name + '</h1>' +
+        '<p></p>' + place.formatted_address +
+        '<p>Rating: ' + place.rating + ', Price Level: ' + price + '</p>';
+      
+      
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+        });
+        
+        const marker = new google.maps.Marker({
+            map,
+            position: place.geometry.location,
+          });
+        
+          marker.addListener("click", () => {
+            infowindow.open({
+              anchor: marker,
+              map,
+              shouldFocus: false,
+            });
+          });
+        }
+       
+}
