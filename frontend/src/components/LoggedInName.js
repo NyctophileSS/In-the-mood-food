@@ -1,5 +1,18 @@
 import React from 'react';
 import '../styles.css';
+import { motion } from 'framer-motion';
+
+
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+
+    transition: {
+      duration: 0.3,
+      yoyo: 5
+    }
+  }
+}
 
 function LoggedInName()
 {
@@ -22,8 +35,12 @@ function LoggedInName()
     return(
      <div id="loggedInDiv">
       <div id="userNameDiv"><span id="userName">Logged In As {firstName} {lastName}</span></div>
-      <div><button type="button" id="logoutButton" class="buttons" 
-      onClick={doLogout}> Log Out </button></div>
+      <div><motion.button 
+        variants = {buttonVariants}
+        whileHover = "hover"
+
+        type="button" id="logoutButton" class="buttons" 
+        onClick={doLogout}> Log Out </motion.button></div>
      </div>
     );
 };

@@ -16,7 +16,15 @@ const containerVariants = {
         transition: { ease: 'easeInOut'}
     }
 }
-
+const buttonVariants = {
+    hover: {
+      scale: 1.1,
+      transition: {
+        duration: 0.3,
+        yoyo: 5
+      }
+    }
+  }
 function Register()
 {
     var fn;
@@ -108,7 +116,11 @@ function Register()
             <p><input type="text" id="email" placeholder="Email" ref={(c) => loginName = c}></input></p>
             <p><input type="password" id="pw" placeholder="Password" ref={(c) => loginPassword1 = c}></input></p>
             <p><input type="password" id="verifypw" placeholder="Retype Password" ref={(c) => loginPassword2 = c}></input></p>
-            <p><button type="button" id="registerButton" onClick={doRegister}>Register</button></p>
+            <p><motion.button 
+                variants = {buttonVariants}
+                whileHover = "hover"
+
+                type="button" id="registerButton" onClick={doRegister}>Register</motion.button></p>
             <p href = "#" > Don't have an account? {" "}
                 <a href = "#" onClick = {switchToSignin}> Login</a>
             </p>

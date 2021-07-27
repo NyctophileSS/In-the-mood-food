@@ -1,6 +1,16 @@
 import React, {useState} from 'react';
 import '../styles.css';
+import { motion } from "framer-motion";
 
+const buttonVariants = {
+    hover: {
+      scale: 1.1,
+      transition: {
+        duration: 0.3,
+        yoyo: 5
+      }
+    }
+  }
 function Verification()
 {
     var userEmail;
@@ -55,7 +65,11 @@ function Verification()
     <div id="verificationDiv">
         <p><input type="text" id="email" placeholder="Email" ref={(c) => userEmail = c}></input></p>
         <p><input type="text" id="token" placeholder="Token" ref={(c) => userToken = c}></input></p>
-        <p><button type="button" id="verifyButton" onClick={doVerification}> Verify account</button></p>
+        <p><motion.button 
+            variants = {buttonVariants}
+            whileHover = "hover"
+
+            type="button" id="verifyButton" onClick={doVerification}> Verify account</motion.button></p>
     <span id="verificationResult">{message}</span>
     </div>
     );

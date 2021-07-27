@@ -13,6 +13,16 @@ const containerVariants = {
     },
  
 }
+const buttonVariants = {
+    hover: {
+      scale: 1.1,
+
+      transition: {
+        duration: 0.3,
+        yoyo: 5
+      }
+    }
+  }
 
 function Login()
 {
@@ -81,7 +91,12 @@ function Login()
     >
         <p><input type="text" id="loginName" placeholder="Email" ref={(c) => loginName = c}></input></p>
         <p><input type="password" id="loginPassword" placeholder="Password" ref={(c) => loginPassword = c}></input></p>
-        <p><button type="button" id="loginButton" onClick={doLogin}> Start munchin'</button></p>
+        {/* <p><button type="button" id="loginButton" onClick={doLogin}> Start munchin'</button></p> */}
+        <p><motion.button 
+                variants = {buttonVariants}
+                whileHover = "hover"
+
+                type="button"  id="loginButton" onClick={doLogin}> Start munchin'</motion.button></p>
         <p><a id="forgotPassword" onClick={forgotPw} cursor="pointer">Forgot password?</a></p>
         <p href = "#" > Don't have an account? {" "}
             <a href = "#" onClick = {switchToSignup} > Signup</a>
