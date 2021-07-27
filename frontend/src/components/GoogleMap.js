@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 const MapContainer = {
-    height: '50vh',
-    width: '60%',
-    margin: 'auto'
+    height: '90vh',
+    width: '90%',
+    margin: 'auto',
+    borderRadius: '0.25em'
 }
 
 var map;
