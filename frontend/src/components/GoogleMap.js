@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react';
 //This is as far I have gotten successfully atm. If I am asleep, continue from here.
 //const TestMarker = ({ text, lat, lng }) => <div lat={lat} lng={lng}>{text}</div>;
 
-const ourLatLng = {  lat: 28.5986, lng: -81.1986 };
+const testobject = {  name: "Test Marker", lat: 28.5986, lng: -81.1986 };
 
 const MapContainer = {
     height: '80vh',
@@ -44,7 +44,9 @@ export default class MapDiv extends Component {
 
 
     render() {
-        const TestMarker = ({ text, lat, lng, key }) => <div key={key} lat={lat} lng={lng}>{text}</div>;
+        const TestMarker = ({ text, lat, lng}) => <div lat={lat} lng={lng}>{text}</div>;
+        console.log(newResults);
+        console.log(newResults.name);
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
@@ -56,16 +58,11 @@ export default class MapDiv extends Component {
                     defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                       {newResults.map( (newResult, key) => {
-                           console.log(newResult);
-                           return (
-                               <TestMarker
-                                key={key}
-                                lat={ourLatLng.lat}
-                                lng={ourLatLng.lng}
-                                text={newResult.name}/>
-                           );
-                       })}
+                       <Testmarker
+                        lat={testobject.lat}
+                        lng={testobject.lng}
+                        text={newResults[i].name}
+                       />
                 </GoogleMapReact>
             </div>
         );
