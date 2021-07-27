@@ -48,9 +48,10 @@ export default class MapDiv extends Component {
                 foundMarker.price = newResults[i].price_level;
                 foundMarker.address = newResults[i].formatted_address;
                 foundMarkers.push(foundMarker);
-                console.log(foundMarkers);
             }
-            
+            for(let i = 0; i < foundMarkers.length; i++){
+                console.log(foundMarkers[i]);
+            }
         })
         );
     });
