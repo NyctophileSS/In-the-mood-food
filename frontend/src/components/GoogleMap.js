@@ -74,7 +74,7 @@ export default class MapDiv extends Component {
                 for (var i = 0; i < newResults.length; i++) {
     
                     console.log(newResults[i]);
-                    this.createMarker(newResults[i]);
+                    createMarker(newResults[i]);
                 }
 
                 map.setCenter(foodLocation);
