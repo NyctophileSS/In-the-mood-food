@@ -94,8 +94,8 @@ export default function QuizQuestions() {
                     to={{
                         pathname : '/map',
                         state: {
-                            userDistance : distanceRadiusMiles.value,
-                            userCuisince : cuisineInput.value,
+                            userDistance : distanceRadiusMiles,
+                            userCuisince : cuisineInput,
                             userPrice : price,
                             userRating : rating
                         }
