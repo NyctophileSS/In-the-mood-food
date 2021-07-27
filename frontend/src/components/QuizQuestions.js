@@ -91,8 +91,11 @@ export default function QuizQuestions() {
                 </motion.div>
                 <Link to={{
                         pathname : '/map',
-                        state: [distanceRadiusMiles, cuisineInput, price, rating]
-                    }} id='QuizSearch'>  Search</Link>
+                        aboutProps: { userDistance : distanceRadiusMiles,
+                                 userCuisine : cuisineInput, 
+                                 userPrice : price, 
+                                 userRating : rating }
+                    }} id='QuizSearch'> Search</Link>
             </form>
         </motion.div>
     );
