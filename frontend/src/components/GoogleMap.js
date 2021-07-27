@@ -50,9 +50,9 @@ export default class MapDiv extends Component {
         })
         );
         return (<TestMarker
-                    lat={foundMarkers[0].lat}
-                    lng={foundMarkers[0].lng}
-                    text={foundMarkers[0].name}
+                    lat={foundMarkers[0].lat.value}
+                    lng={foundMarkers[0].lng.value}
+                    text={foundMarkers[0].name.value}
                      /> );
     });
 
