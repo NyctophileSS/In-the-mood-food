@@ -82,6 +82,10 @@ input:focus, input:active{
     text-indent: 0rem;
 }
 
+#mapToQuizButton{
+    margin-bottom: 1em;
+    background-color: #f8f8ff;
+}
 
 #forgotPassword{
 
