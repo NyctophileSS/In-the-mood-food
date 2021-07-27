@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import '../style.css';
+
+
+const MapContainer = {
+    height: '50vh',
+    width: '60%',
+    margin: 'auto'
+}
 
 var map;
-var infowindow;
 
 // Need to get this info from quiz page
 var distance = 30000;
@@ -25,10 +32,11 @@ export default class MapDiv extends Component {
         script.addEventListener('load', e => { 
             this.onScriptLoad()
         })
-    
+    }
+
     onScriptLoad() {
 
-        getLocation();
+        this.getLocation();
 
         var foodLocation = new google.maps.LatLng(28.60227, -81.20011);
 
@@ -65,7 +73,7 @@ export default class MapDiv extends Component {
 
                 for (var i = 0; i < results.length; i++) {
     
-                    createMarker(newResults[i]);
+                    this.createMarker(newResults[i]);
                 }
 
                 map.setCenter(foodLocation);
@@ -74,9 +82,9 @@ export default class MapDiv extends Component {
         });
     }
        
-    function getLocation() {
+    getLocation() {
 
-        infoWindow = new google.maps.InfoWindow();
+        var infoWindow = new google.maps.InfoWindow();
       
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
@@ -89,21 +97,21 @@ export default class MapDiv extends Component {
               infoWindow.setContent("Your Location");
               infoWindow.open(map);
               map.setCenter(pos);
-              setUserLocation(pos.lat, pos.lng);
+              this.setUserLocation(pos.lat, pos.lng);
             },
             () => {
-              handleLocationError(true, infoWindow, map.getCenter());
+                this.handleLocationError(true, infoWindow, map.getCenter());
             }
           );
         } else {
       
           // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
+          this.handleLocationError(false, infoWindow, map.getCenter());
         }
       }
       
       // Error handling with location
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    handleLocationError(browserHasGeolocation, infoWindow, pos) {
         
         // Setting the position of the user's current location
         infoWindow.setPosition(pos);
@@ -118,14 +126,14 @@ export default class MapDiv extends Component {
       }
       
       // Setting the global location variables
-    function setUserLocation(latitude, longitude) {
+    setUserLocation(latitude, longitude) {
       
         lat = latitude;
         lng = longitude;
     }
       
     // Creating the markers on the Google Map itself with the information from results found
-    function createMarker(place) {
+    createMarker(place) {
          
         if (!place.geometry || !place.geometry.location) return;
       
@@ -163,4 +171,13 @@ export default class MapDiv extends Component {
           });
         }
        
+
+    render() {
+        return ( 
+            <div id = "Map" style = {MapContainer}>
+                <div/>
+            </div>
+        )
+
+    }
 }
