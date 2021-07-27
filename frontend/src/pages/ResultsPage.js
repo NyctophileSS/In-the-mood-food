@@ -8,7 +8,7 @@ const ResultsPage = () => {
         <div>
             <PageTitle />
             <MapDiv />
-            <input type="button" onClick={() => window.location.href = '/quiz'}></input>
+            <input type="button" onClick={() => window.location.href = '/quiz'}>Let's Search For Something Else!</input>
         </div>
         
     );
