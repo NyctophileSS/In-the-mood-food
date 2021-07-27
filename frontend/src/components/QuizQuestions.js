@@ -89,8 +89,7 @@ export default function QuizQuestions() {
                         <option value='5'>5.0 and up</option>
                     </select></div>
                 </motion.div>
-                <motion.Link 
-                    variants = {buttonVariants}
+                <Link>variants = {buttonVariants}
                     to={{
                         pathname : '/map',
                         state: {
@@ -101,7 +100,8 @@ export default function QuizQuestions() {
                         }
                     }}
                     whileHover = "hover"
-                    type="button" id='QuizSearch' >Search</motion.Link>
+                    type="button" id='QuizSearch' Search</Link>
+                    
             </form>
         </motion.div>
     );
