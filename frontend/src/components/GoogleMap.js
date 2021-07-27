@@ -44,16 +44,10 @@ export default class MapDiv extends Component {
             for(let i = 0; i < newResults.length; i++){
                 foundMarkers.push({name: newResults[i].name,  lat: newResults[i].geometry.location.lat(), lng:  newResults[i].geometry.location.lng(),
                    photos: newResults[i].photos, rating: newResults[i].rating, price: newResults[i].price_level, address : newResults[i].formatted_address, key : i});
-                   console.log(foundMarkers[i]);
+                   console.log(foundMarkers[i].lat);
             }
-            
         })
         );
-        return (<TestMarker
-                    lat={foundMarkers[0].lat.value}
-                    lng={foundMarkers[0].lng.value}
-                    text={foundMarkers[0].name.value}
-                     /> );
     });
 
 
