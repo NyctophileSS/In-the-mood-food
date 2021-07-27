@@ -68,6 +68,7 @@ export default class MapDiv extends Component {
                     if (results[i].rating >= userRating) {
 
                         newResults[i] = results[i];
+                        console.log(newResults[i]);
                     }
                 }
 
