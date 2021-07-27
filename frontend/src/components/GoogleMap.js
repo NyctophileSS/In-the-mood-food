@@ -23,7 +23,7 @@ export default class MapDiv extends Component {
 
     handleSearch = ((map, mapsApi) => {
         const placesService = new mapsApi.places.PlacesService(map)
-        var foundMarker = { name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address: {} }
+        const foundMarker = { name: {}, lat: {}, lng: {}, photos: {}, rating: {}, price: {}, address: {} }
         const placesRequest = {
             location: new mapsApi.LatLng(28.5986, -81.1986),
             query: 'burger',
