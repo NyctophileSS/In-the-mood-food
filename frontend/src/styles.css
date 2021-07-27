@@ -45,7 +45,8 @@ input:focus, input:active{
 #questionsDiv,
 #loggedInDiv,
 #forgotPwDiv,
-#verificationDiv{
+#verificationDiv,
+#resetPasswordDiv{
     box-shadow: 0.5em 0.5em 0.5em #000000;
 
     width: 80%;
