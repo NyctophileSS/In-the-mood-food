@@ -13,7 +13,7 @@ var map;
 var distance = 30000;
 var foodType = 'Mexican';
 var userRating = 2;
-var maxPrice = 1;
+var maxPrice = 4;
 
 var lat, lng;
 
