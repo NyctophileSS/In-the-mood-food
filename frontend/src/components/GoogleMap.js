@@ -19,6 +19,7 @@ const markColor = {
 
 const newResults = [];
 const rating = 4;
+const TestMarker = ({ text, lat, lng}) => <div lat={lat} lng={lng}>{text}</div>;
 
 export default class MapDiv extends Component {
     
@@ -48,11 +49,16 @@ export default class MapDiv extends Component {
             
         })
         );
+        return (<TestMarker
+                    lat={foundMarkers[0].lat}
+                    lng={foundMarkers[0].lng}
+                    text={foundMarkers[0].name}
+                     /> );
     });
 
 
     render() {
-        const TestMarker = ({ text, lat, lng}) => <div lat={lat} lng={lng}>{text}</div>;
+        
        
         return (
             <div style={MapContainer} >
@@ -64,12 +70,8 @@ export default class MapDiv extends Component {
                     defaultZoom={12}
                     defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
-                    onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                        <TestMarker
-                            lat={foundMarkers[0].lat}
-                            lng={foundMarkers[0].lng}
-                            text={foundMarkers[0].name}
-                        /> 
+                    onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) }>
+                        
                 </GoogleMapReact> 
             </div>
             
