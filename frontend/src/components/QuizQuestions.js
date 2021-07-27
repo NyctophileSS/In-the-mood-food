@@ -89,14 +89,10 @@ export default function QuizQuestions() {
                         <option value='5'>5.0 and up</option>
                     </select></div>
                 </motion.div>
-                <Link>variants = {buttonVariants}
-                    to={{
+                <Link> to={{
                         pathname : '/map',
                         state: [distanceRadiusMiles, cuisineInput, price, rating]
-                    }}
-                    whileHover = "hover"
-                    type="button" id='QuizSearch' Search</Link>
-                    
+                    }} id='QuizSearch' Search</Link>
             </form>
         </motion.div>
     );
