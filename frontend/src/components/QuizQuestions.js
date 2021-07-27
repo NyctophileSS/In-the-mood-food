@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const containerVariants = {
     hidden: {
@@ -24,16 +25,11 @@ const buttonVariants = {
   }
 export default function QuizQuestions() {
 
-    var distanceRadiusMeters;
     var distanceRadiusMiles;
     var cuisineInput;
     var rating;
     var price;
 
-    const doQuizQuery = async event => {
-        distanceRadiusMeters = distanceRadiusMiles / 0.00062137;
-        window.location.href = '/map';
-    }
 
     return (
         <motion.div id="questionsDiv"
@@ -93,10 +89,19 @@ export default function QuizQuestions() {
                         <option value='5'>5.0 and up</option>
                     </select></div>
                 </motion.div>
-                <motion.button 
+                <motion.Link 
                     variants = {buttonVariants}
+                    to={{
+                        pathname : '/map',
+                        state: {
+                            userDistance : distanceRadiusMiles.value,
+                            userCuisince : cuisineInput.value,
+                            userPrice : price,
+                            userRating : rating
+                        }
+                    }}
                     whileHover = "hover"
-                    type="button" id='QuizSearch' onClick={doQuizQuery}>Search</motion.button>
+                    type="button" id='QuizSearch' >Search</motion.Link>
             </form>
         </motion.div>
     );

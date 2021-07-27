@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 const MapContainer = {
     height: '90vh',
@@ -7,7 +8,7 @@ const MapContainer = {
     borderRadius: '0.25em'
 }
 
-var map, radiusCircle;
+var map;
 
 // Need to get this info from quiz page
 var distance = 30000;
@@ -19,9 +20,9 @@ var lat, lng;
 
 export default class MapDiv extends Component {
     
-
+    
     componentDidMount() {
-
+        const { userDistance, userCuisine, userPrice, userRating } = this.props.location.state;
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZkoQ8wRK8iu9EAu7upcK2zynH6fM3p-I&libraries=places,geometry&v=weekly';
@@ -38,18 +39,12 @@ export default class MapDiv extends Component {
 
         this.getLocation();
 
-        var foodLocation = new window.google.maps.LatLng(28.60227, -81.20011);
-
-        map = new window.google.maps.Map(document.getElementById('Map'), {
-            center: foodLocation, 
-            zoom: 12,
-            mapTypeControl: false,
-        });
-
+        //var foodLocation = new window.google.maps.LatLng(28.60227, -81.20011);
         var foodLocation = new window.google.maps.LatLng(lat, lng);
 
-        /*
-        radiusCircle = new window.google.maps.Circle({
+        map = new window.google.maps.Map(document.getElementById('Map'), {center: foodLocation, zoom: 12});
+
+        var radiusCircle = new window.google.maps.Circle({
             strokeColor: "#6a62d2",
             strokeOpacity: 0.8,
             strokeWeight: 2,
@@ -59,7 +54,6 @@ export default class MapDiv extends Component {
             center: foodLocation,
             radius: distance,
         });
-        */
 
         // Request information to be sent to Google Maps API with quiz information
         var request = {
@@ -85,6 +79,7 @@ export default class MapDiv extends Component {
                     if (results[i].rating >= userRating) {
 
                         newResults.push(results[i]);
+                        console.log(newResults[i]);
                     }
                 }
 
