@@ -51,23 +51,7 @@ export default class MapDiv extends Component {
 
     render() {
         const TestMarker = ({ text, lat, lng}) => <div lat={lat} lng={lng}>{text}</div>;
-        const NestedList = () => (
-                <ul>
-                    {foundMarkers.map((nestedList, index) => (
-                        <ul key={index}>
-                            <h4>List {index + 1}</h4>
-                            {nestedList.map(item => (
-                                <li key={item.key}>
-                                    <div>{item.name}</div>
-                                    <div>{item.address}</div>
-                                    <div>{item.price}</div>
-                                    <div>{item.rating}</div>
-                                </li>
-                            ))}
-                        </ul>
-                    ))}
-                </ul>
-                );
+       
         return (
             <div style={MapContainer} >
                 <GoogleMapReact
@@ -84,7 +68,8 @@ export default class MapDiv extends Component {
                         lng={-81.1986}
                         text={"End my suffering"}/>
                 </GoogleMapReact>
-                <NestedList/>
+                <ul>{foundMarkers.map((item, i) => <li key={i}>{item.name}</li>)}</ul>
+                
             </div>
             
         );
