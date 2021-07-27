@@ -73,12 +73,45 @@ export default class MapDiv extends Component {
 
                 for (var i = 0; i < newResults.length; i++) {
     
-                    console.log(newResults[i]);
-                    this.createMarker(newResults[i]);
+                    var place = newResults[i];
+                    
+                    if (!place.geometry || !place.geometry.location) return;
+      
+                    var price = '$$$$';
+      
+                    if (place.price_level == 1) {
+                        price = '$';
+                    } else if (place.price_level == 2) {
+                        price = '$$';
+                    } else if (place.price_level == 3) {
+                        price = '$$$';
+                    }
+      
+                    var contentString = 
+                    '<h1>' + place.name + '</h1>' +
+                    '<p></p>' + place.formatted_address +
+                    '<p>Rating: ' + place.rating + ', Price Level: ' + price + '</p>';
+      
+      
+                    const infowindow = new window.google.maps.InfoWindow({
+                        content: contentString,
+                    });
+        
+                    const marker = new window.google.maps.Marker({
+                        map,
+                        position: place.geometry.location,
+                    });
+        
+                    marker.addListener("click", () => {
+                        infowindow.open({
+                            anchor: marker,
+                            map,
+                            shouldFocus: false,
+                        });
+                    });
                 }
 
                 map.setCenter(foodLocation);
-            
             }
         });
     }
@@ -132,46 +165,6 @@ export default class MapDiv extends Component {
         lat = latitude;
         lng = longitude;
     }
-      
-    // Creating the markers on the Google Map itself with the information from results found
-    createMarker(place) {
-         
-        if (!place.geometry || !place.geometry.location) return;
-      
-        var price = '$$$$';
-      
-        if (place.price_level == 1) {
-          price = '$';
-        } else if (place.price_level == 2) {
-          price = '$$';
-        } else if (place.price_level == 3) {
-          price = '$$$';
-        }
-      
-        var contentString = 
-        '<h1>' + place.name + '</h1>' +
-        '<p></p>' + place.formatted_address +
-        '<p>Rating: ' + place.rating + ', Price Level: ' + price + '</p>';
-      
-      
-        const infowindow = new window.google.maps.InfoWindow({
-          content: contentString,
-        });
-        
-        const marker = new window.google.maps.Marker({
-            map,
-            position: place.geometry.location,
-          });
-        
-          marker.addListener("click", () => {
-            infowindow.open({
-              anchor: marker,
-              map,
-              shouldFocus: false,
-            });
-          });
-        }
-       
 
     render() {
         return ( 
