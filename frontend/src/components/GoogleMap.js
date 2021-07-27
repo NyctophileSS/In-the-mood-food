@@ -58,7 +58,7 @@ export default class MapDiv extends Component {
                     defaultCenter={{ lat: 28.5986, lng: -81.1986 }}
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
-                       <Testmarker
+                       <TestMarker
                         lat={testobject.lat}
                         lng={testobject.lng}
                         text={newResults[0].name}
