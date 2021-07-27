@@ -76,7 +76,7 @@ function ResetPassword()
     };
 
     return(
-    <div>
+    <div id="resetPasswordDiv">
         <p><input type="text" id="email" placeholder="Enter your email" ref={(c) => userEmail = c}></input></p>
         <p><input type="password" id="userNewPassword1" placeholder="Enter new password" ref={(c) => userNewPassword1 = c}></input></p>
         <p><input type="password" id="userNewPassword2" placeholder="Re-enter new password" ref={(c) => userNewPassword2 = c}></input></p>
