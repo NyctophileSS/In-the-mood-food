@@ -49,7 +49,7 @@ export default function QuizQuestions() {
                         <option value='5'>5.0 and up</option>
                     </select></div>
                 </div>
-                <button id='QuizSearch' onClick={doQuizQuery}>Search</button>
+                <button type="button" id='QuizSearch' onClick={doQuizQuery}>Search</button>
             </form>
         </div>
     );
