@@ -40,8 +40,7 @@ export default class MapDiv extends Component {
             }
             for(let i = 0; i < newResults.length; i++){
                 console.log(newResults[i].name);
-                console.log(newResults[i].geometry.location.lat);
-                console.log(newResults[i].geometry.location.lng);
+                console.log(newResults[i].geometry.location);
             }
         })
         );
