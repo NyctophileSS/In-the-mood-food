@@ -73,7 +73,8 @@ input:focus, input:active{
 #logoutButton,
 #QuizSearch,
 #forgotPasswordButton,
-#verifyButton{
+#verifyButton,
+#mapToQuizButton{
     background-color:#6a62d2; /*works*/
     cursor: pointer;
     justify-content: center;
