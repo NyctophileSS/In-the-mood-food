@@ -174,10 +174,9 @@ export default class MapDiv extends Component {
 
     render() {
         return ( 
-            <div id = "Map" style = {MapContainer}>
-                <div/>
+            <div style = {MapContainer}>
+                <div id = "Map"/>
             </div>
         )
-
     }
 }
