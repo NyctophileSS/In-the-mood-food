@@ -43,9 +43,6 @@ export default class MapDiv extends Component {
                     newResults.push(results[i]);
                 }
             }
-            for (let i = 0; i < newResults.length; i++){
-                console.log(newResults[i]);
-            }
         })
         );
     });
@@ -65,10 +62,11 @@ export default class MapDiv extends Component {
                     yesIWantToUseMapApiInternals={true}
                     onGoogleApiLoaded={({ map, maps }) => this.handleSearch(map, maps) } >
                        {newResults.map( (newResult) => {
+                           console.log(newResult);
                            return (
                                <TestMarker
-                                lat={newResult.geometry.location.lat}
-                                lng={newResult.geometry.location.lng}
+                                lat={ourLatLng.lat}
+                                lng={ourLatLng.lng}
                                 text={newResult.name}/>
                            );
                        })}
