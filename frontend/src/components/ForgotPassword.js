@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import '../styles.css';
+import { motion } from 'framer-motion';
 
 function ForgotPassword()
 {
@@ -59,7 +60,11 @@ function ForgotPassword()
     return(
     <div>
         <p><input type="text" id="email" placeholder="Enter email to send reset link" ref={(c) => userEmail = c}></input></p>
-        <p><button type="button" id="forgotPasswordButton" onClick={doForgotPassword}> Send a reset password email</button></p>
+        <p><motion.button 
+            whileHover ={{
+                opacity: 0.5  
+            }}
+            type="button" id="forgotPasswordButton" onClick={doForgotPassword}> Send a reset password email</motion.button></p>
     <span id="verificationResult">{message}</span>
     </div>
     );
