@@ -89,10 +89,10 @@ export default function QuizQuestions() {
                         <option value='5'>5.0 and up</option>
                     </select></div>
                 </motion.div>
-                <Link> to={{
+                <Link to={{
                         pathname : '/map',
                         state: [distanceRadiusMiles, cuisineInput, price, rating]
-                    }} id='QuizSearch' Search</Link>
+                    }} id='QuizSearch'>  Search</Link>
             </form>
         </motion.div>
     );
