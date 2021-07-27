@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import '../style.css';
-
 
 const MapContainer = {
     height: '50vh',
